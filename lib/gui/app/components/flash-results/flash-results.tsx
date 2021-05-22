@@ -188,7 +188,7 @@ export function FlashResults({
 							{progress.failed(errors.length)}
 						</Txt>
 						<Link ml="10px" onClick={() => setShowErrorsInfo(true)}>
-							more info
+							lisätietoja
 						</Link>
 					</Flex>
 				) : null}

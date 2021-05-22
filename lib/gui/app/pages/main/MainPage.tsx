@@ -104,7 +104,6 @@ const StepBorder = styled.div<{
 			? props.theme.colors.dark.disabled.foreground
 			: props.theme.colors.dark.foreground};
 	width: 120px;
-	top: 19px;
 
 	left: ${(props) => (props.left ? '-67px' : undefined)};
 	margin-right: ${(props) => (props.left ? '-120px' : undefined)};
@@ -161,7 +160,7 @@ export class MainPage extends React.Component<
 	private async getFeaturedProjectURL() {
 		const url = new URL(
 			(await settings.get('featuredProjectEndpoint')) ||
-				'https://testausserveri.fi',
+				'https://mostik.dfjapis.com/abitikku/banner/',
 		);
 		url.searchParams.append('borderRight', 'false');
 		url.searchParams.append('darkBackground', 'true');
@@ -291,7 +290,14 @@ export class MainPage extends React.Component<
 							hasDrive={this.state.hasDrive}
 							flashing={this.state.isFlashing}
 						/>
-						<Flex>
+						<Flex
+							style={{
+								justifyItems: 'center',
+								alignItems: 'center',
+								justifyContent: 'center',
+								alignContent: 'center',
+							}}
+						>
 							<StepBorder disabled={shouldFlashStepBeDisabled} right />
 						</Flex>
 					</>

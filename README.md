@@ -27,7 +27,7 @@ installers for all supported operating systems.
 ## Support
 
 If you're having any problem, please [raise an issue][newissue] on GitHub, and
-the Testausserveri will be happy to help.
+Testausserveri will be happy to help.
 
 ## License
 
