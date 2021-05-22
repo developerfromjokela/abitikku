@@ -21,7 +21,7 @@ Abitikku is a powerful Abitti flasher built with web technologies to ensure flas
 
 ## Installers
 
-Refer to the [downloads page][etcher] for the latest pre-made
+Refer to the [releases page](https://github.com/Testausserveri/abitikku/releases) for the latest pre-made
 installers for all supported operating systems.
 
 ## Support
