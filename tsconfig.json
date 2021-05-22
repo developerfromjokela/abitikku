@@ -4,6 +4,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2019",
     "moduleResolution": "node",
     "jsx": "react",
