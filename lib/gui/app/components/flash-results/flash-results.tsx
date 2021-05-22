@@ -162,7 +162,7 @@ export function FlashResults({
 					<Txt>{middleEllipsis(image, 24)}</Txt>
 				</Flex>
 				<Txt fontSize={24} color="#fff" mb="17px">
-					Kirjoitus {allFailed ? 'epäonnistui' : 'valmistui'}!
+					Asennus {allFailed ? 'epäonnistui' : 'valmistui'}!
 				</Txt>
 				{skip ? <Txt color="#7e8085">Varmistus ohitettiin</Txt> : null}
 			</Flex>
