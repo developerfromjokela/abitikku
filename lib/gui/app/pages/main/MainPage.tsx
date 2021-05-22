@@ -26,10 +26,7 @@ import styled from 'styled-components';
 import FinishPage from '../../components/finish/finish';
 import { ReducedFlashingInfos } from '../../components/reduced-flashing-infos/reduced-flashing-infos';
 import { SettingsModal } from '../../components/settings/settings';
-import {
-	SourceMetadata,
-	SourceSelector,
-} from '../../components/source-selector/source-selector';
+import { SourceMetadata } from '../../components/source-selector/source-selector';
 import * as flashState from '../../models/flash-state';
 import * as selectionState from '../../models/selection-state';
 import * as settings from '../../models/settings';
@@ -176,10 +173,6 @@ export class MainPage extends React.Component<
 			>
 				{notFlashingOrSplitView && (
 					<>
-						<SourceSelector flashing={this.state.isFlashing} />
-						<Flex>
-							<StepBorder disabled={shouldDriveStepBeDisabled} left />
-						</Flex>
 						<TargetSelector
 							disabled={shouldDriveStepBeDisabled}
 							hasDrive={this.state.hasDrive}
