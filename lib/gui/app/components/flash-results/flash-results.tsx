@@ -88,15 +88,15 @@ function formattedErrors(errors: FlashError[]) {
 const columns: Array<TableColumn<FlashError>> = [
 	{
 		field: 'description',
-		label: 'Target',
+		label: 'Kohde',
 	},
 	{
 		field: 'device',
-		label: 'Location',
+		label: 'Sijainti',
 	},
 	{
 		field: 'message',
-		label: 'Error',
+		label: 'Virhe',
 		render: (message: string, { code }: FlashError) => {
 			return message ?? code;
 		},
@@ -162,9 +162,9 @@ export function FlashResults({
 					<Txt>{middleEllipsis(image, 24)}</Txt>
 				</Flex>
 				<Txt fontSize={24} color="#fff" mb="17px">
-					Flash {allFailed ? 'Failed' : 'Complete'}!
+					Kirjoitus {allFailed ? 'epäonnistui' : 'valmistui'}!
 				</Txt>
-				{skip ? <Txt color="#7e8085">Validation has been skipped</Txt> : null}
+				{skip ? <Txt color="#7e8085">Varmistus ohitettiin</Txt> : null}
 			</Flex>
 			<Flex flexDirection="column" color="#7e8085">
 				{results.devices.successful !== 0 ? (
@@ -200,11 +200,11 @@ export function FlashResults({
 							textAlign: 'center',
 						}}
 						tooltip={outdent({ newline: ' ' })`
-							The speed is calculated by dividing the image size by the flashing time.
-							Disk images with ext partitions flash faster as we are able to skip unused parts.
+							Nopeus lasketaan jakamalla levyn koko kirjoitusajalla.
+							Levykuvat ext-osioilla kirjoitetaan nopeammin, sillä pystymme ohittamaan turhia osia.
 						`}
 					>
-						Effective speed: {effectiveSpeed} MB/s
+						Todellinen nopeus: {effectiveSpeed} MB/s
 					</Txt>
 				)}
 			</Flex>
@@ -214,11 +214,11 @@ export function FlashResults({
 					titleElement={
 						<Flex alignItems="baseline" mb={18}>
 							<Txt fontSize={24} align="left">
-								Failed targets
+								Epäonnistuneet kohteet
 							</Txt>
 						</Flex>
 					}
-					action="Retry failed targets"
+					action="Yritä uudelleen epäonnistuneilla kohteilla"
 					cancel={() => setShowErrorsInfo(false)}
 					done={() => {
 						setShowErrorsInfo(false);

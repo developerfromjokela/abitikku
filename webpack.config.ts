@@ -382,10 +382,10 @@ const mainConfig = {
 	},
 };
 
-const etcherConfig = {
+const abiTikkuConfig = {
 	...mainConfig,
 	entry: {
-		etcher: path.join(__dirname, 'lib', 'gui', 'etcher.ts'),
+		abitikku: path.join(__dirname, 'lib', 'gui', 'abitikku.ts'),
 	},
 };
 
@@ -402,4 +402,4 @@ const childWriterConfig = {
 	},
 };
 
-export default [guiConfig, etcherConfig, childWriterConfig];
+export default [guiConfig, abiTikkuConfig, childWriterConfig];

@@ -34,36 +34,36 @@ export function fromFlashState({
 	position?: string;
 } {
 	if (type === undefined) {
-		return { status: 'Starting...' };
+		return { status: 'Aloitellaan...' };
 	} else if (type === 'decompressing') {
 		if (percentage == null) {
-			return { status: 'Decompressing...' };
+			return { status: 'Puretaan...' };
 		} else {
-			return { position: `${percentage}%`, status: 'Decompressing...' };
+			return { position: `${percentage}%`, status: 'Puretaan...' };
 		}
 	} else if (type === 'flashing') {
 		if (percentage != null) {
 			if (percentage < 100) {
-				return { position: `${percentage}%`, status: 'Flashing...' };
+				return { position: `${percentage}%`, status: 'Kirjoitetaan...' };
 			} else {
-				return { status: 'Finishing...' };
+				return { status: 'Viimeistellään...' };
 			}
 		} else {
 			return {
-				status: 'Flashing...',
+				status: 'Kirjoitetaan...',
 				position: `${position ? prettyBytes(position) : ''}`,
 			};
 		}
 	} else if (type === 'verifying') {
 		if (percentage == null) {
-			return { status: 'Validating...' };
+			return { status: 'Varmistetaan...' };
 		} else if (percentage < 100) {
-			return { position: `${percentage}%`, status: 'Validating...' };
+			return { position: `${percentage}%`, status: 'Varmistetaan...' };
 		} else {
-			return { status: 'Finishing...' };
+			return { status: 'Viimeistellään...' };
 		}
 	}
-	return { status: 'Failed' };
+	return { status: 'Epäonnistui' };
 }
 
 export function titleFromFlashState(

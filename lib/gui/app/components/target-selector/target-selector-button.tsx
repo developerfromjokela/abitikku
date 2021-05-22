@@ -95,7 +95,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 				</StepNameButton>
 				{!props.flashing && (
 					<ChangeButton plain mb={14} onClick={props.reselectDrive}>
-						Change
+						Vaihda
 					</ChangeButton>
 				)}
 				{target.size != null && (
@@ -132,11 +132,11 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 		return (
 			<>
 				<StepNameButton plain tooltip={props.tooltip}>
-					{targets.length} Targets
+					{targets.length} kohteita
 				</StepNameButton>
 				{!props.flashing && (
 					<ChangeButton plain onClick={props.reselectDrive} mb={14}>
-						Change
+						Vaihda
 					</ChangeButton>
 				)}
 				{targetsTemplate}
@@ -151,7 +151,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 			disabled={props.disabled}
 			onClick={props.openDriveSelector}
 		>
-			Select target
+			Valitse kohde
 		</StepButton>
 	);
 }

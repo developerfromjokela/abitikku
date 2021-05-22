@@ -19,7 +19,14 @@ import { Flex, Button, ProgressBar, Txt } from 'rendition';
 import { default as styled } from 'styled-components';
 
 import { fromFlashState } from '../../modules/progress-status';
-import { StepButton } from '../../styled-components';
+import { DetailsTextWhite, StepButton } from '../../styled-components';
+import * as selectionState from '../../models/selection-state';
+import { SourceMetadata } from '../source-selector/source-selector';
+import { DrivelistDrive } from '../../../../shared/drive-constraints';
+import { SVGIcon } from '../svg-icon/svg-icon';
+import ImageSvg from '../../../assets/image.svg';
+import * as prettyBytes from 'pretty-bytes';
+import * as _ from 'lodash';
 
 const FlashProgressBar = styled(ProgressBar)`
 	> div {
@@ -62,9 +69,10 @@ const colors = {
 
 const CancelButton = styled(({ type, onClick, ...props }) => {
 	const status = type === 'verifying' ? 'Skip' : 'Cancel';
+	const translatedStatus = type === 'verifying' ? 'Ohita' : 'Peruuta';
 	return (
 		<Button plain onClick={() => onClick(status)} {...props}>
-			{status}
+			{translatedStatus}
 		</Button>
 	);
 })`
@@ -116,18 +124,48 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 				</>
 			);
 		}
+		const selectionImage = selectionState.getImage();
+		let image: SourceMetadata | DrivelistDrive =
+			selectionImage !== undefined ? selectionImage : ({} as SourceMetadata);
+
+		image = image.drive ?? image;
+
+		image.name = image.description || image.name;
+		const imageLogo = image.logo || '';
+		const imageName = image.name || 'Ladataan...';
+		const imageSize = image.size;
+
 		return (
-			<StepButton
-				primary={!warning}
-				warning={warning}
-				onClick={this.props.callback}
-				disabled={this.props.disabled}
-				style={{
-					marginTop: 30,
-				}}
-			>
-				Flash!
-			</StepButton>
+			<>
+				<Flex
+					flexDirection="row"
+					style={{
+						justifyContent: 'center',
+						alignContent: 'center',
+						justifyItems: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<SVGIcon contents={imageLogo} fallback={ImageSvg} />
+					<Flex flexDirection="column" style={{ margin: '9px', color: '#fff' }}>
+						<DetailsTextWhite>{imageName}</DetailsTextWhite>
+						{!_.isNil(imageSize) && (
+							<DetailsTextWhite>{prettyBytes(imageSize)}</DetailsTextWhite>
+						)}
+					</Flex>
+				</Flex>
+				<StepButton
+					primary={!warning}
+					warning={warning}
+					onClick={this.props.callback}
+					disabled={this.props.disabled}
+					style={{
+						marginTop: 30,
+					}}
+				>
+					Asenna
+				</StepButton>
+			</>
 		);
 	}
 }

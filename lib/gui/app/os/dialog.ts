@@ -53,11 +53,11 @@ export async function selectImage(): Promise<string | undefined> {
 		properties: ['openFile', 'treatPackageAsDirectory'],
 		filters: [
 			{
-				name: 'OS Images',
+				name: 'Järjestelmälevykuvat',
 				extensions: SUPPORTED_EXTENSIONS,
 			},
 			{
-				name: 'All',
+				name: 'Kaikki',
 				extensions: ['*'],
 			},
 		],
@@ -80,7 +80,7 @@ export async function showWarning(options: {
 }): Promise<boolean> {
 	_.defaults(options, {
 		confirmationLabel: 'OK',
-		rejectionLabel: 'Cancel',
+		rejectionLabel: 'Peruuta',
 	});
 
 	const BUTTONS = [options.confirmationLabel, options.rejectionLabel];
@@ -98,7 +98,7 @@ export async function showWarning(options: {
 			buttons: BUTTONS,
 			defaultId: BUTTON_REJECTION_INDEX,
 			cancelId: BUTTON_REJECTION_INDEX,
-			title: 'Attention',
+			title: 'Huomio!',
 			message: options.title,
 			detail: options.description,
 		},

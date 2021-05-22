@@ -44,10 +44,10 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			role: 'editMenu',
 		},
 		{
-			label: 'View',
+			label: 'Näkymä',
 			submenu: [
 				{
-					label: 'Toggle Developer Tools',
+					label: 'Kytke kehittäjätila',
 					accelerator:
 						process.platform === 'darwin' ? 'Command+Alt+I' : 'Control+Shift+I',
 					click: toggleDevTools,
@@ -61,24 +61,16 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			role: 'help',
 			submenu: [
 				{
-					label: 'Etcher Pro',
+					label: 'Testausserveri',
 					click() {
-						electron.shell.openExternal(
-							'https://etcher.io/pro?utm_source=etcher_menu&ref=etcher_menu',
-						);
+						electron.shell.openExternal('https://testausserveri.fi');
 					},
 				},
 				{
-					label: 'Etcher Website',
-					click() {
-						electron.shell.openExternal('https://etcher.io?ref=etcher_menu');
-					},
-				},
-				{
-					label: 'Report an issue',
+					label: 'Ilmoita ongelmasta',
 					click() {
 						electron.shell.openExternal(
-							'https://github.com/balena-io/etcher/issues',
+							'https://github.com/Testausserveri/etcher/issues',
 						);
 					},
 				},
@@ -92,7 +84,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			submenu: [
 				{
 					role: 'about' as const,
-					label: 'About Etcher',
+					label: 'Tietoja Abitikusta',
 				},
 				{
 					type: 'separator' as const,

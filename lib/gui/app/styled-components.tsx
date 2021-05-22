@@ -111,6 +111,10 @@ export const DetailsText = (props: FlexProps) => (
 	/>
 );
 
+export const DetailsTextWhite = (props: FlexProps) => (
+	<Flex alignItems="center" color={colors.dark.foreground} {...props} />
+);
+
 const modalFooterShadowCss = css`
 	overflow: auto;
 	background: 0, linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, 0,
@@ -134,6 +138,7 @@ export const Modal = styled(({ style, children, ...props }) => {
 					marginRight: '20px',
 					border: 'solid 1px #2a506f',
 				},
+				children: 'Peruuta',
 			}}
 			style={{
 				height: '87.5vh',

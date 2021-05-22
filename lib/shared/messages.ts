@@ -20,13 +20,15 @@ import * as prettyBytes from 'pretty-bytes';
 
 export const progress: Dictionary<(quantity: number) => string> = {
 	successful: (quantity: number) => {
-		const plural = quantity === 1 ? '' : 's';
-		return `Successful target${plural}`;
+		const plural = quantity === 1 ? 'de' : 'eet';
+		const plural2 = quantity === 1 ? 'u' : 'ee';
+		return `Onnistun${plural2}t koh${plural}`;
 	},
 
 	failed: (quantity: number) => {
-		const plural = quantity === 1 ? '' : 's';
-		return `Failed target${plural}`;
+		const plural = quantity === 1 ? 'de' : 'eet';
+		const plural2 = quantity === 1 ? 'u' : 'ee';
+		return `Epäonnistun${plural2}t koh${plural}`;
 	},
 };
 
@@ -38,128 +40,128 @@ export const info = {
 	) => {
 		const targets = [];
 		if (failed + successful === 1) {
-			targets.push(`to ${drive.description} (${drive.displayName})`);
+			targets.push(`kohteeseen ${drive.description} (${drive.displayName})`);
 		} else {
 			if (successful) {
-				const plural = successful === 1 ? '' : 's';
-				targets.push(`to ${successful} target${plural}`);
+				const plural = successful === 1 ? 'teeseen' : 'eisiin';
+				targets.push(`${successful} koh${plural}`);
 			}
 			if (failed) {
-				const plural = failed === 1 ? '' : 's';
-				targets.push(`and failed to be flashed to ${failed} target${plural}`);
+				const plural = failed === 1 ? 'teeseen' : 'teisiin';
+				targets.push(`ja ${failed} koh${plural} kirjoittaminen epäonnistui`);
 			}
 		}
-		return `${imageBasename} was successfully flashed ${targets.join(' ')}`;
+		return `${imageBasename} onnistuneesti kirjoitettiin ${targets.join(' ')}`;
 	},
 };
 
 export const compatibility = {
 	sizeNotRecommended: () => {
-		return 'Not recommended';
+		return 'Ei suositella';
 	},
 
 	tooSmall: () => {
-		return 'Too small';
+		return 'Liian pieni';
 	},
 
 	locked: () => {
-		return 'Locked';
+		return 'Lukittu';
 	},
 
 	system: () => {
-		return 'System drive';
+		return 'Järjestelmälevy';
 	},
 
 	containsImage: () => {
-		return 'Source drive';
+		return 'Lähdelevy';
 	},
 
 	// The drive is large and therefore likely not a medium you want to write to.
 	largeDrive: () => {
-		return 'Large drive';
+		return 'Suuri levy';
 	},
 } as const;
 
 export const warning = {
 	tooSmall: (source: { size: number }, target: { size: number }) => {
 		return outdent({ newline: ' ' })`
-			The selected source is ${prettyBytes(source.size - target.size)}
-			larger than this drive.
+			Lähde on ${prettyBytes(source.size - target.size)}
+			suurempi kuin levy
 		`;
 	},
 
 	exitWhileFlashing: () => {
 		return [
-			'You are currently flashing a drive.',
-			'Closing Etcher may leave your drive in an unusable state.',
+			'Kirjoitus tikulle on meneillään.',
+			'Abitikun sulkeminen voi johtaa tikun korruptoitumiseen tai/ja hajoamiseen.',
 		].join(' ');
 	},
 
 	looksLikeWindowsImage: () => {
 		return [
-			'It looks like you are trying to burn a Windows image.\n\n',
-			'Unlike other images, Windows images require special processing to be made bootable.',
-			'We suggest you use a tool specially designed for this purpose, such as',
+			'Vaikuttaa siltä, että olet kirjoittamassa Windows-levykuvaa\n\n',
+			'Toisin kuin muut levyt, Windowsin levykuvat tarvitsevat erityistä käsittelyä, jotta niistä saataisiin käynnistettäviä.',
+			'Suosittelemme seuraavia työkaluja, kehitetty tähän tektävään:',
 			'<a href="https://rufus.akeo.ie">Rufus</a> (Windows),',
 			'<a href="https://github.com/slacka/WoeUSB">WoeUSB</a> (Linux),',
-			'or Boot Camp Assistant (macOS).',
+			'tai Boot Camp Assistant (macOS).',
 		].join(' ');
 	},
 
 	missingPartitionTable: () => {
 		return [
-			'It looks like this is not a bootable image.\n\n',
-			'The image does not appear to contain a partition table,',
-			'and might not be recognized or bootable by your device.',
+			'Vaikuttaa siltä, että laite ei ole käynnistettävä\n\n',
+			'Laitteesta vaikuttaa puuttuvan osiotaulu,',
+			'ja voi olla tunnistamaton käynnistyksessä.',
 		].join(' ');
 	},
 
 	driveMissingPartitionTable: () => {
 		return outdent({ newline: ' ' })`
-			It looks like this is not a bootable drive.
-			The drive does not appear to contain a partition table,
-			and might not be recognized or bootable by your device.
+			Tämä levy ei vaikuta olevan käynnistettävä.
+			Laitteesta vaikuttaa puuttuvan osiotaulu,
+			ja voi olla tunnistamaton käynnistyksessä.
 		`;
 	},
 
 	largeDriveSize: () => {
-		return "This is a large drive! Make sure it doesn't contain files that you want to keep.";
+		return 'Tämä on suuri laite! Varmista ettei levyllä ole mitään tarkeää!';
 	},
 
 	systemDrive: () => {
-		return 'Selecting your system drive is dangerous and will erase your drive!';
+		return 'Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttäkelvottoman!';
 	},
 
 	sourceDrive: () => {
-		return 'Contains the image you chose to flash';
+		return 'Sisältää levykuvan jota yrität kirjoittaa';
 	},
 };
 
 export const error = {
 	notEnoughSpaceInDrive: () => {
 		return [
-			'Not enough space on the drive.',
-			'Please insert larger one and try again.',
+			'Ei riittävästi tallennustilaa tikulla',
+			'Liitä isompi tikku ja yritä uudelleen',
 		].join(' ');
 	},
 
 	genericFlashError: (err: Error) => {
-		return `Something went wrong. If it is a compressed image, please check that the archive is not corrupted.\n${err.message}`;
+		return `Jokin meni pieleen. Jos kyseessä on puristettu levykuva, tarkista ettei se ole korruptoitunut.\n${err.message}`;
 	},
 
 	validation: () => {
 		return [
-			'The write has been completed successfully but Etcher detected potential',
-			'corruption issues when reading the image back from the drive.',
-			'\n\nPlease consider writing the image to a different drive.',
+			'Levykuva kirjoitettiin onnistuneesti, mutta Abitikku havaitsi',
+			'korruptointiongemia tarkistaessa tikkua.',
+			'\n\nHarkitse toisen tikun käyttöä.',
 		].join(' ');
 	},
 
 	openSource: (sourceName: string, errorMessage: string) => {
 		return outdent`
-			Something went wrong while opening ${sourceName}
+			Jokin meni pieleen avattaessa ${sourceName}
 
-			Error: ${errorMessage}
+			Virhe: ${errorMessage}
 		`;
 	},
 
@@ -170,34 +172,34 @@ export const error = {
 		const target =
 			drives.length === 1
 				? `${drives[0].description} (${drives[0].displayName})`
-				: `${drives.length} targets`;
-		return `Something went wrong while writing ${imageBasename} to ${target}.`;
+				: `${drives.length} kohdetta`;
+		return `Jokin meni pieleen kirjoittaessa ${imageBasename} kohteeseen ${target}.`;
 	},
 
 	driveUnplugged: () => {
 		return [
-			'Looks like Etcher lost access to the drive.',
-			'Did it get unplugged accidentally?',
-			"\n\nSometimes this error is caused by faulty readers that don't provide stable access to the drive.",
+			'Abitikku ei saa yhteyttä tikkuun.',
+			'Irroititko tikun vahingossa irti?',
+			'\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä levylle.',
 		].join(' ');
 	},
 
 	inputOutput: () => {
 		return [
-			'Looks like Etcher is not able to write to this location of the drive.',
-			'This error is usually caused by a faulty drive, reader, or port.',
-			'\n\nPlease try again with another drive, reader, or port.',
+			'Abitikku ei pysty kirjoittamaan tikulle.',
+			'Tämä virhe johtuu usein viallisesta lukijasta tai portista.',
+			'\n\nYritä uudelleen toisella tikulla, lukijalla ja/tai portilla.',
 		].join(' ');
 	},
 
 	childWriterDied: () => {
 		return [
-			'The writer process ended unexpectedly.',
-			'Please try again, and contact the Etcher team if the problem persists.',
+			'Kirjoitusprosessi pysähtyi yllättäen.',
+			'Yritä uudelleen, ja ota yhteyttä kehitystiimiin jos ongelma jatkuu.',
 		].join(' ');
 	},
 
 	unsupportedProtocol: () => {
-		return 'Only http:// and https:// URLs are supported.';
+		return 'Vain http:// ja https:// URL-osoitteet ovat tuettuja.';
 	},
 };

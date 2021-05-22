@@ -239,9 +239,9 @@ async function performWrite(
 			) {
 				reject(
 					errors.createUserError({
-						title: 'The writer process ended unexpectedly',
+						title: 'Kirjoitusprosessi pysähtyi yllättäen',
 						description:
-							'Please try again, and contact the Etcher team if the problem persists',
+							'Yritä uudelleen, ja ota yhteyttä kehittäjiin jos ongelma toistuu',
 					}),
 				);
 				return;

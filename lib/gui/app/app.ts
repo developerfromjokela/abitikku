@@ -209,7 +209,7 @@ function prepareDrive(drive: Drive) {
 			device: `${usbIdToString(
 				drive.deviceDescriptor.idVendor,
 			)}:${usbIdToString(drive.deviceDescriptor.idProduct)}`,
-			displayName: 'Missing drivers',
+			displayName: 'Ajureita puuttuu',
 			description,
 			mountpoints: [],
 			isReadOnly: false,
@@ -219,8 +219,8 @@ function prepareDrive(drive: Drive) {
 			size: null,
 			link:
 				'https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md',
-			linkCTA: 'Install',
-			linkTitle: 'Install missing drivers',
+			linkCTA: 'Asenna',
+			linkTitle: 'Asenna puuttuvia ajureita',
 			linkMessage: outdent`
 				Would you like to download the necessary drivers from the Raspberry Pi Foundation?
 				This will open your browser.
@@ -315,9 +315,9 @@ window.addEventListener('beforeunload', async (event) => {
 
 	try {
 		const confirmed = await osDialog.showWarning({
-			confirmationLabel: 'Yes, quit',
-			rejectionLabel: 'Cancel',
-			title: 'Are you sure you want to close Etcher?',
+			confirmationLabel: 'Kyllä, postu',
+			rejectionLabel: 'Peruuta',
+			title: 'Haluatko poistua Abitikusta?',
 			description: messages.warning.exitWhileFlashing(),
 		});
 		if (confirmed) {

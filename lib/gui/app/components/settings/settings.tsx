@@ -17,11 +17,10 @@
 import GithubSvg from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Flex, Checkbox, Txt } from 'rendition';
+import { Flex, Txt } from 'rendition';
 
 import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
-import * as analytics from '../../modules/analytics';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import { Modal } from '../../styled-components';
 
@@ -70,39 +69,18 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 		})();
 	});
 
-	const toggleSetting = async (setting: string) => {
-		const value = currentSettings[setting];
-		analytics.logEvent('Toggle setting', { setting, value });
-		await settings.set(setting, !value);
-		setCurrentSettings({
-			...currentSettings,
-			[setting]: !value,
-		});
-	};
-
 	return (
 		<Modal
 			titleElement={
 				<Txt fontSize={24} mb={24}>
-					Settings
+					Tietoja
 				</Txt>
 			}
 			done={() => toggleModal(false)}
 		>
 			<Flex flexDirection="column">
-				{settingsList.map((setting: Setting, i: number) => {
-					return (
-						<Flex key={setting.name} mb={14}>
-							<Checkbox
-								toggle
-								tabIndex={6 + i}
-								label={setting.label}
-								checked={currentSettings[setting.name]}
-								onChange={() => toggleSetting(setting.name)}
-							/>
-						</Flex>
-					);
-				})}
+				Abitikku on ohjelma, joka mahdollistaa helpon Abitti-järjestelmän
+				asennuksen yhdelle tai useammalle tikulle ilman vaivaa ja säätöä.
 				<Flex
 					mt={18}
 					alignItems="center"
@@ -114,7 +92,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 					}}
 					onClick={() =>
 						openExternal(
-							'https://github.com/balena-io/etcher/blob/master/CHANGELOG.md',
+							'https://github.com/Testausserveri/abitikku/blob/master/CHANGELOG.md',
 						)
 					}
 				>

@@ -17,12 +17,12 @@ const DriveStatusWarningModal = ({
 	isSystem: boolean;
 	drivesWithWarnings: DriveWithWarnings[];
 }) => {
-	let warningSubtitle = 'You are about to erase an unusually large drive';
-	let warningCta = 'Are you sure the selected drive is not a storage drive?';
+	let warningSubtitle = 'Olet alustamassa normaalia suurempaa levyä';
+	let warningCta = 'Oletko varma ettei levy ole tallennustilalevy?';
 
 	if (isSystem) {
-		warningSubtitle = "You are about to erase your computer's drives";
-		warningCta = 'Are you sure you want to flash your system drive?';
+		warningSubtitle = 'Olet alustamassa tietokoneesi levyjä';
+		warningCta = 'Haluatko jatkaa tietokoneesi levyjen alustusta?';
 	}
 	return (
 		<Modal
@@ -33,9 +33,9 @@ const DriveStatusWarningModal = ({
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: 'Change target',
+				children: 'Vaihda kohde',
 			}}
-			action={"Yes, I'm sure"}
+			action={'Kyllä, olen varma'}
 			primaryButtonProps={{
 				primary: false,
 				outline: true,
@@ -50,7 +50,7 @@ const DriveStatusWarningModal = ({
 				<Flex flexDirection="column">
 					<ExclamationTriangleSvg height="2em" fill="#fca321" />
 					<Txt fontSize="24px" color="#fca321">
-						WARNING!
+						VAROITUS!
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>

@@ -35,7 +35,6 @@ import {
 	TargetSelectorModal,
 } from '../../components/target-selector/target-selector';
 
-import FlashSvg from '../../../assets/flash.svg';
 import DriveStatusWarningModal from '../../components/drive-status-warning-modal/drive-status-warning-modal';
 
 const COMPLETED_PERCENTAGE = 100;
@@ -66,7 +65,7 @@ function notifySuccess(
 	devices: { successful: number; failed: number },
 ) {
 	notification.send(
-		'Flash complete!',
+		'Tikkusi on valmis!',
 		messages.info.flashComplete(basename, drives, devices),
 		iconPath,
 	);
@@ -74,7 +73,7 @@ function notifySuccess(
 
 function notifyFailure(iconPath: string, basename: string, drives: any) {
 	notification.send(
-		'Oops! Looks like the flash failed.',
+		'Hups! Tikkusi kirjoitus vaikuttaa epäonnistuneen',
 		messages.error.flashFailure(basename, drives),
 		iconPath,
 	);
@@ -266,14 +265,6 @@ export class FlashStep extends React.PureComponent<
 					width={this.props.width}
 					style={this.props.style}
 				>
-					<FlashSvg
-						width="40px"
-						className={this.props.shouldFlashStepBeDisabled ? 'disabled' : ''}
-						style={{
-							margin: '0 auto',
-						}}
-					/>
-
 					<ProgressButton
 						type={this.props.step}
 						active={this.props.isFlashing}
@@ -295,7 +286,7 @@ export class FlashStep extends React.PureComponent<
 							>
 								<Txt>{this.props.speed.toFixed(SPEED_PRECISION)} MB/s</Txt>
 								{!_.isNil(this.props.eta) && (
-									<Txt>ETA: {formatSeconds(this.props.eta)}</Txt>
+									<Txt>Arvioitu aika: {formatSeconds(this.props.eta)}</Txt>
 								)}
 							</Flex>
 						)}
@@ -321,10 +312,10 @@ export class FlashStep extends React.PureComponent<
 				{this.state.errorMessage && (
 					<SmallModal
 						width={400}
-						titleElement={'Attention'}
+						titleElement={'Huomio'}
 						cancel={() => this.handleFlashErrorResponse(false)}
 						done={() => this.handleFlashErrorResponse(true)}
-						action={'Retry'}
+						action={'Yritä uudelleen'}
 					>
 						<Txt>
 							{this.state.errorMessage.split('\n').map((message, key) => (

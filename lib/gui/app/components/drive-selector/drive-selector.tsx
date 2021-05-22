@@ -185,7 +185,7 @@ export class DriveSelector extends React.Component<
 		this.tableColumns = [
 			{
 				field: 'description',
-				label: 'Name',
+				label: 'Nimi',
 				render: (description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive)) {
 						const isLargeDrive = isDriveSizeLarge(drive);
@@ -209,7 +209,7 @@ export class DriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'size',
-				label: 'Size',
+				label: 'Koko',
 				render: (_description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive) && drive.size !== null) {
 						return prettyBytes(drive.size);
@@ -219,7 +219,7 @@ export class DriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'link',
-				label: 'Location',
+				label: 'Sijainti',
 				render: (_description: string, drive: Drive) => {
 					return (
 						<Txt>
@@ -403,14 +403,14 @@ export class DriveSelector extends React.Component<
 							color="#5b82a7"
 							style={{ fontWeight: 600 }}
 						>
-							{drives.length} found
+							Laitteita: {drives.length}
 						</Txt>
 					</Flex>
 				}
 				titleDetails={<Txt fontSize={11}>{getDrives().length} found</Txt>}
 				cancel={cancel}
 				done={() => done(selectedList)}
-				action={`Select (${selectedList.length})`}
+				action={`Valitse (${selectedList.length})`}
 				primaryButtonProps={{
 					primary: !showWarnings,
 					warning: showWarnings,
@@ -493,7 +493,9 @@ export class DriveSelector extends React.Component<
 							>
 								<Flex alignItems="center">
 									<ChevronDownSvg height="1em" fill="currentColor" />
-									<Txt ml={8}>Show {numberOfHiddenSystemDrives} hidden</Txt>
+									<Txt ml={8}>
+										Näytä {numberOfHiddenSystemDrives} piilotettuja
+									</Txt>
 								</Flex>
 							</Link>
 						)}
@@ -501,7 +503,8 @@ export class DriveSelector extends React.Component<
 				)}
 				{this.props.showWarnings && hasSystemDrives ? (
 					<Alert className="system-drive-alert" style={{ width: '67%' }}>
-						Selecting your system drive is dangerous and will erase your drive!
+						Järjestelmälevyn valitseminen on vaarallista ja voi johtaa tietojen
+						menetykseen!
 					</Alert>
 				) : null}
 
@@ -521,13 +524,13 @@ export class DriveSelector extends React.Component<
 								this.setState({ missingDriversModal: {} });
 							}
 						}}
-						action="Yes, continue"
+						action="Kyllä, jatka"
 						cancelButtonProps={{
-							children: 'Cancel',
+							children: 'Peruuta',
 						}}
 						children={
 							missingDriversModal.drive.linkMessage ||
-							`Etcher will open ${missingDriversModal.drive.link} in your browser`
+							`Abitikku avaa linkin ${missingDriversModal.drive.link} selaimeesi`
 						}
 					/>
 				)}

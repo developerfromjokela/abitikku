@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-import CogSvg from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
-import QuestionCircleSvg from '@fortawesome/fontawesome-free/svgs/solid/question-circle.svg';
+import InfoSvg from '@fortawesome/fontawesome-free/svgs/solid/info.svg';
 
 import * as path from 'path';
 import * as prettyBytes from 'pretty-bytes';
@@ -43,7 +42,7 @@ import {
 } from '../../components/target-selector/target-selector';
 import { FlashStep } from './Flash';
 
-import EtcherSvg from '../../../assets/etcher.svg';
+import AbiTikkuSvg from '../../../assets/abitikku.svg';
 import { SafeWebview } from '../../components/safe-webview/safe-webview';
 import { sourceDestination } from 'etcher-sdk';
 import * as messages from '../../../../shared/messages';
@@ -71,14 +70,14 @@ function getDrivesTitle() {
 	const drives = selectionState.getSelectedDrives();
 
 	if (drives.length === 1) {
-		return drives[0].description || 'Untitled Device';
+		return drives[0].description || 'Nimetön laite';
 	}
 
 	if (drives.length === 0) {
-		return 'No targets found';
+		return 'Ei kohteita';
 	}
 
-	return `${drives.length} Targets`;
+	return `${drives.length} kohde` + (drives.length === 1 ? '' : 'tta');
 }
 
 function getImageBasename(image?: SourceMetadata) {
@@ -162,7 +161,7 @@ export class MainPage extends React.Component<
 	private async getFeaturedProjectURL() {
 		const url = new URL(
 			(await settings.get('featuredProjectEndpoint')) ||
-				'https://assets.balena.io/etcher-featured/index.html',
+				'https://testausserveri.fi',
 		);
 		url.searchParams.append('borderRight', 'false');
 		url.searchParams.append('darkBackground', 'true');
@@ -390,22 +389,20 @@ export class MainPage extends React.Component<
 				>
 					<Flex width="100%" />
 					<Flex width="100%" alignItems="center" justifyContent="center">
-						<EtcherSvg
+						<AbiTikkuSvg
 							width="123px"
 							height="22px"
 							style={{
 								cursor: 'pointer',
 							}}
-							onClick={() =>
-								openExternal('https://www.balena.io/etcher?ref=etcher_footer')
-							}
+							onClick={() => openExternal('https://abitikku.testausserveri.fi')}
 							tabIndex={100}
 						/>
 					</Flex>
 
 					<Flex width="100%" alignItems="center" justifyContent="flex-end">
 						<Icon
-							icon={<CogSvg height="1em" fill="currentColor" />}
+							icon={<InfoSvg height="1em" fill="currentColor" />}
 							plain
 							tabIndex={5}
 							onClick={() => this.setState({ hideSettings: false })}
@@ -414,22 +411,6 @@ export class MainPage extends React.Component<
 								'-webkit-app-region': 'no-drag',
 							}}
 						/>
-						{!settings.getSync('disableExternalLinks') && (
-							<Icon
-								icon={<QuestionCircleSvg height="1em" fill="currentColor" />}
-								onClick={() =>
-									openExternal(
-										selectionState.getImage()?.supportUrl ||
-											'https://github.com/balena-io/etcher/blob/master/SUPPORT.md',
-									)
-								}
-								tabIndex={6}
-								style={{
-									// Make touch events click instead of dragging
-									'-webkit-app-region': 'no-drag',
-								}}
-							/>
-						)}
 					</Flex>
 				</Flex>
 				{this.state.hideSettings ? null : (

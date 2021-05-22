@@ -173,7 +173,7 @@ export async function elevateCommand(
 	return await withTmpFile(
 		{
 			keepOpen: false,
-			prefix: 'balena-etcher-electron-',
+			prefix: 'abitikku-electron-',
 			postfix: '.cmd',
 		},
 		async ({ path }) => {
@@ -198,22 +198,22 @@ export async function elevateCommand(
 				console.log('error', error);
 				if (_.includes(error.message, 'is not in the sudoers file')) {
 					throw errors.createUserError({
-						title: "Your user doesn't have enough privileges to proceed",
+						title: 'Käyttäjällä ei ole tarvittavia oikeuksia',
 						description:
-							'This application requires sudo privileges to be able to write to drives',
+							'Sovellus vaatii sudo-oikeuksia levyjen kirjoittamiseen',
 					});
 				} else if (_.startsWith(error.message, 'Command failed:')) {
 					throw errors.createUserError({
-						title: 'The elevated process died unexpectedly',
-						description: `The process error code was ${error.code}`,
+						title: 'Korotettu prosessi kuoli yllättäen',
+						description: `Prosessin virhekoodi on ${error.code}`,
 					});
 				} else if (error.message === 'User did not grant permission.') {
 					return { cancelled: true };
 				} else if (error.message === 'No polkit authentication agent found.') {
 					throw errors.createUserError({
-						title: 'No polkit authentication agent found',
+						title: 'Polkit tunnistautumisagenttia ei löytynyt',
 						description:
-							'Please install a polkit authentication agent for your desktop environment of choice to continue',
+							'Asenna polit autentikaatioagentti työpöytäympäristöösi jatkaakesi asennusta',
 					});
 				}
 				throw error;

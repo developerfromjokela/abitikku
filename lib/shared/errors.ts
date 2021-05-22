@@ -30,19 +30,19 @@ export const HUMAN_FRIENDLY = {
 		description: () => "The file you're trying to access doesn't exist",
 	},
 	EPERM: {
-		title: () => "You're not authorized to perform this operation",
+		title: () => 'Sinulla ei ole oikeuksia suorittaa tätä tehtävää',
 		description: () =>
-			'Please ensure you have necessary permissions for this task',
+			'Varmista tarvittavat oikeudet tämän tehtävän suorittamiseen',
 	},
 	EACCES: {
-		title: () => "You don't have access to this resource",
+		title: () => 'Sinulla ei ole pääsyä tähän resurssiin',
 		description: () =>
-			'Please ensure you have necessary permissions to access this resource',
+			'Varmista tarvittavat oikeudet resurssiin ja yritä uudelleen',
 	},
 	ENOMEM: {
-		title: () => 'Your system ran out of memory',
+		title: () => 'Järjestelästäsi on loppunut muisti',
 		description: () =>
-			'Please make sure your system has enough available memory for this task',
+			'Varmista, että järjestelmässä on riittävästi muistia tehtävän suorittamiseen',
 	},
 } as const;
 
@@ -96,10 +96,10 @@ export function getTitle(error: ErrorWithPath): string {
 
 	const code = error.code;
 	if (!isBlank(code)) {
-		return `Error code: ${code}`;
+		return `Virhekoodi: ${code}`;
 	}
 
-	return 'An error ocurred';
+	return 'Tapahtui virhe';
 }
 
 /**

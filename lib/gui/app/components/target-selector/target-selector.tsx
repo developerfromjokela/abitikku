@@ -59,8 +59,8 @@ export const TargetSelectorModal = (
 ) => (
 	<DriveSelector
 		multipleSelection={true}
-		titleLabel="Select target"
-		emptyListLabel="Plug a target drive"
+		titleLabel="Valitse kohde"
+		emptyListLabel="Liitä tikku"
 		emptyListIcon={<TgtSvg width="40px" />}
 		showWarnings={true}
 		selectedList={getSelectedDrives()}

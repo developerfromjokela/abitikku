@@ -122,7 +122,7 @@ function storeReducer(
 
 			if (!action.data) {
 				throw errors.createError({
-					title: 'Missing drives',
+					title: 'Puuttuvia levyjä',
 				});
 			}
 
@@ -130,7 +130,7 @@ function storeReducer(
 
 			if (!_.isArray(drives) || !_.every(drives, _.isObject)) {
 				throw errors.createError({
-					title: `Invalid drives: ${drives}`,
+					title: `Vääriä levyjä: ${drives}`,
 				});
 			}
 
@@ -356,13 +356,13 @@ function storeReducer(
 
 			if (!device) {
 				throw errors.createError({
-					title: 'Missing drive',
+					title: 'Puuttuva levy',
 				});
 			}
 
 			if (!_.isString(device)) {
 				throw errors.createError({
-					title: `Invalid drive: ${device}`,
+					title: `Väärä levy: ${device}`,
 				});
 			}
 
@@ -370,13 +370,13 @@ function storeReducer(
 
 			if (!selectedDrive) {
 				throw errors.createError({
-					title: `The drive is not available: ${device}`,
+					title: `Levy ei ole saatavilla: ${device}`,
 				});
 			}
 
 			if (selectedDrive.isReadOnly) {
 				throw errors.createError({
-					title: 'The drive is write-protected',
+					title: 'Laite on kirjoitussuojattu',
 				});
 			}
 
@@ -386,7 +386,7 @@ function storeReducer(
 				!constraints.isDriveLargeEnough(selectedDrive, image.toJS())
 			) {
 				throw errors.createError({
-					title: 'The drive is not large enough',
+					title: 'Levy ei ole tarpeeksi suuri',
 				});
 			}
 
