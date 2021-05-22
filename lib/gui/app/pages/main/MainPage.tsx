@@ -45,10 +45,27 @@ import { FlashStep } from './Flash';
 
 import EtcherSvg from '../../../assets/etcher.svg';
 import { SafeWebview } from '../../components/safe-webview/safe-webview';
+import { sourceDestination } from 'etcher-sdk';
+import * as messages from '../../../../shared/messages';
+import * as supportedFormats from '../../../../shared/supported-formats';
+import * as analytics from '../../modules/analytics';
+import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drives';
+import * as errors from '../../../../shared/errors';
+import * as osDialog from '../../os/dialog';
+
+export type Source =
+	| typeof sourceDestination.File
+	| typeof sourceDestination.BlockDevice
+	| typeof sourceDestination.Http;
+
+const abittiDownloadUrl = 'https://static.abitti.fi/etcher-usb/koe-etcher.zip';
 
 const Icon = styled(BaseIcon)`
 	margin-right: 20px;
 `;
+
+const isURL = (imagePath: string) =>
+	imagePath.startsWith('https://') || imagePath.startsWith('http://');
 
 function getDrivesTitle() {
 	const drives = selectionState.getSelectedDrives();
@@ -152,11 +169,108 @@ export class MainPage extends React.Component<
 		return url.toString();
 	}
 
+	private async createSource(selected: string, SourceType: Source) {
+		try {
+			selected = await replaceWindowsNetworkDriveLetter(selected);
+		} catch (error) {
+			analytics.logException(error);
+		}
+
+		if (SourceType === sourceDestination.File) {
+			return new sourceDestination.File({
+				path: selected,
+			});
+		}
+		return new sourceDestination.Http({ url: selected });
+	}
+
+	private handleError(
+		title: string,
+		sourcePath: string,
+		description: string,
+		error?: Error,
+	) {
+		const imageError = errors.createUserError({
+			title,
+			description,
+		});
+		osDialog.showError(imageError);
+		if (error) {
+			analytics.logException(error);
+			return;
+		}
+		analytics.logEvent(title, { path: sourcePath });
+	}
+
+	private async getMetadata(
+		source: sourceDestination.SourceDestination,
+		selected: string,
+	) {
+		const metadata = (await source.getMetadata()) as SourceMetadata;
+		const partitionTable = await source.getPartitionTable();
+		if (partitionTable) {
+			metadata.hasMBR = true;
+			metadata.partitions = partitionTable.partitions;
+		} else {
+			metadata.hasMBR = false;
+		}
+		metadata.extension = path.extname(selected).slice(1);
+		metadata.path = selected;
+		return metadata;
+	}
+
+	public async setSourceImage(selected: string, SourceType: Source) {
+		const sourcePath = selected;
+		let source;
+		let metadata: SourceMetadata | undefined;
+
+		if (SourceType === sourceDestination.Http && !isURL(selected)) {
+			this.handleError(
+				'Unsupported protocol',
+				selected,
+				messages.error.unsupportedProtocol(),
+			);
+			return;
+		}
+
+		if (supportedFormats.looksLikeWindowsImage(selected)) {
+			analytics.logEvent('Possibly Windows image', { image: selected });
+		}
+		source = await this.createSource(selected, SourceType);
+
+		try {
+			const innerSource = await source.getInnerSource();
+			metadata = await this.getMetadata(innerSource, selected);
+			metadata.SourceType = SourceType;
+
+			if (!metadata.hasMBR) {
+				analytics.logEvent('Missing partition table', { metadata });
+			}
+		} catch (error) {
+			this.handleError(
+				'Error opening source',
+				sourcePath,
+				messages.error.openSource(sourcePath, error.message),
+				error,
+			);
+		} finally {
+			try {
+				await source.close();
+			} catch (error) {
+				// Noop
+			}
+			if (metadata !== undefined) {
+				selectionState.selectSource(metadata);
+			}
+		}
+	}
+
 	public async componentDidMount() {
 		observe(() => {
 			this.setState(this.stateHelper());
 		});
 		this.setState({ featuredProjectURL: await this.getFeaturedProjectURL() });
+		await this.setSourceImage(abittiDownloadUrl, sourceDestination.Http);
 	}
 
 	private renderMain() {
