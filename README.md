@@ -1,4 +1,4 @@
-# Etcher
+# Abitikku
 
 > Flash Abitti images to USB drives, safely and easily.
 
