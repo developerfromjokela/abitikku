@@ -1,6 +1,6 @@
 # Abitikku
 
-> Flash Abitti images to USB drives, safely and easily.
+> Flash Abitti to USB drives, safely and easily.
 
 Abitikku is a powerful Abitti flasher built with web technologies to ensure flashing a USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.
 
