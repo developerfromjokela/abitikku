@@ -97,10 +97,7 @@ electron-test:
 		-b $(shell pwd) \
 		-s $(PLATFORM)
 
-assets/dmg/background.tiff: assets/dmg/background.png assets/dmg/background@2x.png
-	tiffutil -cathidpicheck $^ -out $@
-
-electron-build: assets/dmg/background.tiff | $(BUILD_TEMPORARY_DIRECTORY)
+electron-build: $(BUILD_TEMPORARY_DIRECTORY)
 	$(RESIN_SCRIPTS)/electron/build.sh \
 		-b $(shell pwd) \
 		-r $(TARGET_ARCH) \
@@ -125,7 +122,7 @@ TARGETS = \
 
 .PHONY: $(TARGETS)
 
-lint: 
+lint:
 	npm run lint
 
 test:

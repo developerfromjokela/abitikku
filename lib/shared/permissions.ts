@@ -173,7 +173,7 @@ export async function elevateCommand(
 	return await withTmpFile(
 		{
 			keepOpen: false,
-			prefix: 'abitikku-electron-',
+			prefix: 'abitikku-',
 			postfix: '.cmd',
 		},
 		async ({ path }) => {
