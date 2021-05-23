@@ -3,7 +3,7 @@
 body {
     background-color: #edf9ff;
     font-family: sans-serif;
-    margin-top: 3rem;
+    margin: 3rem 1rem;
 }
 
 .app {
@@ -49,6 +49,16 @@ a:hover {
     margin-right: 1rem;
     background-color: #006ed2;
     color: #fff;
+}
+
+@media only screen and (max-width: 575px) {
+    .downloadButtons {
+        flex-direction: column;
+    }
+    .downloadButtons a:nth-child(1) {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
 }
 
 .downloadButtons a:nth-child(1):hover {
