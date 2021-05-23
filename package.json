@@ -43,7 +43,7 @@
       "npm run lint-css"
     ]
   },
-  "author": "Testausserveri",
+  "author": "Testausserveri <masterminds@testausserveri.fi>",
   "license": "Apache-2.0",
   "platformSpecificDependencies": [
     "xmlbuilder",
