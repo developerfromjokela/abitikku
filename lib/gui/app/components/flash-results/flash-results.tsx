@@ -31,6 +31,7 @@ import { resetState } from '../../models/flash-state';
 import * as selection from '../../models/selection-state';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
 import { Modal, Table } from '../../styled-components';
+import { SVGIcon } from '../svg-icon/svg-icon';
 
 const ErrorsTable = styled((props) => <Table<FlashError> {...props} />)`
 	&&& [data-display='table-head'],
@@ -119,6 +120,7 @@ function getEffectiveSpeed(results: {
 export function FlashResults({
 	goToMain,
 	image = '',
+	imageLogo = '',
 	errors,
 	results,
 	skip,
@@ -126,6 +128,7 @@ export function FlashResults({
 }: {
 	goToMain: () => void;
 	image?: string;
+	imageLogo?: string;
 	errors: FlashError[];
 	skip: boolean;
 	results: {
@@ -153,7 +156,12 @@ export function FlashResults({
 					color="#7e8085"
 					flexDirection="column"
 				>
-					<FlashSvg width="40px" height="40px" className="disabled" />
+					<SVGIcon
+						width="40px"
+						height="40px"
+						contents={imageLogo}
+						fallback={FlashSvg}
+					/>
 					<DoneIcon
 						skipped={skip}
 						allFailed={allFailed}

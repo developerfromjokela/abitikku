@@ -5,8 +5,8 @@
   "version": "0.0.9",
   "packageType": "local",
   "main": "generated/abitikku.js",
-  "description": "Flash Abitti images to USB drives, safely and easily.",
-  "productDescription": "AbiTikku is a powerful Abitti image flasher built with web technologies to ensure flashing a USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
+  "description": "Flash Abitti to USB drives, safely and easily.",
+  "productDescription": "AbiTikku is a powerful Abitti flasher built with web technologies to ensure flashing a USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
   "homepage": "https://github.com/Testausserveri/abitikku",
   "repository": {
     "type": "git",

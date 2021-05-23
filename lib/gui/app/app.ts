@@ -78,10 +78,12 @@ console.log(outdent`
        _\\/\\\\\\_______\\/\\\\\\_\\/\\\\\\___\\/\\\\\\____\\//\\\\\\\\\\___\\/\\\\\\_\\/\\\\\\\\\\\\\\\\\\\\\\\\\\/__\\/\\\\\\____\\//\\\\\\\\\\______\\//\\\\\\\\\\___\\/\\\\\\_
         _\\///________\\///__\\///____\\///______\\/////____\\///__\\/////////////____\\///______\\/////________\\/////____\\///__
 
-	Interested in joining the Etcher team?
-	Drop us a line at join+etcher@balena.io
+	Abitikku, osa AntiBitti projektia
+		--> Pohjaantuu Etcher-sovelluksen koodiin
 
-	Version = ${packageJSON.version}, Type = ${packageJSON.packageType}
+	Liity discord-palvelimelle: https://discord.testausserveri.fi
+
+	Versio = ${packageJSON.version}, Tyyppi = ${packageJSON.packageType}
 `);
 
 const currentVersion = packageJSON.version;

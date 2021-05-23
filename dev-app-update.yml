@@ -1,4 +1,4 @@
-owner: balena-io
-repo: etcher
+owner: Testausserveri
+repo: abitikku
 provider: github
-updaterCacheDirName: balena-etcher-updater
+updaterCacheDirName: abitikku-update
