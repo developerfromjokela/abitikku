@@ -15,9 +15,12 @@
  */
 
 import GithubSvg from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
+import DiscordSvg from '@fortawesome/fontawesome-free/svgs/brands/discord.svg';
+import InstagramSvg from '@fortawesome/fontawesome-free/svgs/brands/instagram.svg';
+import YoutubeSvg from '@fortawesome/fontawesome-free/svgs/brands/youtube.svg';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Flex, Txt } from 'rendition';
+import { Checkbox, Flex, Txt } from 'rendition';
 
 import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
@@ -30,16 +33,11 @@ interface Setting {
 }
 
 async function getSettingsList(): Promise<Setting[]> {
-	const list: Setting[] = [
-		{
-			name: 'errorReporting',
-			label: 'Anonymously report errors and usage statistics to balena.io',
-		},
-	];
+	const list: Setting[] = [];
 	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
 		list.push({
 			name: 'updatesEnabled',
-			label: 'Auto-updates enabled',
+			label: 'Automaattiset päivitykset',
 		});
 	}
 	return list;
@@ -50,11 +48,13 @@ interface SettingsModalProps {
 }
 
 export function SettingsModal({ toggleModal }: SettingsModalProps) {
+	// @ts-ignore
 	const [settingsList, setCurrentSettingsList] = React.useState<Setting[]>([]);
 	React.useEffect(() => {
 		(async () => {
-			if (settingsList.length === 0) {
-				setCurrentSettingsList(await getSettingsList());
+			const list = await getSettingsList();
+			if (settingsList.length === 0 && list.length > 0) {
+				setCurrentSettingsList(list);
 			}
 		})();
 	});
@@ -63,11 +63,21 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 	>({});
 	React.useEffect(() => {
 		(async () => {
-			if (_.isEmpty(currentSettings)) {
-				setCurrentSettings(await settings.getAll());
+			const all = await settings.getAll();
+			if (_.isEmpty(currentSettings) && all) {
+				setCurrentSettings(all);
 			}
 		})();
 	});
+
+	const toggleSetting = async (setting: string) => {
+		const value = currentSettings[setting];
+		await settings.set(setting, !value);
+		setCurrentSettings({
+			...currentSettings,
+			[setting]: !value,
+		});
+	};
 
 	return (
 		<Modal
@@ -81,27 +91,100 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 			<Flex flexDirection="column">
 				Abitikku on ohjelma, joka mahdollistaa helpon Abitti-järjestelmän
 				asennuksen yhdelle tai useammalle tikulle ilman vaivaa ja säätöä.
-				<Flex
-					mt={18}
-					alignItems="center"
-					color="#00aeef"
-					style={{
-						width: 'fit-content',
-						cursor: 'pointer',
-						fontSize: 14,
-					}}
-					onClick={() =>
-						openExternal(
-							'https://github.com/Testausserveri/abitikku/blob/master/CHANGELOG.md',
-						)
-					}
-				>
-					<GithubSvg
-						height="1em"
-						fill="currentColor"
-						style={{ marginRight: 8 }}
-					/>
-					<Txt style={{ borderBottom: '1px solid #00aeef' }}>{version}</Txt>
+				{settingsList.map((setting: Setting, i: number) => {
+					return (
+						<Flex key={setting.name} mb={14} margin={18}>
+							<Checkbox
+								toggle
+								tabIndex={6 + i}
+								label={setting.label}
+								checked={currentSettings[setting.name]}
+								onChange={() => toggleSetting(setting.name)}
+							/>
+						</Flex>
+					);
+				})}
+				<Flex style={{ flexDirection: 'row' }} mt={18}>
+					<Flex
+						mr={18}
+						alignItems="center"
+						color="#00aeef"
+						style={{
+							width: 'fit-content',
+							cursor: 'pointer',
+							fontSize: 14,
+						}}
+						onClick={() =>
+							openExternal(
+								'https://github.com/Testausserveri/abitikku/blob/master/CHANGELOG.md',
+							)
+						}
+					>
+						<GithubSvg
+							height="1em"
+							fill="currentColor"
+							style={{ marginRight: 8 }}
+						/>
+						<Txt style={{ borderBottom: '1px solid #00aeef' }}>{version}</Txt>
+					</Flex>
+					<Flex
+						mr={18}
+						alignItems="center"
+						color="#7289DA"
+						style={{
+							width: 'fit-content',
+							cursor: 'pointer',
+							fontSize: 14,
+						}}
+						onClick={() => openExternal('https://discord.testausserveri.fi')}
+					>
+						<DiscordSvg
+							height="1em"
+							fill="currentColor"
+							style={{ marginRight: 8 }}
+						/>
+						<Txt style={{ borderBottom: '1px solid #7289DA' }}>Discord</Txt>
+					</Flex>
+					<Flex
+						mr={18}
+						alignItems="center"
+						color="#833AB4"
+						style={{
+							width: 'fit-content',
+							cursor: 'pointer',
+							fontSize: 14,
+						}}
+						onClick={() => openExternal('https://instagram.com/testausserveri')}
+					>
+						<InstagramSvg
+							height="1em"
+							fill="currentColor"
+							style={{ marginRight: 8 }}
+						/>
+						<Txt style={{ borderBottom: '1px solid #833AB4' }}>Instagram</Txt>
+					</Flex>
+					<Flex
+						mr={18}
+						alignItems="center"
+						color="#FF0000"
+						style={{
+							width: 'fit-content',
+							cursor: 'pointer',
+							fontSize: 14,
+						}}
+						onClick={() =>
+							openExternal(
+								'https://www.youtube.com/channel/UCax9TBqmRApG3RSspvzyxvA',
+							)
+						}
+					>
+						<YoutubeSvg
+							height="1em"
+							fill="currentColor"
+							style={{ marginRight: 8 }}
+						/>
+						<Txt style={{ borderBottom: '1px solid #FF0000' }}>Youtube</Txt>
+					</Flex>
 				</Flex>
 			</Flex>
 		</Modal>

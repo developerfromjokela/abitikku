@@ -81,6 +81,7 @@ function FinishPage({ goToMain }: { goToMain: () => void }) {
 			>
 				<FlashResults
 					image={selectionState.getImage()?.name}
+					imageLogo={selectionState.getImage()?.logo}
 					results={results}
 					skip={skip}
 					errors={errors}

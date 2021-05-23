@@ -13,7 +13,7 @@ async function main(context) {
   const appleId = 'accounts+apple@balena.io'
 
   await notarize({
-    appBundleId: 'io.balena.etcher',
+    appBundleId: 'fi.testausserveri.abitikku',
     appPath: `${appOutDir}/${appName}.app`,
     appleId,
     appleIdPassword: `@keychain:Application Loader: ${appleId}`

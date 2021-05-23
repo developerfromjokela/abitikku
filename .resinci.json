@@ -14,9 +14,9 @@
       ]
     },
     "builder": {
-      "appId": "io.balena.etcher",
-      "copyright": "Copyright 2016-2021 Balena Ltd",
-      "productName": "balenaEtcher",
+      "appId": "fi.testausserveri.abitikku",
+      "copyright": "Copyright 2016-2021 Testausserveri.fi and Balena Ltd",
+      "productName": "Abitikku",
       "nodeGypRebuild": false,
       "afterPack": "./afterPack.js",
       "asar": false,
@@ -55,7 +55,7 @@
       "linux": {
         "category": "Utility",
         "packageCategory": "utils",
-        "synopsis": "balenaEtcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more."
+        "synopsis": "AbiTikku is a powerful Abitti flasher built with web technologies to ensure flashing a USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more."
       },
       "deb": {
         "compression": "bzip2",

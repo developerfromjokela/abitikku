@@ -129,7 +129,7 @@ export const warning = {
 	},
 
 	systemDrive: () => {
-		return 'Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttäkelvottoman!';
+		return 'Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttökelvottoman!';
 	},
 
 	sourceDrive: () => {
