@@ -32,6 +32,11 @@ p {
 a {
     color: #006ed2;
     text-decoration: none;
+    transition: color 0.1s ease-in-out;
+}
+
+a:hover {
+    color: #0063bd;
 }
 
 .downloadButtons {
@@ -46,6 +51,10 @@ a {
     color: #fff;
 }
 
+.downloadButtons a:nth-child(1):hover {
+    background-color: #0063bd;
+}
+
 .downloadButtons a {
     font-family: 'Poppins', sans-serif;
     appearance: button;
@@ -56,4 +65,9 @@ a {
     border-radius: 5px;
     text-align: center;
     font-size: 1.1rem;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.downloadButtons a:hover {
+    background-color: #e5f0fa;
 }
