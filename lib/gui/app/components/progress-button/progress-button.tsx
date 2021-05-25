@@ -147,10 +147,10 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 					}}
 				>
 					<SVGIcon contents={imageLogo} fallback={ImageSvg} />
-					<Flex flexDirection="column" style={{ margin: '9px', color: '#fff' }}>
+					<Flex flexDirection="column" style={{ marginLeft: '9px', color: '#fff' }}>
 						<DetailsTextWhite>{imageName}</DetailsTextWhite>
 						{!_.isNil(imageSize) && (
-							<DetailsTextWhite>{prettyBytes(imageSize)}</DetailsTextWhite>
+							<DetailsTextWhite>{prettyBytes(imageSize).replace(/GB/, 'Gt')}</DetailsTextWhite>
 						)}
 					</Flex>
 				</Flex>
@@ -161,6 +161,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 					disabled={this.props.disabled}
 					style={{
 						marginTop: 30,
+						width: "100%"
 					}}
 				>
 					Asenna

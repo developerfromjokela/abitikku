@@ -262,7 +262,6 @@ export class FlashStep extends React.PureComponent<
 				<Flex
 					flexDirection="column"
 					alignItems="start"
-					width={this.props.width}
 					style={this.props.style}
 				>
 					<ProgressButton

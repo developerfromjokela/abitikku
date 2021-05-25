@@ -34,7 +34,6 @@ import * as analytics from '../../modules/analytics';
 import { TargetSelectorButton } from './target-selector-button';
 
 import TgtSvg from '../../../assets/tgt.svg';
-import DriveSvg from '../../../assets/drive.svg';
 import { warning } from '../../../../shared/messages';
 
 export const getDriveListLabel = () => {
@@ -125,15 +124,7 @@ export const TargetSelector = ({
 
 	const hasSystemDrives = targets.some((target) => target.isSystem);
 	return (
-		<Flex flexDirection="column" alignItems="center">
-			<DriveSvg
-				className={disabled ? 'disabled' : ''}
-				width="40px"
-				style={{
-					marginBottom: 30,
-				}}
-			/>
-
+		<Flex flexDirection="column" alignItems="center" style={{marginRight: "1rem"}}>
 			<TargetSelectorButton
 				disabled={disabled}
 				show={!hasDrive}

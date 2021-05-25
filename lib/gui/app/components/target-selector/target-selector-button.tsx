@@ -18,6 +18,8 @@ import ExclamationTriangleSvg from '@fortawesome/fontawesome-free/svgs/solid/exc
 import * as React from 'react';
 import { Flex, FlexProps, Txt } from 'rendition';
 
+import DriveSvg from '../../../assets/drive.svg';
+
 import {
 	getDriveImageCompatibilityStatuses,
 	DriveStatus,
@@ -29,7 +31,9 @@ import {
 	ChangeButton,
 	DetailsText,
 	StepButton,
+	SecondaryStepButton,
 	StepNameButton,
+	DetailsTextWhite
 } from '../../styled-components';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
 
@@ -87,20 +91,67 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 		).map(getDriveWarning);
 		return (
 			<>
+				{/*
 				<StepNameButton plain tooltip={props.tooltip}>
 					{warnings.length > 0 && (
 						<DriveCompatibilityWarning warnings={warnings} mr={2} />
 					)}
 					{middleEllipsis(target.description, 20)}
+					{target.size != null && (
+					<DetailsText>{prettyBytes(target.size)}</DetailsText>
+				)}
 				</StepNameButton>
 				{!props.flashing && (
 					<ChangeButton plain mb={14} onClick={props.reselectDrive}>
 						Vaihda
 					</ChangeButton>
 				)}
-				{target.size != null && (
-					<DetailsText>{prettyBytes(target.size)}</DetailsText>
+				*/}
+
+				<Flex
+					flexDirection="row"
+					style={{
+						justifyContent: 'center',
+						alignContent: 'center',
+						justifyItems: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<DriveSvg
+						className={props.disabled ? 'disabled' : ''}
+						width="40px"
+					/>
+
+					<Flex flexDirection="column" style={{ marginLeft: '9px', color: '#fff' }}>
+						{warnings.length > 0 && (
+							<DriveCompatibilityWarning warnings={warnings} mr={2} />
+						)}
+						<DetailsTextWhite>{middleEllipsis(target.description, 20)}</DetailsTextWhite>
+						{target.size != null && (
+							<DetailsTextWhite>{prettyBytes(target.size).replace(/GB/, 'Gt')}</DetailsTextWhite>
+						)}
+					</Flex>
+				</Flex>
+				{/*
+					<ChangeButton plain mb={14} onClick={props.reselectDrive}>
+						Vaihda
+					</ChangeButton>
+				*/}
+				{!props.flashing && (
+					<SecondaryStepButton
+						primary={true}
+						onClick={props.reselectDrive}
+						style={{
+							marginTop: 30,
+							width: "100%",
+						}}
+					>
+						Vaihda
+					</SecondaryStepButton>
 				)}
+
+				
+				
 			</>
 		);
 	}

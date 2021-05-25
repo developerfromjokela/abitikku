@@ -38,8 +38,8 @@ export const ThemedProvider = (props: any) => (
 
 export const BaseButton = styled(Button)`
 	width: 200px;
-	height: 48px;
 	font-size: 16px;
+	padding: 1.5rem 2rem;
 `;
 
 export const IconButton = styled((props) => <Button plain {...props} />)`
@@ -58,8 +58,34 @@ export const IconButton = styled((props) => <Button plain {...props} />)`
 export const StepButton = styled((props: ButtonProps) => (
 	<BaseButton {...props}></BaseButton>
 ))`
-	color: #ffffff;
-	font-size: 14px;
+	&& {
+		color: #ffffff;
+		font-size: 1.1rem;
+		background-color: #006ed2;
+		border-radius: 5px;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 500;
+		&:hover {
+			background-color: #0063bd;
+		}
+	}
+`;
+
+export const SecondaryStepButton = styled((props: ButtonProps) => (
+	<BaseButton {...props}></BaseButton>
+))`
+	&& {
+		color: #006ed2;
+		font-size: 1.1rem;
+		background-color: #fff;
+		border-radius: 5px;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 500;
+		&:hover {
+			color: #006ed2;
+			background-color: #e5f0fa;
+		}
+	}
 `;
 
 export const ChangeButton = styled(Button)`

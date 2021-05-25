@@ -19,7 +19,7 @@ import { Theme } from 'rendition';
 
 export const colors = {
 	dark: {
-		foreground: '#fff',
+		foreground: '#333',
 		background: '#4d5057',
 		soft: {
 			foreground: '#ddd',
@@ -47,7 +47,7 @@ export const colors = {
 	},
 	primary: {
 		foreground: '#fff',
-		background: '#00aeef',
+		background: '#006ed2',
 	},
 	secondary: {
 		foreground: '#000',
@@ -79,11 +79,11 @@ export const theme = _.merge({}, Theme, {
 	global: {
 		font: {
 			family: font,
-			size: 16,
+			size: "16px !important",
 		},
 		text: {
 			medium: {
-				size: 16,
+				size: "18px",
 			},
 		},
 	},
@@ -98,10 +98,9 @@ export const theme = _.merge({}, Theme, {
 		extend: () => `
 			width: 200px;
 			font-size: 16px;
-
+			height: auto !important;
 			&& {
 				width: 200px;
-				height: 48px;
 			}
 
 			:disabled {

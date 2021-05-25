@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import InfoSvg from '@fortawesome/fontawesome-free/svgs/solid/info.svg';
+//import InfoSvg from '@fortawesome/fontawesome-free/svgs/solid/info.svg';
 
 import * as path from 'path';
 import * as prettyBytes from 'pretty-bytes';
 import * as React from 'react';
 import { Flex } from 'rendition';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
 import FinishPage from '../../components/finish/finish';
 import { ReducedFlashingInfos } from '../../components/reduced-flashing-infos/reduced-flashing-infos';
@@ -32,7 +32,7 @@ import * as settings from '../../models/settings';
 import { observe } from '../../models/store';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import {
-	IconButton as BaseIcon,
+	//IconButton as BaseIcon,
 	ThemedProvider,
 } from '../../styled-components';
 
@@ -59,9 +59,9 @@ export type Source =
 
 const abittiDownloadUrl = 'https://static.abitti.fi/etcher-usb/koe-etcher.zip';
 
-const Icon = styled(BaseIcon)`
+/*const Icon = styled(BaseIcon)`
 	margin-right: 20px;
-`;
+`;*/
 
 const isURL = (imagePath: string) =>
 	imagePath.startsWith('https://') || imagePath.startsWith('http://');
@@ -92,6 +92,7 @@ function getImageBasename(image?: SourceMetadata) {
 	return image.name || imageBasename;
 }
 
+/*
 const StepBorder = styled.div<{
 	disabled: boolean;
 	left?: boolean;
@@ -109,7 +110,7 @@ const StepBorder = styled.div<{
 	margin-right: ${(props) => (props.left ? '-120px' : undefined)};
 	right: ${(props) => (props.right ? '-67px' : undefined)};
 	margin-left: ${(props) => (props.right ? '-120px' : undefined)};
-`;
+`;*/
 
 interface MainPageStateFromStore {
 	isFlashing: boolean;
@@ -280,7 +281,8 @@ export class MainPage extends React.Component<
 			!this.state.isFlashing || !this.state.isWebviewShowing;
 		return (
 			<Flex
-				m={`110px ${this.state.isWebviewShowing ? 35 : 55}px`}
+				m={`${this.state.isWebviewShowing ? 35 : 55}px`}
+				mt="0"
 				justifyContent="space-between"
 			>
 				{notFlashingOrSplitView && (
@@ -290,16 +292,6 @@ export class MainPage extends React.Component<
 							hasDrive={this.state.hasDrive}
 							flashing={this.state.isFlashing}
 						/>
-						<Flex
-							style={{
-								justifyItems: 'center',
-								alignItems: 'center',
-								justifyContent: 'center',
-								alignContent: 'center',
-							}}
-						>
-							<StepBorder disabled={shouldFlashStepBeDisabled} right />
-						</Flex>
 					</>
 				)}
 
@@ -312,7 +304,7 @@ export class MainPage extends React.Component<
 							width: '36.2vw',
 							height: '100vh',
 							zIndex: 1,
-							boxShadow: '0 2px 15px 0 rgba(0, 0, 0, 0.2)',
+							boxShadow: '0 2px 15px 0 rgba(0, 0, 0, 0.2)'
 						}}
 					>
 						<ReducedFlashingInfos
@@ -361,7 +353,7 @@ export class MainPage extends React.Component<
 					failed={state.failed}
 					speed={state.speed}
 					eta={state.eta}
-					style={{ zIndex: 1 }}
+					style={{ zIndex: 1, flex: 1 }}
 				/>
 			</Flex>
 		);
@@ -377,27 +369,25 @@ export class MainPage extends React.Component<
 			/>
 		);
 	}
-
 	public render() {
 		return (
-			<ThemedProvider style={{ height: '100%', width: '100%' }}>
+			<ThemedProvider style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'fixed' }}>
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
-					paddingTop="14px"
 					style={{
 						// Allow window to be dragged from header
 						// @ts-ignore
 						'-webkit-app-region': 'drag',
 						position: 'relative',
 						zIndex: 2,
+						flex: 1
 					}}
 				>
-					<Flex width="100%" />
 					<Flex width="100%" alignItems="center" justifyContent="center">
 						<AbiTikkuSvg
-							width="123px"
-							height="22px"
+							viewBox="0 0 434.412 81.378"
+							width="200"
 							style={{
 								cursor: 'pointer',
 							}}
@@ -406,9 +396,10 @@ export class MainPage extends React.Component<
 						/>
 					</Flex>
 
+{/*
 					<Flex width="100%" alignItems="center" justifyContent="flex-end">
 						<Icon
-							icon={<InfoSvg height="1em" fill="currentColor" />}
+							icon={<InfoSvg height="1em" fill="#222" />}
 							plain
 							tabIndex={5}
 							onClick={() => this.setState({ hideSettings: false })}
@@ -418,6 +409,7 @@ export class MainPage extends React.Component<
 							}}
 						/>
 					</Flex>
+						*/}
 				</Flex>
 				{this.state.hideSettings ? null : (
 					<SettingsModal
