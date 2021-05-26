@@ -62,7 +62,7 @@ interface ProgressButtonProps {
 }
 
 const colors = {
-	decompressing: '#00aeef',
+	decompressing: '#0063bd',
 	flashing: '#da60ff',
 	verifying: '#1ac135',
 } as const;
@@ -116,7 +116,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 							<CancelButton
 								type={type}
 								onClick={this.props.cancel}
-								color="#00aeef"
+								color="#0063bd"
 							/>
 						)}
 					</Flex>

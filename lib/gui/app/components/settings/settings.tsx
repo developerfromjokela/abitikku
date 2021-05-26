@@ -108,7 +108,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 					<Flex
 						mr={18}
 						alignItems="center"
-						color="#00aeef"
+						color="#0063bd"
 						style={{
 							width: 'fit-content',
 							cursor: 'pointer',
@@ -125,7 +125,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 							fill="currentColor"
 							style={{ marginRight: 8 }}
 						/>
-						<Txt style={{ borderBottom: '1px solid #00aeef' }}>{version}</Txt>
+						<Txt style={{ borderBottom: '1px solid #0063bd' }}>{version}</Txt>
 					</Flex>
 					<Flex
 						mr={18}
