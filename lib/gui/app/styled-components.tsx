@@ -112,7 +112,7 @@ export const StepNameButton = styled(BaseButton)`
 	align-items: center;
 	width: 100%;
 	font-weight: normal;
-	color: ${colors.dark.foreground};
+	color: ${colors.light.foreground};
 
 	&:enabled {
 		&:hover,
@@ -125,20 +125,16 @@ export const StepNameButton = styled(BaseButton)`
 
 export const Footer = styled(Txt)`
 	margin-top: 10px;
-	color: ${colors.dark.disabled.foreground};
+	color: ${colors.light.disabled.foreground};
 	font-size: 10px;
 `;
 
 export const DetailsText = (props: FlexProps) => (
-	<Flex
-		alignItems="center"
-		color={colors.dark.disabled.foreground}
-		{...props}
-	/>
+	<Flex alignItems="center" color={colors.light.foreground} {...props} />
 );
 
 export const DetailsTextWhite = (props: FlexProps) => (
-	<Flex alignItems="center" color={colors.dark.foreground} {...props} />
+	<Flex alignItems="center" color={colors.light.foreground} {...props} />
 );
 
 const modalFooterShadowCss = css`

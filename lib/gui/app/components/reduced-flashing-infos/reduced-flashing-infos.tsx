@@ -46,7 +46,6 @@ export class ReducedFlashingInfos extends React.Component<ReducedFlashingInfosPr
 			>
 				<Flex mb={16}>
 					<SVGIcon
-						disabled
 						width="21px"
 						height="21px"
 						contents={this.props.imageLogo}

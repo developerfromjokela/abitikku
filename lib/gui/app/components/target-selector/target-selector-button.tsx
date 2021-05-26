@@ -15,10 +15,11 @@
  */
 
 import ExclamationTriangleSvg from '@fortawesome/fontawesome-free/svgs/solid/exclamation-triangle.svg';
+import NoSelectionSvg from '@fortawesome/fontawesome-free/svgs/solid/question-circle.svg';
 import * as React from 'react';
 import { Flex, FlexProps, Txt } from 'rendition';
 
-import DriveSvg from '../../../assets/drive.svg';
+import UsbIcon from '../../../assets/usb.png';
 
 import {
 	getDriveImageCompatibilityStatuses,
@@ -30,10 +31,8 @@ import { getImage, getSelectedDrives } from '../../models/selection-state';
 import {
 	ChangeButton,
 	DetailsText,
-	StepButton,
 	SecondaryStepButton,
 	StepNameButton,
-	DetailsTextWhite
 } from '../../styled-components';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
 
@@ -117,18 +116,24 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 						alignItems: 'center',
 					}}
 				>
-					<DriveSvg
+					<img
+						src={UsbIcon}
 						className={props.disabled ? 'disabled' : ''}
 						width="40px"
+						alt="USB"
 					/>
 
-					<Flex flexDirection="column" style={{ marginLeft: '9px', color: '#fff' }}>
+					<Flex flexDirection="column">
 						{warnings.length > 0 && (
 							<DriveCompatibilityWarning warnings={warnings} mr={2} />
 						)}
-						<DetailsTextWhite>{middleEllipsis(target.description, 20)}</DetailsTextWhite>
+						<DetailsText className={props.disabled ? 'disabled' : ''}>
+							{middleEllipsis(target.description, 20)}
+						</DetailsText>
 						{target.size != null && (
-							<DetailsTextWhite>{prettyBytes(target.size).replace(/GB/, 'Gt')}</DetailsTextWhite>
+							<DetailsText className={props.disabled ? 'disabled' : ''}>
+								{prettyBytes(target.size).replace(/GB/, 'Gt')}
+							</DetailsText>
 						)}
 					</Flex>
 				</Flex>
@@ -143,15 +148,12 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 						onClick={props.reselectDrive}
 						style={{
 							marginTop: 30,
-							width: "100%",
+							width: '100%',
 						}}
 					>
-						Vaihda
+						Valitse kohde
 					</SecondaryStepButton>
 				)}
-
-				
-				
 			</>
 		);
 	}
@@ -183,11 +185,11 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 		return (
 			<>
 				<StepNameButton plain tooltip={props.tooltip}>
-					{targets.length} kohteita
+					{targets.length} {targets.length === 1 ? 'kohde' : 'kohdetta'}
 				</StepNameButton>
 				{!props.flashing && (
 					<ChangeButton plain onClick={props.reselectDrive} mb={14}>
-						Vaihda
+						Valitse kohde
 					</ChangeButton>
 				)}
 				{targetsTemplate}
@@ -196,13 +198,40 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 	}
 
 	return (
-		<StepButton
-			primary
-			tabIndex={targets.length > 0 ? -1 : 2}
-			disabled={props.disabled}
-			onClick={props.openDriveSelector}
-		>
-			Valitse kohde
-		</StepButton>
+		<>
+			<Flex
+				flexDirection="row"
+				style={{
+					justifyContent: 'center',
+					alignContent: 'center',
+					justifyItems: 'center',
+					alignItems: 'center',
+				}}
+				marginBottom={8}
+			>
+				<NoSelectionSvg
+					className={props.disabled ? 'disabled' : ''}
+					fill={props.disabled ? undefined : '#7e8085'}
+					width="40px"
+				/>
+
+				<Flex flexDirection="column" marginLeft={10}>
+					<DetailsText className={props.disabled ? 'disabled' : ''}>
+						Ei kohteita valittuna
+					</DetailsText>
+				</Flex>
+			</Flex>
+			<SecondaryStepButton
+				primary={true}
+				onClick={props.openDriveSelector}
+				disabled={props.disabled}
+				style={{
+					marginTop: 30,
+					width: '100%',
+				}}
+			>
+				Valitse kohde
+			</SecondaryStepButton>
+		</>
 	);
 }

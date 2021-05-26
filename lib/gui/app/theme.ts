@@ -79,11 +79,11 @@ export const theme = _.merge({}, Theme, {
 	global: {
 		font: {
 			family: font,
-			size: "16px !important",
+			size: '16px !important',
 		},
 		text: {
 			medium: {
-				size: "18px",
+				size: '18px',
 			},
 		},
 	},
@@ -104,13 +104,13 @@ export const theme = _.merge({}, Theme, {
 			}
 
 			:disabled {
-				background-color: ${colors.dark.disabled.background};
-				color: ${colors.dark.disabled.foreground};
+				background-color: ${colors.light.disabled.background};
+				color: ${colors.light.disabled.foreground};
 				opacity: 1;
 
 				:hover {
-					background-color: ${colors.dark.disabled.background};
-					color: ${colors.dark.disabled.foreground};
+					background-color: ${colors.light.disabled.background};
+					color: ${colors.light.disabled.foreground};
 				}
 			}
 		`,

@@ -34,7 +34,7 @@ body {
   overflow: hidden;
 
   /* Prevent white flash when running application */
-  background-color: #edf9ff;
+  background-color: #e8e8e8;
 
   /* Prevent WebView bounce effect in OS X */
   height: 100%;

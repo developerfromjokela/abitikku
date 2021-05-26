@@ -100,7 +100,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 					<Flex
 						alignItems="baseline"
 						justifyContent="space-between"
-						width="100%"
+						width="220px"
 						style={{
 							marginTop: 42,
 							marginBottom: '6px',
@@ -109,7 +109,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 						}}
 					>
 						<Flex>
-							<Txt color="#fff">{status}&nbsp;</Txt>
+							<Txt color="#121212">{status}&nbsp;</Txt>
 							<Txt color={colors[type]}>{position}</Txt>
 						</Flex>
 						{type && (
@@ -145,12 +145,18 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 						justifyItems: 'center',
 						alignItems: 'center',
 					}}
+					minHeight={48}
 				>
 					<SVGIcon contents={imageLogo} fallback={ImageSvg} />
-					<Flex flexDirection="column" style={{ marginLeft: '9px', color: '#fff' }}>
+					<Flex
+						flexDirection="column"
+						style={{ marginLeft: '9px', color: '#fff' }}
+					>
 						<DetailsTextWhite>{imageName}</DetailsTextWhite>
 						{!_.isNil(imageSize) && (
-							<DetailsTextWhite>{prettyBytes(imageSize).replace(/GB/, 'Gt')}</DetailsTextWhite>
+							<DetailsTextWhite>
+								{prettyBytes(imageSize).replace(/GB/, 'Gt')}
+							</DetailsTextWhite>
 						)}
 					</Flex>
 				</Flex>
@@ -161,7 +167,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 					disabled={this.props.disabled}
 					style={{
 						marginTop: 30,
-						width: "100%"
+						width: '100%',
 					}}
 				>
 					Asenna

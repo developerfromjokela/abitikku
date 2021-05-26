@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-//import InfoSvg from '@fortawesome/fontawesome-free/svgs/solid/info.svg';
+// import InfoSvg from '@fortawesome/fontawesome-free/svgs/solid/info.svg';
 
 import * as path from 'path';
 import * as prettyBytes from 'pretty-bytes';
 import * as React from 'react';
 import { Flex } from 'rendition';
-//import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import FinishPage from '../../components/finish/finish';
 import { ReducedFlashingInfos } from '../../components/reduced-flashing-infos/reduced-flashing-infos';
@@ -32,7 +32,7 @@ import * as settings from '../../models/settings';
 import { observe } from '../../models/store';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import {
-	//IconButton as BaseIcon,
+	// IconButton as BaseIcon,
 	ThemedProvider,
 } from '../../styled-components';
 
@@ -304,7 +304,7 @@ export class MainPage extends React.Component<
 							width: '36.2vw',
 							height: '100vh',
 							zIndex: 1,
-							boxShadow: '0 2px 15px 0 rgba(0, 0, 0, 0.2)'
+							boxShadow: '0 2px 15px 0 rgba(0, 0, 0, 0.2)',
 						}}
 					>
 						<ReducedFlashingInfos
@@ -319,7 +319,7 @@ export class MainPage extends React.Component<
 							driveLabel={this.state.driveLabel}
 							style={{
 								position: 'absolute',
-								color: '#fff',
+								color: '#000',
 								left: 35,
 								top: 72,
 							}}
@@ -353,7 +353,7 @@ export class MainPage extends React.Component<
 					failed={state.failed}
 					speed={state.speed}
 					eta={state.eta}
-					style={{ zIndex: 1, flex: 1 }}
+					style={this.state.isFlashing ? { zIndex: 1 } : { zIndex: 1, flex: 1 }}
 				/>
 			</Flex>
 		);
@@ -371,7 +371,16 @@ export class MainPage extends React.Component<
 	}
 	public render() {
 		return (
-			<ThemedProvider style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'fixed' }}>
+			<ThemedProvider
+				style={{
+					height: '100%',
+					width: '100%',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					position: 'fixed',
+				}}
+			>
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
@@ -381,22 +390,25 @@ export class MainPage extends React.Component<
 						'-webkit-app-region': 'drag',
 						position: 'relative',
 						zIndex: 2,
-						flex: 1
 					}}
 				>
-					<Flex width="100%" alignItems="center" justifyContent="center">
-						<AbiTikkuSvg
-							viewBox="0 0 434.412 81.378"
-							width="200"
-							style={{
-								cursor: 'pointer',
-							}}
-							onClick={() => openExternal('https://abitikku.testausserveri.fi')}
-							tabIndex={100}
-						/>
-					</Flex>
+					{!this.state.isFlashing && (
+						<Flex width="100%" alignItems={'center'} justifyContent="center">
+							<AbiTikkuSvg
+								viewBox="0 0 434.412 81.378"
+								width="200"
+								style={{
+									cursor: 'pointer',
+								}}
+								onClick={() =>
+									openExternal('https://abitikku.testausserveri.fi')
+								}
+								tabIndex={100}
+							/>
+						</Flex>
+					)}
 
-{/*
+					{/*
 					<Flex width="100%" alignItems="center" justifyContent="flex-end">
 						<Icon
 							icon={<InfoSvg height="1em" fill="#222" />}
