@@ -75,7 +75,10 @@ class Cards {
 
 fetch('https://testausserveri.fi/projects.json', {mode: 'cors'})
 .then(res => res.json())
-.then(({ projects }) => {
+.then(({ projects, abitikkuExtras }) => {
+    projects = [...projects, ...abitikkuExtras];
+    projects = projects.filter(item => item.abitikkuFeaturedWeight);
+    projects.sort((a, b) => (a.abitikkuFeaturedWeight - b.abitikkuFeaturedWeight))
     new Cards(projects, "#cards")
     
     new Splide( '#slideshow', {
