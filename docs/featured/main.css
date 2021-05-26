@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Poppins:wght@600;800&display=swap');
+
+body {
+    background-color: #edf9ff;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.verticalCenter {
+
+}
+
+.item {
+    display: list-item;
+}
+
+.item:not(.is-visible) {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.splide__pagination {
+    bottom: -2rem !important;
+}
+
+#cards .item {
+    aspect-ratio: 2/1;
+    position: relative;
+    top: 0;
+    transition: top ease 0.3s;
+    text-decoration: none;
+    color: #333;
+}
+
+#cards .item[href]:hover {
+    top: -5px;
+}
+
+.itemBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2vw);
+    height: calc(100% - 2vw);
+    margin: 1vw;
+    border-radius: 6px;
+    height: calc(100% - 2vw);
+    background-size: cover;
+    filter: var(--background-filter);
+    opacity: 0.5;
+    background-position: center;
+    /* maybe even background-attachment: fixed; ? */
+    z-index: -20;
+}
+
+.itemBackground:after {
+    content: ' ';
+    border: 1px solid var(--project-card-border);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 6px;
+}
+
+video.itemBackground {
+    width: calc(100% - 2vw);
+    object-fit: cover;
+}
+
+.itemContent {
+    z-index: 10;
+    color: var(--text);
+    /* this is what we use for the gap */
+    margin: 1vw;
+    padding: 2.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    flex-direction: column-reverse;
+}
+
+.CBig {
+    flex: 1;
+}
+
+.mediaLogo {
+    opacity: 0.7;
+    height: 1em;
+}
+
+.itemContent .piTitle {
+    margin: 0;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: var(--title);
+    font-weight: 600;
+    display: block;
+    text-decoration: none;
+}
+
+a[href] .itemContent .piTitle::after {
+    content: ' ';
+    background-image: url(assets/tab.svg);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: 100% 100%;
+    opacity: 0.9;
+    margin-left: 0.5em;
+    filter: var(--icon-filter);
+}
+
+.piOrg {
+    line-height: 1.7em;
+}
