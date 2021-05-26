@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Poppins:wght@600;800&display=swap');
 
+:root {
+    --background: #eee;
+    --text: #333;
+    --dc-background: #e2e7f7;
+    --dc: #7289DA;
+    --border: #ccc;
+    --title: #111;
+    --background-filter: contrast(0.2) brightness(1.7) saturate(1.7) grayscale(0.3);
+    --icon-filter: none;
+    --project-card-border: #000;
+}
+
+
 body {
     background-color: #edf9ff;
     margin: 0;
