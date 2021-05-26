@@ -126,7 +126,7 @@ export const TargetSelector = ({
 	return (
 		<Flex
 			flexDirection="column"
-			alignItems="center"
+			alignItems="start"
 			style={{ marginRight: '1rem' }}
 		>
 			<TargetSelectorButton
