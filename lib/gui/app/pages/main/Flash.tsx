@@ -36,6 +36,9 @@ import {
 } from '../../components/target-selector/target-selector';
 
 import DriveStatusWarningModal from '../../components/drive-status-warning-modal/drive-status-warning-modal';
+import { VersionSelector } from '../../components/version-selector/version-selector';
+import { Version } from '../../models/version';
+import ErasingWarningModal from '../../components/erasing-warning/erasing-warning';
 
 const COMPLETED_PERCENTAGE = 100;
 const SPEED_PRECISION = 2;
@@ -146,6 +149,7 @@ const formatSeconds = (totalSeconds: number) => {
 interface FlashStepProps {
 	shouldFlashStepBeDisabled: boolean;
 	goToSuccess: () => void;
+	versionChange: (version: Version) => void;
 	isFlashing: boolean;
 	style?: React.CSSProperties;
 	// TODO: factorize
@@ -168,6 +172,8 @@ interface FlashStepState {
 	showDriveSelectorModal: boolean;
 	systemDrives: boolean;
 	drivesWithWarnings: DriveWithWarnings[];
+	selectVersion: boolean;
+	erasingMessage: boolean;
 }
 
 export class FlashStep extends React.PureComponent<
@@ -182,6 +188,8 @@ export class FlashStep extends React.PureComponent<
 			showDriveSelectorModal: false,
 			systemDrives: false,
 			drivesWithWarnings: [],
+			selectVersion: false,
+			erasingMessage: false,
 		};
 	}
 
@@ -199,6 +207,35 @@ export class FlashStep extends React.PureComponent<
 		});
 	}
 
+	private async handleEraseMessage(shouldContinue: boolean) {
+		this.setState({ erasingMessage: false });
+		if (!shouldContinue) {
+			return;
+		}
+		await this.tryFlash();
+	}
+
+	private async handleVersionResponse(version: Version | undefined) {
+		this.setState({
+			selectVersion: false,
+		});
+		if (version !== undefined) {
+			this.props.versionChange(version);
+		}
+	}
+
+	private async handleVersionCancel() {
+		this.setState({
+			selectVersion: false,
+		});
+	}
+
+	private async selectVersion() {
+		this.setState({
+			selectVersion: true,
+		});
+	}
+
 	private handleFlashErrorResponse(shouldRetry: boolean) {
 		this.setState({ errorMessage: '' });
 		flashState.resetState();
@@ -209,7 +246,7 @@ export class FlashStep extends React.PureComponent<
 		}
 	}
 
-	private hasListWarnings(drives: any[]) {
+	private static hasListWarnings(drives: any[]) {
 		if (drives.length === 0 || flashState.isFlashing()) {
 			return;
 		}
@@ -256,6 +293,12 @@ export class FlashStep extends React.PureComponent<
 		});
 	}
 
+	private async showErasingWarning() {
+		this.setState({
+			erasingMessage: true,
+		});
+	}
+
 	public render() {
 		return (
 			<>
@@ -270,9 +313,10 @@ export class FlashStep extends React.PureComponent<
 						percentage={this.props.percentage}
 						position={this.props.position}
 						disabled={this.props.shouldFlashStepBeDisabled}
+						versionCallback={() => this.selectVersion()}
 						cancel={imageWriter.cancel}
-						warning={this.hasListWarnings(selection.getSelectedDrives())}
-						callback={() => this.tryFlash()}
+						warning={FlashStep.hasListWarnings(selection.getSelectedDrives())}
+						callback={() => this.showErasingWarning()}
 					/>
 
 					{!_.isNil(this.props.speed) &&
@@ -299,12 +343,26 @@ export class FlashStep extends React.PureComponent<
 					)}
 				</Flex>
 
+				{this.state.selectVersion && (
+					<VersionSelector
+						done={(version) => this.handleVersionResponse(version)}
+						cancel={() => this.handleVersionCancel()}
+					/>
+				)}
+
 				{this.state.warningMessage && (
 					<DriveStatusWarningModal
 						done={() => this.handleWarningResponse(true)}
 						cancel={() => this.handleWarningResponse(false)}
 						isSystem={this.state.systemDrives}
 						drivesWithWarnings={this.state.drivesWithWarnings}
+					/>
+				)}
+
+				{this.state.erasingMessage && (
+					<ErasingWarningModal
+						done={() => this.handleEraseMessage(true)}
+						cancel={() => this.handleEraseMessage(false)}
 					/>
 				)}
 

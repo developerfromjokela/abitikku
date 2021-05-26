@@ -663,11 +663,11 @@ export class SourceSelector extends React.Component<
 					<SmallModal
 						titleElement={
 							<span>
-								<ExclamationTriangleSvg fill="#fca321" height="1em" />{' '}
+								<ExclamationTriangleSvg fill="#e08704" height="1em" />{' '}
 								<span>{this.state.warning.title}</span>
 							</span>
 						}
-						action="Continue"
+						action="Jatka"
 						cancel={() => {
 							this.setState({ warning: null });
 							this.reselectSource();

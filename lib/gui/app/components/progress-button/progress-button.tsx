@@ -19,7 +19,11 @@ import { Flex, Button, ProgressBar, Txt } from 'rendition';
 import { default as styled } from 'styled-components';
 
 import { fromFlashState } from '../../modules/progress-status';
-import { DetailsTextWhite, StepButton } from '../../styled-components';
+import {
+	ChangeButton,
+	DetailsTextWhite,
+	StepButton,
+} from '../../styled-components';
 import * as selectionState from '../../models/selection-state';
 import { SourceMetadata } from '../source-selector/source-selector';
 import { DrivelistDrive } from '../../../../shared/drive-constraints';
@@ -58,6 +62,7 @@ interface ProgressButtonProps {
 	disabled: boolean;
 	cancel: (type: string) => void;
 	callback: () => void;
+	versionCallback: () => void;
 	warning?: boolean;
 }
 
@@ -146,19 +151,32 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 						alignItems: 'center',
 					}}
 					minHeight={48}
+					width={'100%'}
 				>
-					<SVGIcon contents={imageLogo} fallback={ImageSvg} />
-					<Flex
-						flexDirection="column"
-						style={{ marginLeft: '9px', color: '#fff' }}
-					>
-						<DetailsTextWhite>{imageName}</DetailsTextWhite>
-						{!_.isNil(imageSize) && (
-							<DetailsTextWhite>
-								{prettyBytes(imageSize).replace(/GB/, 'Gt')}
-							</DetailsTextWhite>
-						)}
+					<Flex flexDirection={'row'} style={{ flex: 1 }}>
+						<SVGIcon contents={imageLogo} fallback={ImageSvg} />
+						<Flex
+							flexDirection="column"
+							style={{ marginLeft: '9px', color: '#fff' }}
+						>
+							<DetailsTextWhite>{imageName}</DetailsTextWhite>
+							{!_.isNil(imageSize) && (
+								<DetailsTextWhite>
+									{prettyBytes(imageSize).replace(/GB/, 'Gt')}
+								</DetailsTextWhite>
+							)}
+						</Flex>
 					</Flex>
+					<div>
+						<ChangeButton
+							plain
+							style={{ width: 'unset' }}
+							disabled={this.props.disabled}
+							onClick={this.props.versionCallback}
+						>
+							Vaihda versio
+						</ChangeButton>
+					</div>
 				</Flex>
 				<StepButton
 					primary={!warning}
@@ -172,6 +190,14 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 				>
 					Asenna
 				</StepButton>
+				{/*<Flex flexDirection={"row"} justifyContent={"center"} alignItems={"center"} m={2}>
+					<ExclamationTriangleSvg
+						height="1em"
+						fill={'#e08704'}
+						style={{margin: 3}}
+						/>
+					<Txt>Asennus alustaa tikulta/tikuilta kaikki sisällöt pysyvästi!</Txt>
+				</Flex>*/}
 			</>
 		);
 	}

@@ -56,7 +56,7 @@ export const colors = {
 	},
 	warning: {
 		foreground: '#fff',
-		background: '#fca321',
+		background: '#e08704',
 	},
 	danger: {
 		foreground: '#fff',
@@ -73,9 +73,6 @@ const font = 'SourceSansPro';
 export const theme = _.merge({}, Theme, {
 	colors,
 	font,
-	header: {
-		height: '40px',
-	},
 	global: {
 		font: {
 			family: font,
@@ -118,7 +115,8 @@ export const theme = _.merge({}, Theme, {
 	layer: {
 		extend: () => `
 			> div:first-child {
-				background-color: transparent;
+				background-color: rgba(20 ,43 ,51, 0.6);
+				backdrop-filter: blur(5px);
 			}
 		`,
 	},

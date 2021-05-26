@@ -17,10 +17,10 @@
 import * as React from 'react';
 import { Flex, Txt } from 'rendition';
 
-import DriveSvg from '../../../assets/drive.svg';
 import ImageSvg from '../../../assets/image.svg';
 import { SVGIcon } from '../svg-icon/svg-icon';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
+import UsbIcon from '../../../assets/usb.png';
 
 interface ReducedFlashingInfosProps {
 	imageLogo?: string;
@@ -62,7 +62,12 @@ export class ReducedFlashingInfos extends React.Component<ReducedFlashingInfosPr
 				</Flex>
 
 				<Flex>
-					<DriveSvg width="21px" height="21px" style={{ marginRight: '9px' }} />
+					<img
+						width="25px"
+						height="25px"
+						style={{ marginRight: '11px' }}
+						src={UsbIcon}
+					/>
 					<Txt tooltip={{ text: this.props.driveLabel, placement: 'right' }}>
 						{middleEllipsis(this.props.driveTitle, 16)}
 					</Txt>

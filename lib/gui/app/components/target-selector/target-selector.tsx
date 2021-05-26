@@ -129,6 +129,17 @@ export const TargetSelector = ({
 			alignItems="start"
 			style={{ marginRight: '1rem' }}
 		>
+			{hasSystemDrives ? (
+				<Txt
+					color="#e08704"
+					style={{
+						position: 'absolute',
+						bottom: '25px',
+					}}
+				>
+					Varoitus: {warning.systemDrive()}
+				</Txt>
+			) : null}
 			<TargetSelectorButton
 				disabled={disabled}
 				show={!hasDrive}
@@ -143,18 +154,6 @@ export const TargetSelector = ({
 				flashing={flashing}
 				targets={targets}
 			/>
-
-			{hasSystemDrives ? (
-				<Txt
-					color="#fca321"
-					style={{
-						position: 'absolute',
-						bottom: '25px',
-					}}
-				>
-					Warning: {warning.systemDrive()}
-				</Txt>
-			) : null}
 
 			{showTargetSelectorModal && (
 				<TargetSelectorModal

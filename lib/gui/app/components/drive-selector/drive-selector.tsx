@@ -196,7 +196,7 @@ export class DriveSelector extends React.Component<
 								{hasWarnings && (
 									<ExclamationTriangleSvg
 										height="1em"
-										fill={drive.isSystem ? '#fca321' : '#8f9297'}
+										fill={drive.isSystem ? '#e08704' : '#8f9297'}
 									/>
 								)}
 								<Txt ml={(hasWarnings && 8) || 0}>{description}</Txt>
@@ -416,6 +416,9 @@ export class DriveSelector extends React.Component<
 					warning: showWarnings,
 					disabled: !hasAvailableDrives(),
 				}}
+				style={{
+					height: '87.5vh',
+				}}
 				{...props}
 			>
 				{!hasAvailableDrives() ? (
@@ -503,8 +506,7 @@ export class DriveSelector extends React.Component<
 				)}
 				{this.props.showWarnings && hasSystemDrives ? (
 					<Alert className="system-drive-alert" style={{ width: '67%' }}>
-						Järjestelmälevyn valitseminen on vaarallista ja voi johtaa tietojen
-						menetykseen!
+						Järjestelmälevyn valitseminen voi johtaa tiedostojen menetykseen!
 					</Alert>
 				) : null}
 

@@ -71,7 +71,7 @@ const DriveCompatibilityWarning = ({
 	return (
 		<Flex tooltip={warnings.join(', ')} {...props}>
 			<ExclamationTriangleSvg
-				fill={systemDrive ? '#fca321' : '#8f9297'}
+				fill={systemDrive ? '#e08704' : '#8f9297'}
 				height="1em"
 			/>
 		</Flex>
@@ -187,12 +187,12 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 				<StepNameButton plain tooltip={props.tooltip}>
 					{targets.length} {targets.length === 1 ? 'kohde' : 'kohdetta'}
 				</StepNameButton>
+				{targetsTemplate}
 				{!props.flashing && (
-					<ChangeButton plain onClick={props.reselectDrive} mb={14}>
+					<ChangeButton plain onClick={props.reselectDrive} mt={14}>
 						Valitse kohde
 					</ChangeButton>
 				)}
-				{targetsTemplate}
 			</>
 		);
 	}

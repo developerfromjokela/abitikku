@@ -19,6 +19,7 @@ import { app, remote } from 'electron';
 import { Dictionary } from 'lodash';
 
 import * as errors from './errors';
+import { VersionResponse } from '../gui/app/models/version';
 
 export function isValidPercentage(percentage: any): boolean {
 	return typeof percentage === 'number' && percentage >= 0 && percentage <= 100;
@@ -40,6 +41,12 @@ export function percentageToFloat(percentage: any) {
 export async function getConfig(configUrl?: string): Promise<Dictionary<any>> {
 	configUrl = configUrl ?? 'https://balena.io/etcher/static/config.json';
 	const response = await axios.get(configUrl, { responseType: 'json' });
+	return response.data;
+}
+
+export async function getVersions(listUrl?: string): Promise<VersionResponse> {
+	listUrl = listUrl ?? 'https://mostik.dfjapis.com/abitikku/versions.json';
+	const response = await axios.get(listUrl, { responseType: 'json' });
 	return response.data;
 }
 

@@ -48,8 +48,8 @@ const DriveStatusWarningModal = ({
 				width="100%"
 			>
 				<Flex flexDirection="column">
-					<ExclamationTriangleSvg height="2em" fill="#fca321" />
-					<Txt fontSize="24px" color="#fca321">
+					<ExclamationTriangleSvg height="2em" fill="#e08704" />
+					<Txt fontSize="24px" color="#e08704">
 						VAROITUS!
 					</Txt>
 				</Flex>

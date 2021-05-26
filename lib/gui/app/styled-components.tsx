@@ -153,8 +153,8 @@ const modalFooterShadowCss = css`
 export const Modal = styled(({ style, children, ...props }) => {
 	return (
 		<ModalBase
-			position="top"
-			width="97vw"
+			position="bottom"
+			width={props?.width || '97vw'}
 			cancelButtonProps={{
 				style: {
 					marginRight: '20px',
@@ -163,7 +163,7 @@ export const Modal = styled(({ style, children, ...props }) => {
 				children: 'Peruuta',
 			}}
 			style={{
-				height: '87.5vh',
+				height: style?.height || '97vh',
 				...style,
 			}}
 			{...props}
@@ -243,7 +243,7 @@ export const Alert = styled((props) => (
 	justify-content: center;
 	align-items: center;
 	font-size: 14px;
-	background-color: #fca321;
+	background-color: #e08704;
 	text-align: center;
 
 	* {

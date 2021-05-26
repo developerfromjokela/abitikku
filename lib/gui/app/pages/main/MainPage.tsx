@@ -51,6 +51,7 @@ import * as analytics from '../../modules/analytics';
 import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drives';
 import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
+import { Http } from 'etcher-sdk/build/source-destination';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -219,6 +220,7 @@ export class MainPage extends React.Component<
 	}
 
 	public async setSourceImage(selected: string, SourceType: Source) {
+		selectionState.deselectImage();
 		const sourcePath = selected;
 		let source;
 		let metadata: SourceMetadata | undefined;
@@ -346,6 +348,7 @@ export class MainPage extends React.Component<
 					width={this.state.isWebviewShowing ? '220px' : '200px'}
 					goToSuccess={() => this.setState({ current: 'success' })}
 					shouldFlashStepBeDisabled={shouldFlashStepBeDisabled}
+					versionChange={(version) => this.setSourceImage(version.url, Http)}
 					isFlashing={this.state.isFlashing}
 					step={state.type}
 					percentage={state.percentage}

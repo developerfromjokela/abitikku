@@ -105,6 +105,9 @@ electron-build: $(BUILD_TEMPORARY_DIRECTORY)
 		-v production \
 		-n $(BUILD_TEMPORARY_DIRECTORY)/npm
 
+build-and-run:
+	npm run build
+
 # ---------------------------------------------------------------------
 # Phony targets
 # ---------------------------------------------------------------------
@@ -118,7 +121,8 @@ TARGETS = \
 	distclean \
 	electron-develop \
 	electron-test \
-	electron-build
+	electron-build \
+	build-and-run
 
 .PHONY: $(TARGETS)
 

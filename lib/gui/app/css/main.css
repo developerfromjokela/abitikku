@@ -64,3 +64,19 @@ input[type="checkbox"] + div {
 #rendition-tooltip-root > div {
   font-family: "SourceSansPro", sans-serif;
 }
+
+.tabframe {
+  width: 100%;
+}
+.tabframe > div {
+  width: 100% !important;
+}
+
+/*
+  USED IN Version Picker
+ */
+[role="tabpanel"] > div {
+  min-width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
