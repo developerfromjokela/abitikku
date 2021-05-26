@@ -390,6 +390,7 @@ export class MainPage extends React.Component<
 						'-webkit-app-region': 'drag',
 						position: 'relative',
 						zIndex: 2,
+						flex: this.state.isFlashing ? 0 : 1,
 					}}
 				>
 					{!this.state.isFlashing && (
