@@ -124,7 +124,11 @@ export const TargetSelector = ({
 
 	const hasSystemDrives = targets.some((target) => target.isSystem);
 	return (
-		<Flex flexDirection="column" alignItems="center" style={{marginRight: "1rem"}}>
+		<Flex
+			flexDirection="column"
+			alignItems="center"
+			style={{ marginRight: '1rem' }}
+		>
 			<TargetSelectorButton
 				disabled={disabled}
 				show={!hasDrive}
