@@ -15,8 +15,6 @@
  */
 
 import CircleSvg from '@fortawesome/fontawesome-free/svgs/solid/circle.svg';
-import CheckCircleSvg from '@fortawesome/fontawesome-free/svgs/solid/check-circle.svg';
-import TimesCircleSvg from '@fortawesome/fontawesome-free/svgs/solid/times-circle.svg';
 import outdent from 'outdent';
 import * as React from 'react';
 import { Flex, FlexProps, Link, TableColumn, Txt } from 'rendition';
@@ -53,27 +51,6 @@ const ErrorsTable = styled((props) => <Table<FlashError> {...props} />)`
 		}
 	}
 `;
-const DoneIcon = (props: {
-	skipped: boolean;
-	color: string;
-	allFailed: boolean;
-}) => {
-	const svgProps = {
-		width: '28px',
-		fill: props.color,
-		style: {
-			marginTop: '-25px',
-			marginLeft: '13px',
-			zIndex: 1,
-		},
-	};
-	return props.allFailed && !props.skipped ? (
-		<TimesCircleSvg {...svgProps} />
-	) : (
-		<CheckCircleSvg {...svgProps} />
-	);
-};
-
 export interface FlashError extends Error {
 	description: string;
 	device: string;
@@ -142,7 +119,6 @@ export function FlashResults({
 } & FlexProps) {
 	const [showErrorsInfo, setShowErrorsInfo] = React.useState(false);
 	const allFailed = !skip && results.devices.successful === 0;
-	const someFailed = results.devices.failed !== 0 || errors.length !== 0;
 	const effectiveSpeed = bytesToMegabytes(getEffectiveSpeed(results)).toFixed(
 		1,
 	);
@@ -162,14 +138,9 @@ export function FlashResults({
 						contents={imageLogo}
 						fallback={FlashSvg}
 					/>
-					<DoneIcon
-						skipped={skip}
-						allFailed={allFailed}
-						color={allFailed || someFailed ? '#c6c8c9' : '#1ac135'}
-					/>
 					<Txt>{middleEllipsis(image, 24)}</Txt>
 				</Flex>
-				<Txt fontSize={24} color="#fff" mb="17px">
+				<Txt fontSize={24} mb="17px">
 					Asennus {allFailed ? 'epäonnistui' : 'valmistui'}!
 				</Txt>
 				{skip ? <Txt color="#7e8085">Varmistus ohitettiin</Txt> : null}
@@ -178,7 +149,7 @@ export function FlashResults({
 				{results.devices.successful !== 0 ? (
 					<Flex alignItems="center">
 						<CircleSvg width="14px" fill="#1ac135" />
-						<Txt ml="10px" color="#fff">
+						<Txt ml="10px" color="#121212">
 							{results.devices.successful}
 						</Txt>
 						<Txt ml="10px">
@@ -189,7 +160,7 @@ export function FlashResults({
 				{errors.length !== 0 ? (
 					<Flex alignItems="center">
 						<CircleSvg width="14px" fill="#ff4444" />
-						<Txt ml="10px" color="#fff">
+						<Txt ml="10px" color="#121212">
 							{errors.length}
 						</Txt>
 						<Txt ml="10px" tooltip={formattedErrors(errors)}>

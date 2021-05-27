@@ -6,8 +6,9 @@ import { getSelectedDrives } from '../../models/selection-state';
 
 const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 	let warningSubtitle = 'Olet alustamassa valitsemasi tikut';
-	const warningCta =
-		'Alustamisen jälkeen tieto tikulta/tikuilta ei ole enää palautettavissa, kaikki tieto TUHOTAAN PYSYVÄSTI! Haluatko jatkaa?';
+	const warningCta = `Alustamisen jälkeen tieto ${
+		getSelectedDrives().length === 1 ? 'tikulta' : 'tikuilta'
+	} ei ole enää palautettavissa, kaikki tieto TUHOTAAN PYSYVÄSTI! Haluatko jatkaa?`;
 	if (getSelectedDrives().length === 1) {
 		warningSubtitle = 'Olet alustamassa valitsemaasi tikkua';
 	}

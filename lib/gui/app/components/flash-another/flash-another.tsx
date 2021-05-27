@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 
-import { BaseButton } from '../../styled-components';
+import { StepButton } from '../../styled-components';
 
 export interface FlashAnotherProps {
 	onClick: () => void;
@@ -24,8 +24,8 @@ export interface FlashAnotherProps {
 
 export const FlashAnother = (props: FlashAnotherProps) => {
 	return (
-		<BaseButton primary onClick={props.onClick}>
+		<StepButton primary onClick={props.onClick}>
 			Asenna toinen
-		</BaseButton>
+		</StepButton>
 	);
 };
