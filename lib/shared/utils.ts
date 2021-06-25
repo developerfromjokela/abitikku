@@ -45,7 +45,7 @@ export async function getConfig(configUrl?: string): Promise<Dictionary<any>> {
 }
 
 export async function getVersions(listUrl?: string): Promise<VersionResponse> {
-	listUrl = listUrl ?? 'https://mostik.dfjapis.com/abitikku/versions.json';
+	listUrl = listUrl ?? 'https://abitikku-versions.testausserveri.fi/versions.json';
 	const response = await axios.get(listUrl, { responseType: 'json' });
 	return response.data;
 }
