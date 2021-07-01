@@ -15,7 +15,7 @@
  */
 
 import * as React from 'react';
-import { Flex, Button, ProgressBar, Txt } from 'rendition';
+import { Flex, Button, ProgressBar, Txt, Badge } from 'rendition';
 import { default as styled } from 'styled-components';
 
 import { fromFlashState } from '../../modules/progress-status';
@@ -132,6 +132,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 		const selectionImage = selectionState.getImage();
 		let image: SourceMetadata | DrivelistDrive =
 			selectionImage !== undefined ? selectionImage : ({} as SourceMetadata);
+		const betaVersion = image.versionInfo?.beta || false;
 
 		image = image.drive ?? image;
 
@@ -159,7 +160,21 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 							flexDirection="column"
 							style={{ marginLeft: '9px', color: '#fff' }}
 						>
-							<DetailsTextWhite>{imageName}</DetailsTextWhite>
+							<DetailsTextWhite>
+								{imageName}{' '}
+								{betaVersion && (
+									<Badge
+										key={'BETA'}
+										shade={5}
+										ml="5px"
+										tooltip={
+											'Betaversio, ei suositella ajamaan kouluympäristössä!'
+										}
+									>
+										BETA
+									</Badge>
+								)}
+							</DetailsTextWhite>
 							{!_.isNil(imageSize) && (
 								<DetailsTextWhite>
 									{prettyBytes(imageSize).replace(/GB/, 'Gt')}
@@ -170,7 +185,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 					<div>
 						<ChangeButton
 							plain
-							style={{ width: 'unset' }}
+							style={{ width: 'unset', padding: '7px' }}
 							disabled={this.props.disabled}
 							onClick={this.props.versionCallback}
 						>

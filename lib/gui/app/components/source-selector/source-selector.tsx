@@ -61,6 +61,7 @@ import ImageSvg from '../../../assets/image.svg';
 import SrcSvg from '../../../assets/src.svg';
 import { DriveSelector } from '../drive-selector/drive-selector';
 import { DrivelistDrive } from '../../../../shared/drive-constraints';
+import { Version } from '../../models/version';
 
 const recentUrlImagesKey = 'recentUrlImages';
 
@@ -263,6 +264,7 @@ export interface SourceMetadata extends sourceDestination.Metadata {
 	drive?: DrivelistDrive;
 	extension?: string;
 	archiveExtension?: string;
+	versionInfo?: Version;
 }
 
 interface SourceSelectorProps {

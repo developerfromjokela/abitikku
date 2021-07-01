@@ -36,6 +36,7 @@ import { ImageVersion, Version, VersionResponse } from '../../models/version';
 import { Tab } from 'rendition/dist/components/Tabs';
 import { getVersions } from '../../../../shared/utils';
 import { showError } from '../../os/dialog';
+import { warning } from '../../../../shared/messages';
 
 const EditionTabs = (props: TabsProps) => (
 	<div className="tabframe">
@@ -110,11 +111,23 @@ export class VersionSelector extends React.Component<
 							{row.latest && (
 								<Badge
 									key={'Uusin'}
-									shade={14}
+									shade={18}
 									mr="10px"
 									tooltip={'Uusin ladattava versio'}
 								>
 									Uusin
+								</Badge>
+							)}
+							{row.beta && (
+								<Badge
+									key={'BETA'}
+									shade={5}
+									mr="10px"
+									tooltip={
+										'Betaversio, ei suositella ajamaan kouluympäristössä!'
+									}
+								>
+									BETA
 								</Badge>
 							)}
 						</Txt>
@@ -149,10 +162,24 @@ export class VersionSelector extends React.Component<
 				versionResult.koe = versionResult.koe.reverse();
 				versionResult.ktp = versionResult.ktp.reverse();
 				if (versionResult.koe.length > 0) {
-					versionResult.koe[0].latest = true;
+					let koeLatestMarked = false;
+					versionResult.koe.some((item, index) => {
+						if (!item.beta && !item.latest && !koeLatestMarked) {
+							versionResult.koe[index].latest = true;
+							koeLatestMarked = true;
+						}
+						return koeLatestMarked;
+					});
 				}
 				if (versionResult.ktp.length > 0) {
-					versionResult.ktp[0].latest = true;
+					let ktpLatestMarked = false;
+					versionResult.ktp.some((item, index) => {
+						if (!item.beta && !item.latest && !ktpLatestMarked) {
+							versionResult.ktp[index].latest = true;
+							ktpLatestMarked = true;
+						}
+						return ktpLatestMarked;
+					});
 				}
 				this.setState({
 					loading: false,
@@ -187,6 +214,17 @@ export class VersionSelector extends React.Component<
 			>
 				{!this.state.loading ? (
 					<>
+						{this.state.selectedVersion?.beta ? (
+							<Txt
+								color="#e08704"
+								style={{
+									position: 'absolute',
+									bottom: '8px',
+								}}
+							>
+								Varoitus: {warning.betaVersion()}
+							</Txt>
+						) : null}
 						<EditionTabs flex={'grow'} key="versions-tab">
 							<Tab title={'Kokelastikku'}>
 								<VersionsTable

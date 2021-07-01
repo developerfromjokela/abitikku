@@ -91,16 +91,26 @@ export const SecondaryStepButton = styled((props: ButtonProps) => (
 export const ChangeButton = styled(Button)`
 	&& {
 		border-radius: 24px;
-		color: ${colors.primary.background};
+		color: ${colors.primary.foreground};
 		padding: 0;
 		height: 18px;
 		font-size: 14px;
+		background-color: ${colors.primary.background};
 
 		&:enabled {
 			&:hover,
 			&:focus,
 			&:active {
-				color: #8f9297;
+				background-color: ${colors.light.foreground};
+				color: ${colors.light.background};
+			}
+		}
+		&:disabled {
+			background-color: #8f9297;
+			&:hover,
+			&:focus,
+			&:active {
+				color: ${colors.primary.foreground};
 			}
 		}
 	}

@@ -416,9 +416,6 @@ export class DriveSelector extends React.Component<
 					warning: showWarnings,
 					disabled: !hasAvailableDrives(),
 				}}
-				style={{
-					height: '87.5vh',
-				}}
 				{...props}
 			>
 				{!hasAvailableDrives() ? (

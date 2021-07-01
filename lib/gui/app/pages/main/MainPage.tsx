@@ -52,6 +52,7 @@ import { replaceWindowsNetworkDriveLetter } from '../../os/windows-network-drive
 import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
 import { Http } from 'etcher-sdk/build/source-destination';
+import { Version } from '../../models/version';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -205,6 +206,7 @@ export class MainPage extends React.Component<
 	private async getMetadata(
 		source: sourceDestination.SourceDestination,
 		selected: string,
+		versionInfo?: Version,
 	) {
 		const metadata = (await source.getMetadata()) as SourceMetadata;
 		const partitionTable = await source.getPartitionTable();
@@ -216,10 +218,15 @@ export class MainPage extends React.Component<
 		}
 		metadata.extension = path.extname(selected).slice(1);
 		metadata.path = selected;
+		metadata.versionInfo = versionInfo;
 		return metadata;
 	}
 
-	public async setSourceImage(selected: string, SourceType: Source) {
+	public async setSourceImage(
+		selected: string,
+		SourceType: Source,
+		versionInfo?: Version,
+	) {
 		selectionState.deselectImage();
 		const sourcePath = selected;
 		let source;
@@ -241,7 +248,7 @@ export class MainPage extends React.Component<
 
 		try {
 			const innerSource = await source.getInnerSource();
-			metadata = await this.getMetadata(innerSource, selected);
+			metadata = await this.getMetadata(innerSource, selected, versionInfo);
 			metadata.SourceType = SourceType;
 
 			if (!metadata.hasMBR) {
@@ -348,7 +355,9 @@ export class MainPage extends React.Component<
 					width={this.state.isWebviewShowing ? '220px' : '200px'}
 					goToSuccess={() => this.setState({ current: 'success' })}
 					shouldFlashStepBeDisabled={shouldFlashStepBeDisabled}
-					versionChange={(version) => this.setSourceImage(version.url, Http)}
+					versionChange={(version) =>
+						this.setSourceImage(version.url, Http, version)
+					}
 					isFlashing={this.state.isFlashing}
 					step={state.type}
 					percentage={state.percentage}

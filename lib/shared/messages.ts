@@ -132,6 +132,10 @@ export const warning = {
 		return 'Järjestelmälevyn valitseminen voi johtaa tiedostojen menetykseen!';
 	},
 
+	betaVersion: () => {
+		return 'Betaversiota ei suositella käyttöön kouluympäristössä!';
+	},
+
 	sourceDrive: () => {
 		return 'Sisältää levykuvan jota yrität kirjoittaa';
 	},
