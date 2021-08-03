@@ -124,10 +124,10 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 					/>
 
 					<Flex flexDirection="column">
-						{warnings.length > 0 && (
-							<DriveCompatibilityWarning warnings={warnings} mr={2} />
-						)}
 						<DetailsText className={props.disabled ? 'disabled' : ''}>
+							{warnings.length > 0 && (
+								<DriveCompatibilityWarning warnings={warnings} mr={2} />
+							)}
 							{middleEllipsis(target.description, 20)}
 						</DetailsText>
 						{target.size != null && (

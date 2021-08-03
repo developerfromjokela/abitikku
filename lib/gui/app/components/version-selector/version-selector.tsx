@@ -37,6 +37,7 @@ import { Tab } from 'rendition/dist/components/Tabs';
 import { getVersions } from '../../../../shared/utils';
 import { showError } from '../../os/dialog';
 import { warning } from '../../../../shared/messages';
+import * as settings from '../../models/settings';
 
 const EditionTabs = (props: TabsProps) => (
 	<div className="tabframe">
@@ -158,9 +159,18 @@ export class VersionSelector extends React.Component<
 
 	loadVersions() {
 		getVersions()
-			.then((versionResult) => {
+			.then(async (versionResult) => {
 				versionResult.koe = versionResult.koe.reverse();
 				versionResult.ktp = versionResult.ktp.reverse();
+				console.log(await settings.get('betaVersions'));
+				if (!(await settings.get('betaVersions'))) {
+					versionResult.ktp = versionResult.ktp.filter((i) => {
+						return !i.beta;
+					});
+					versionResult.koe = versionResult.koe.filter((i) => {
+						return !i.beta;
+					});
+				}
 				if (versionResult.koe.length > 0) {
 					let koeLatestMarked = false;
 					versionResult.koe.some((item, index) => {

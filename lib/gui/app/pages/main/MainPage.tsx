@@ -53,6 +53,9 @@ import * as errors from '../../../../shared/errors';
 import * as osDialog from '../../os/dialog';
 import { Http } from 'etcher-sdk/build/source-destination';
 import { Version } from '../../models/version';
+import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
+import { IconButton as BaseIcon } from '../../styled-components';
+import styled from 'styled-components';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -94,24 +97,14 @@ function getImageBasename(image?: SourceMetadata) {
 	return image.name || imageBasename;
 }
 
-/*
-const StepBorder = styled.div<{
-	disabled: boolean;
-	left?: boolean;
-	right?: boolean;
-}>`
-	position: relative;
-	height: 2px;
-	background-color: ${(props) =>
-		props.disabled
-			? props.theme.colors.dark.disabled.foreground
-			: props.theme.colors.dark.foreground};
-	width: 120px;
+const Icon = styled(BaseIcon)`
+	margin-right: 20px;
+	margin-top: 20px;
+`;
 
-	left: ${(props) => (props.left ? '-67px' : undefined)};
-	margin-right: ${(props) => (props.left ? '-120px' : undefined)};
-	right: ${(props) => (props.right ? '-67px' : undefined)};
-	margin-left: ${(props) => (props.right ? '-120px' : undefined)};
+/*
+const UpdateBanner = styled(Badge)`
+	margin: 0;
 `;*/
 
 interface MainPageStateFromStore {
@@ -406,7 +399,12 @@ export class MainPage extends React.Component<
 					}}
 				>
 					{!this.state.isFlashing && (
-						<Flex width="100%" alignItems={'center'} justifyContent="center">
+						<Flex
+							width="100%"
+							alignItems={'center'}
+							justifyContent="center"
+							flexDirection={'column'}
+						>
 							<AbiTikkuSvg
 								viewBox="0 0 434.412 81.378"
 								width="200"
@@ -420,21 +418,26 @@ export class MainPage extends React.Component<
 							/>
 						</Flex>
 					)}
-
-					{/*
-					<Flex width="100%" alignItems="center" justifyContent="flex-end">
-						<Icon
-							icon={<InfoSvg height="1em" fill="#222" />}
-							plain
-							tabIndex={5}
-							onClick={() => this.setState({ hideSettings: false })}
+					{
+						<div
 							style={{
-								// Make touch events click instead of dragging
-								'-webkit-app-region': 'no-drag',
+								position: 'absolute',
+								right: 0,
+								top: 0,
 							}}
-						/>
-					</Flex>
-						*/}
+						>
+							<Icon
+								icon={<ConfigIcon height="1em" fill="#222" />}
+								plain
+								tabIndex={5}
+								onClick={() => this.setState({ hideSettings: false })}
+								style={{
+									// Make touch events click instead of dragging
+									'-webkit-app-region': 'no-drag',
+								}}
+							/>
+						</div>
+					}
 				</Flex>
 				{this.state.hideSettings ? null : (
 					<SettingsModal

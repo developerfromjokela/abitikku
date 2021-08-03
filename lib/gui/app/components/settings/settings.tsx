@@ -33,7 +33,12 @@ interface Setting {
 }
 
 async function getSettingsList(): Promise<Setting[]> {
-	const list: Setting[] = [];
+	const list: Setting[] = [
+		{
+			name: 'betaVersions',
+			label: 'Näytä betaversiot',
+		},
+	];
 	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
 		list.push({
 			name: 'updatesEnabled',
@@ -83,7 +88,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 		<Modal
 			titleElement={
 				<Txt fontSize={24} mb={24}>
-					Tietoja
+					Tietoja ja asetukset
 				</Txt>
 			}
 			done={() => toggleModal(false)}
