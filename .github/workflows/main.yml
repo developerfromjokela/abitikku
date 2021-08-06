@@ -40,16 +40,12 @@ jobs:
           architecture: x64
           python-version: 2.7
           
-      - name: Setup abitikku environment
+      - name: Setup abitikku environment, test and build
         run: |
+          git clone --recursive https://github.com/Testausserveri/abitikku.git abitikku_master
+          cd abitikku_master
           make electron-develop
-          
-      - name: Run tests
-        run: |
           npm test
-      
-      - name: Build
-        run: |
           make electron-build
       
       
