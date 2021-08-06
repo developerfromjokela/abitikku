@@ -40,6 +40,13 @@ jobs:
           architecture: x64
           python-version: 2.7
           
+      - name: Force HTTPS for Git
+        run: |
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://".insteadOf git://
+          git config --global url."git@github.com:".insteadOf https://github.com/
+          git config --global url."git://".insteadOf https://
+          
       - name: Setup abitikku environment, test and build
         run: |
           git clone --recursive https://github.com/Testausserveri/abitikku.git abitikku_master
