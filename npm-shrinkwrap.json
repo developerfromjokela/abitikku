@@ -17914,7 +17914,7 @@
     },
     "node_modules/sudo-prompt": {
       "version": "9.2.1",
-      "resolved": "git+ssh://git@github.com/zvin/sudo-prompt.git#7cdede2f0da28fbcc2db48402d7d935f3a825c91",
+      "resolved": "git+https://github.com/zvin/sudo-prompt.git#7cdede2f0da28fbcc2db48402d7d935f3a825c91",
       "integrity": "sha512-+/07i6WPXxq5EuKZJyUPLNHin4706CFlyhbb+orl2NIP3ycVX3ySadEDmcnaN5ODnCrS88e7WL6bxMp7PDXkAA==",
       "dev": true,
       "license": "MIT"
@@ -18809,7 +18809,7 @@
     },
     "node_modules/unbzip2-stream": {
       "version": "1.4.2",
-      "resolved": "git+ssh://git@github.com/balena-io-modules/unbzip2-stream.git#4a54f56a25b58950f9e4277c56db2912d62242e7",
+      "resolved": "git+https://github.com/balena-io-modules/unbzip2-stream.git#4a54f56a25b58950f9e4277c56db2912d62242e7",
       "integrity": "sha512-brk1qgoQuqWAWifAFEyC7At0CZxuHL90kd3S2Sdmd1GrOcUGl2bey0Bu6MVc25xAXMz7WITNKD8hxyBpNmeOdg==",
       "dev": true,
       "license": "MIT"
@@ -35511,7 +35511,7 @@
       "dev": true
     },
     "sudo-prompt": {
-      "version": "git+ssh://git@github.com/zvin/sudo-prompt.git#7cdede2f0da28fbcc2db48402d7d935f3a825c91",
+      "version": "git+https://github.com/zvin/sudo-prompt.git#7cdede2f0da28fbcc2db48402d7d935f3a825c91",
       "integrity": "sha512-+/07i6WPXxq5EuKZJyUPLNHin4706CFlyhbb+orl2NIP3ycVX3ySadEDmcnaN5ODnCrS88e7WL6bxMp7PDXkAA==",
       "dev": true,
       "from": "sudo-prompt@github:zvin/sudo-prompt#7cdede2f0da28fbcc2db48402d7d935f3a825c91"
@@ -36185,7 +36185,7 @@
       "dev": true
     },
     "unbzip2-stream": {
-      "version": "git+ssh://git@github.com/balena-io-modules/unbzip2-stream.git#4a54f56a25b58950f9e4277c56db2912d62242e7",
+      "version": "git+https://github.com/balena-io-modules/unbzip2-stream.git#4a54f56a25b58950f9e4277c56db2912d62242e7",
       "integrity": "sha512-brk1qgoQuqWAWifAFEyC7At0CZxuHL90kd3S2Sdmd1GrOcUGl2bey0Bu6MVc25xAXMz7WITNKD8hxyBpNmeOdg==",
       "dev": true,
       "from": "unbzip2-stream@github:balena-io-modules/unbzip2-stream#4a54f56a25b58950f9e4277c56db2912d62242e7"
