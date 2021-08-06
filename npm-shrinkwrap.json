@@ -27978,7 +27978,6 @@
         "tslib": "^2.0.0",
         "unbzip2-stream": "github:balena-io-modules/unbzip2-stream#4a54f56a25b58950f9e4277c56db2912d62242e7",
         "unzip-stream": "^0.3.0",
-        "winusb-driver-generator": "^1.2.3",
         "xxhash": "^0.3.0",
         "yauzl": "^2.9.2",
         "zip-part-stream": "^1.0.3"
@@ -27993,6 +27992,9 @@
             "ms": "^2.1.1"
           }
         }
+      },
+      "optionalDependencies": {
+        "winusb-driver-generator": "^1.2.3"
       }
     },
     "event-pubsub": {
