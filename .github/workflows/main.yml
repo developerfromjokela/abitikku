@@ -39,11 +39,16 @@ jobs:
         with:
           architecture: x64
           python-version: 2.7
+
           
       - name: Setup abitikku environment, test and build
         run: |
           git clone --recursive https://github.com/Testausserveri/abitikku.git abitikku_master
           cd abitikku_master
+          
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://".insteadOf git://
+          
           make electron-develop
           npm test
           make electron-build
