@@ -4,6 +4,15 @@
         <link rel="stylesheet" href="main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="UTF-8">
+      <script>
+        const downloadLinks = {
+          exe: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku-Portable-1.0.2+707997ee.exe",
+          app: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku.app.zip",
+          deb: "https://github.com/Testausserveri/abitikku/releases/latest/download/abitikku-electron_1.0.2_amd64.deb",
+          rpm: "https://github.com/Testausserveri/abitikku/releases/latest/download/abitikku-electron-1.0.2.x86_64.rpm",
+          appImage: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku-1.0.2-x64.AppImage"
+        };
+      </script>
     </head>
     <body>
         <div class="app">
@@ -15,9 +24,9 @@
             <p>
                 Abitikku lataa uusimman virallisen Abitti-levykuvan ja asentaa sen tikullesi, vain yhdellä klikkauksella. Ohjelman tarjoavat ilmaiseksi muun muassa <a href="https://matikkaeditori.fi">Matikkaeditori.fi</a>n kehittänyt ja <a href="https://abitti.testausserveri.fi">Abitti Open Access</a>-haavoittuvuuden löytänyt tiimi.
             </p>
-          
+
             <div class="downloadButtons">
-                <a href="https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku-Portable-1.0.1.exe">
+                <a href="https://github.com/Testausserveri/abitikku/releases" id="download">
                     Lataa Abitikku
                 </a>
                 <a href="https://github.com/Testausserveri/abitikku/releases">
@@ -27,11 +36,13 @@
             <p>
                 Tämä projekti on myös julkaistu avoimena lähdekoodina <a href="https://github.com/Testausserveri/abitikku">GitHubiin</a>.
             </p>
-          
+
             <img src="images/s1.png" class="screenshot">
             <img src="images/s2.png" class="screenshot">
             <img src="images/s3.png" class="screenshot">
             <img src="images/s4.png" class="screenshot">
         </div>
+        <script src="bower_components/sniffr/dist/sniffr.min.js"></script>
+    <script src="main.js"></script>
     </body>
 </html>
