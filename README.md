@@ -8,7 +8,7 @@ Abitikku is a powerful Abitti flasher built with web technologies to ensure flas
 [![License](https://img.shields.io/github/license/Testausserveri/abitikku.svg?style=flat-square)](https://github.com/balena-io/etcher/blob/master/LICENSE)
 [![Testausserveri Discord](https://img.shields.io/discord/697710787636101202?label=Testausserveri%20Discord&style=flat-square)](https://discord.testausserveri.fi)
 
-<img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s1.png" height="250px"><img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s3.png" height="250px"><img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s2.png" height="250px"><img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s4.png" height="250px">
+<img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s1.png" height="250px"> <img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s3.png" height="250px"><img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s2.png" height="250px"> <img src="https://raw.githubusercontent.com/Testausserveri/abitikku/master/docs/images/s4.png" height="250px">
 
 ---
 
