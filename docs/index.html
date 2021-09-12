@@ -1,50 +1,57 @@
 <html>
     <head>
         <title>Abitikku</title>
-        <link rel="stylesheet" href="main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta charset="UTF-8">
-      <script>
-        const downloadLinks = {
-          exe: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku-Portable-1.0.2+707997ee.exe",
-          app: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku.app.zip",
-          deb: "https://github.com/Testausserveri/abitikku/releases/latest/download/abitikku-electron_1.0.2_amd64.deb",
-          rpm: "https://github.com/Testausserveri/abitikku/releases/latest/download/abitikku-electron-1.0.2.x86_64.rpm",
-          appImage: "https://github.com/Testausserveri/abitikku/releases/latest/download/Abitikku-1.0.2-x64.AppImage"
-        };
-      </script>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="images/icon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://kit.fontawesome.com/6c6068ea6e.js" crossorigin="anonymous"></script>
+        <script src="bower_components/sniffr/dist/sniffr.min.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
-        <div class="app">
-            <h1>Abitikku</h1>
-
-            <p>
-                Abitikku on helpoin tapa luoda Abitti-tikku. Ei enää harmaita hiuksia lukiolaisille, vaan helppokäyttöinen yhden klikkauksen asennusohjelma.
-            </p>
-            <p>
-                Abitikku lataa uusimman virallisen Abitti-levykuvan ja asentaa sen tikullesi, vain yhdellä klikkauksella. Ohjelman tarjoavat ilmaiseksi muun muassa <a href="https://matikkaeditori.fi">Matikkaeditori.fi</a>n kehittänyt ja <a href="https://abitti.testausserveri.fi">Abitti Open Access</a>-haavoittuvuuden löytänyt tiimi.
-            </p>
-
-            <div class="downloadButtons">
-                <a href="https://github.com/Testausserveri/abitikku/releases" id="download">
-                    Lataa Abitikku
+        <div class="center">
+            <header>
+                <img src="images/icon.png" alt="Abitikku logo" />
+                <h1>Abitikku</h1>
+            </header>
+            <section class="centered">
+                <a id="downloadLink">
+                    <button><i class="fab fa-windows"></i> <span id="downloadText">Lataa Windowsille</span></button>
                 </a>
-                <a href="https://github.com/Testausserveri/abitikku/releases">
-                    Muut latausvaihtoehdot
-                </a>
-            </div>
-            <p>
-                Tämä projekti on myös julkaistu avoimena lähdekoodina <a href="https://github.com/Testausserveri/abitikku">GitHubiin</a>.
-            </p>
-
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/2l3WDzTrD_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          
-            <img src="images/s1.png" class="screenshot">
-            <img src="images/s2.png" class="screenshot">
-            <img src="images/s3.png" class="screenshot">
-            <img src="images/s4.png" class="screenshot">
+                <a href="https://github.com/testausserveri/abitikku/releases" class="secondary-button">Muut latausvaihtoehdot</a>
+            </section>
+            <section>
+                <p>
+                    Abitikku on helpoin tapa luoda Abitti-tikku. Ei enää harmaita hiuksia lukiolaisille, vaan helppokäyttöinen yhden klikkauksen asennusohjelma.
+                </p>
+                <p>
+                    Abitikku lataa uusimman virallisen Abitti-levykuvan ja asentaa sen tikullesi, vain yhdellä klikkauksella. Ohjelman tarjoavat ilmaiseksi muun muassa <a href="https://matikkaeditori.fi">Matikkaeditori.fin</a> kehittänyt ja <a href="https://abitti.testausserveri.fi">Abitti Open Access-haavoittuvuuden</a> löytänyt tiimi.
+                </p>
+                <p>
+                    Tukea on saatavilla <a href="https://discord.testausserveri.fi">Discord-palvelimellamme</a>. <span id="versionText"></span>
+                </p>
+            </section>
+            <section>
+                <div class="youtubeEmbed">
+                        <iframe title="2l3WDzTrD_Y" src="https://www.youtube.com/embed/2l3WDzTrD_Y" frameborder="0" gesture="media" allow="encrypted-media"></iframe>
+                </div>
+            </section>
+            <footer>
+                <div style="flex: 1;">
+                    <a href="https://testausserveri.fi">
+                        <img src="images/testausserveri.svg" class="testausserveriLogo" alt="Testausserveri" />
+                    </a>
+                </div>
+                <div>
+                    <p>Tämä projekti on myös julkaistu avoimena lähdekoodina <a href="https://github.com/testausserveri/abitikku">GitHubiin</a>.</p><br />
+                    <p>© Ruben Mkrtumyan, Mikael Hannolainen, Eemil Sinkko</p>
+                    <p>Ohjevideon on tehnyt Misha Lindvall.</p>
+                </div>
+            </footer>
         </div>
-        <script src="bower_components/sniffr/dist/sniffr.min.js"></script>
-    <script src="main.js"></script>
     </body>
 </html>

@@ -1,0 +1,148 @@
+body {
+    background-color: #E8E8E8;
+    --section-gap: 4rem;
+}
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+    background: linear-gradient(51deg, #3c709d, #22416c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.center {
+    margin: var(--section-gap) auto;
+    max-width: 600px;
+}
+
+header, section {
+    margin-bottom: var(--section-gap);
+}
+
+header {
+    text-align: center;
+}
+
+header img {
+    height: 130px;
+}
+
+button {
+    -webkit-appearance: none;
+    border-radius: 6px;
+    background-color: #2E6CCB;
+    text-align: center;
+    border: none;
+    width: 100%;
+    font-size: 1.15rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: white;
+    padding: 1.7rem;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0px rgba(0,0,0,0.25);
+    transition: box-shadow 0.2s ease-in, background-color 0.1s ease-in;
+}
+
+button:hover {
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,0.25);
+    background-color: #2961b6;
+}
+
+button i {
+    margin-right: 0.5rem;
+}
+
+a.secondary-button {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #2E6CCB;
+    text-decoration: none;
+    margin-top: .8rem;
+    display: inline-block;
+    transition: color 0.1s ease-in;
+}
+
+a.secondary-button:hover {
+    color: #1b4079;
+}
+
+.centered {
+    text-align: center;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0,0,0,0.8);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+p a {
+    color: #2961b6;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+p a::before {
+    content: '';
+    background-color: rgba(0,0,0,0.04);
+    z-index: -2;
+    position: absolute;
+    top: -0.1rem;
+    left: -0.1rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.1rem;
+    border-radius: 6px;
+    transition: background-color 0.1s;
+}
+p a:hover:before {
+    content: '';
+    background-color: rgba(0,0,0,0.08);
+}
+
+.youtubeEmbed {
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: calc(100% * 9 / 16);
+}
+
+.youtubeEmbed iframe {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+footer {
+    display: flex;
+}
+
+.testausserveriLogo {
+    max-width: 130px;
+    opacity: .82;
+    transition: opacity .1s;
+}
+
+.testausserveriLogo:hover {
+    opacity: 1;
+}
+
+footer p {
+    font-size: 0.8rem;
+    margin: 0;
+}
