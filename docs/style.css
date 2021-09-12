@@ -146,3 +146,14 @@ footer p {
     font-size: 0.8rem;
     margin: 0;
 }
+
+.screenshots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.screenshots img {
+    border-radius: 6px;
+    width: 100%;
+}
