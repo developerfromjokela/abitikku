@@ -17,7 +17,7 @@ h1 {
 }
 
 .center {
-    padding-top: var(--section-gap);
+    padding: var(--section-gap) 0;
     margin: 0 auto;
     max-width: 600px;
 }
