@@ -1,0 +1,241 @@
+{
+  "common": {
+    "targets_one": "{{count}} mål",
+    "targets_other": "{{count}} mål",
+    "action": {
+      "cancel": "Avbryt",
+      "ok": "Ok",
+      "skip": "Hoppa över"
+    }
+  },
+  "shared": {
+    "permissions": {
+      "sudoError": {
+        "title": "Användaren har inte tillräckliga rättigheter",
+        "description": "Applikationen kräver sudo-rättigheter för att kunna skriva till diskenheter"
+      },
+      "processDiedError": {
+        "title": "Den förhöjda processen avslutades oväntat",
+        "description": "Processens felkod var {{code}}"
+      },
+      "polkitError": {
+        "title": "Ingen polkit-autentiseringsagent hittades",
+        "description": "Installera en polkit-autentiseringsagent till din skrivbordsmiljö för att fortsätta"
+      }
+    },
+    "messages": {
+      "common": {
+        "target_one": "mål",
+        "target_other": "mål",
+        "describeTarget_one": "{{desc}} ({{name}})",
+        "describeTarget_other": "{{count}} mål"
+      },
+      "progress": {
+        "success_other": "Lyckade $t(messages.common.target, {\"count\": {{count}}})",
+        "failure_other": "Misslyuckade $t(messages.common.target, {\"count\": {{count}}})"
+      },
+      "info": {
+        "singleTarget": "till {{description}} ({{displayName}})",
+        "successfulTargets": "till {{successful}} $t(messages.common.target, {\"count\": {{successful}}})",
+        "failedTargets": "och skrevs misslyckat till {{failed}} $t(messages.common.target, {\"count\": {{failed}}})",
+        "header": "{{imageBasename}} skrevs lyckat {{targets}}"
+      },
+      "compatibility": {
+        "sizeNotRecommended": "Rekommenderas inte",
+        "tooSmall": "För liten",
+        "locked": "Låst",
+        "system": "Systemdiskenhet",
+        "containsImage": "Källdiskenhet",
+        "largeDrive": "Stor diskenhet"
+      },
+      "warning": {
+        "tooSmall": "Den valda källan är {{bytes}} större än den här diskenheten.",
+        "exitWhileFlashing": [
+          "Du håller på att skriva till en diskenhet.",
+          "Att stänga Abitikku kan leda till att din diskenhet slutar fungera."
+        ],
+        "looksLikeWindowsImage": [
+          "Det ser ut som att du försöker skriva en Windows-diskbild.\n\n",
+          "Till skillnad från andra diskbilder kräver Windows-diskbilder speciella åtgärder för att kunna köras.",
+          "Vi rekommenderar följande verktyg som är gjorda för denna uppgift:",
+          "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
+          "<a href=\"https://github.com/slacka/WoeUSB\">WoeUSB</a> (Linux)",
+          "eller Boot Camp Assistant (macOS)."
+        ],
+        "missingPartitionTable": [
+          "Det ser ut som att det här inte är en körbar diskbild.\n\n",
+          "Diskbilden verkar inte innehålla en partitionstabell,",
+          "och kan vara oigenkännbar vid start."
+        ],
+        "driveMissingPartitionTable": "Det ser ut som att det här inte är en körbar diskenhet. Diskenheten verkar inte innehålla en partitionstabell, och kan vara oigenkännbar vid start.",
+        "largeDriveSize": "Det här är en stor diskenhet! Se till att den inte innehåller filer som du vill behålla.",
+        "systemDrive": "Att välja din systemdiskenhet är farligt och kan göra ditt system oanvändbart!",
+        "sourceDrive": "Innehåller diskbilden som du valde att skriva"
+      },
+      "error": {
+        "notEnoughSpaceInDrive": [
+          "För lite utrymme på diskenheten.",
+          "Anslut en större diskenhet och försök pånytt."
+        ],
+        "genericFlashError": "Någonting gick fel. Om det är en komprimerad diskbild kontrollera att den inte är korrupterad.\n{{message}}",
+        "validation": [
+          "Diskbilden skrevs lyckat, men Abitikku märkte möjliga",
+          "korruptionsfel då diskenheten kontrollerades.",
+          "\n\nÖverväg att skriva diskbilden till en annan diskenhet."
+        ],
+        "openSource": "Någonting gick fel medan {{sourceName}} öppnades\n\nFel: {{errorMessage}}",
+        "flashFailure": "Någonting gick fel medan {{imageBasename}} skrevs till $t(describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
+        "driveUnplugged": [
+          "Abitikku får inte kontakt med diskenheten.",
+          "Blev den urkopplad av misstag?",
+          "\n\nIbland kan felet orsakas av en felaktig läsare, som inte ger en stabil åtkomst till diskenheten."
+        ],
+        "inputOutput": [
+          "Abitikku kan inte skriva till diskenheten.",
+          "Det här felet orsakas ofta av en felaktig läsare eller port.",
+          "\n\nFörsök pånytt med en annan läsare eller port."
+        ],
+        "childWriterDied": [
+          "Skrivarprocessen avslutades oväntat.",
+          "PlFörsök pånytt och kontakta utvecklingsteamet om problemet kvarstår."
+        ],
+        "unsupportedProtocol": "Endast http:// och https:// URL-addresser stöds."
+      }
+    },
+    "errors": {
+      "EPERM": {
+        "title": "Du har inte rättighet att utföra denna uppgift",
+        "description": "Kontrollera att du har tillräkliga rättigheter för denna uppgift"
+      },
+      "EACCES": {
+        "title": "Du har inte åtkomst till denna resurs",
+        "description": "Kontrollera att du har de nödvändiga rättigheterna till resursen och försök igen"
+      },
+      "ENOMEM": {
+        "title": "Ditt system fick slut på minne",
+        "description": "Kontrollera att ditt system har tillräckligt med minne för denna uppgift"
+      },
+      "errorCode": "Felkod: {{code}}",
+      "genericError": "Ett fel uppstod"
+    },
+    "sudo": {
+      "privilegedAccessRequired": "Abitikku behöver privilegierad åtkomst för att skriva till diskenheter.\n\nSkriv in ditt lösenord för att tillåta detta."
+    }
+  },
+  "gui": {
+    "store": {
+      "missingDrive": "Saknad enhet",
+      "missingDrives": "Saknade enheter",
+      "invalidDrive": "Ogiltlig enhet: {{drive}}",
+      "invalidDrives": "Ogiltliga enheter: {{drives}}",
+      "driveUnavailable": "Enheten är inte tillgänglig: {{drive}}",
+      "driveWriteProtected": "Enheten är skrivskyddad",
+      "driveTooSmall": "Enheten är för liten"
+    },
+    "menu": {
+      "mainLabel": "Vy",
+      "toggleDevTools": "Växla utvecklarvy",
+      "reportIssue": "Rapportera ett probelm",
+      "about": "Om Abitikku"
+    },
+    "mainPage": {
+      "driveTitle": {
+        "noDescription": "Namnlös enhet",
+        "noTargets": "Inga mål hittades"
+      }
+    },
+    "flash": {
+      "success": "Skrivining klar!",
+      "failure": "Hoppsan! Verkar som att skrivningen misslyckades.",
+      "eta": "ETA: {{seconds}}",
+      "errorModal": {
+        "title": "Obs",
+        "action": "Försök igen"
+      }
+    },
+    "dialog": {
+      "imageSelect": {
+        "osImages": "Systembilder",
+        "all": "Alla"
+      },
+      "warningTitle": "Attention"
+    },
+    "progress-status": {
+      "starting": "Startar...",
+      "decompressing": "Dekomprimerar...",
+      "flashing": "Skriver...",
+      "finishing": "Avslutar...",
+      "validating": "Validerar...",
+      "failed": "Misslyckades"
+    },
+    "image-writer": {
+      "processEnded": {
+        "title": "Skrivarprocessen avslutades oväntat",
+        "description": "Försök igen och kontakta utvecklarteamet om problemet kvarstår"
+      }
+    },
+    "target-selector": {
+      "title": "Välj mål",
+      "emptyListLabel": "Anslut en diskenhet"
+    },
+    "target-selector-button": {
+      "change": "Byt",
+      "selectTarget": "Välj mål"
+    },
+    "settings": {
+      "title": "Inställningar"
+    },
+    "progress-button": {
+      "fallbackImageName": "Laddar...",
+      "flash": "Skriv"
+    },
+    "flash-results": {
+      "descriptionLabel": "Mål",
+      "deviceLabel": "Plats",
+      "messageLabel": "Fel",
+      "flashFail": "Skrivningen misslyckades!",
+      "flashSuccess": "Skrivningen klar!",
+      "speedCalculationExplanation": "Hastigheten är beräknad genom att dividera diskbildens storlek med skrivningstiden. Diskbilder med ext-partitioner skrivs snabbare eftersom oanvända delar kan hoppas över.",
+      "effectiveSpeed": "Verklig hastighet: {{effectiveSpeed}} MB/s",
+      "failedTargets": "Misslyckade mål",
+      "retryFailedTargets": "Försök igen med misslyckade mål"
+    },
+    "flash-another": {
+      "title": "Skriv en till"
+    },
+    "drive-status-warning": {
+      "normalWarning": {
+        "subtitle": "Du håller på att radera en onormalt stor diskenhet",
+        "cta": "Är du säker på att diskenheten inte är en lagringsenhet?"
+      },
+      "systemWarning": {
+        "subtitle": "Du håller på att radera din dators skivor",
+        "cta": "Är du säker på att du vill skriva över din dators skivor?"
+      },
+      "changeTarget": "Byt mål",
+      "confirmFlash": "Ja, jag är säker",
+      "warningBig": "VARNING!"
+    },
+    "drive-selector": {
+      "nameLabel": "Namn",
+      "sizeLabel": "Storlek",
+      "linkLabel": "Plats",
+      "devicesAmount": "Enheter: {{devices}}",
+      "selectDevices": "Välj {{selected}}",
+      "showHidden": "Visa {{hidden}} gömda",
+      "systemDriveAlert": "Att välja din systemdiskenhet är farligt och kommer att tömma den!",
+      "continue": "Ja, fortsätt",
+      "missingDriversMessage": "Abitikku kommer att öppna {{link}} i din webbläsare"
+    },
+    "app": {
+      "missingDrivers": "Saknade drivrutiner",
+      "installMissingCta": "Installera",
+      "installMissingTitle": "Installera saknade drivrutiner",
+      "quitModal": {
+        "title": "Är du säker på att du vill stänga Abitikku?",
+        "confirm": "Ja, stäng",
+        "cancel": "Avbryt"
+      }
+    }
+  }
+}
