@@ -1,0 +1,243 @@
+{
+  "common": {
+    "targets_one": "{{count}} kohteeseen",
+    "targets_other": "{{count}} kohteisiin",
+    "action": {
+      "cancel": "Peruuta",
+      "ok": "Ok",
+      "skip": "Ohita"
+    }
+  },
+  "shared": {
+    "permissions": {
+      "sudoError": {
+        "title": "Käyttäjällä ei ole tarvittavia oikeuksia",
+        "description": "Sovellus vaatii sudo-oikeuksia levyjen kirjoittamiseen"
+      },
+      "processDiedError": {
+        "title": "Korotettu prosessi kuoli yllättäen",
+        "description": "Prosessin virhekoodi on {{code}}"
+      },
+      "polkitError": {
+        "title": "Polkit tunnistautumisagenttia ei löytynyt",
+        "description": "Asenna polit autentikaatioagentti työpöytäympäristöösi jatkaakesi asennusta"
+      }
+    },
+    "messages": {
+      "common": {
+        "target_one": "kohteeseen",
+        "target_other": "kohteisiin",
+        "describeTarget_one": "{{desc}} ({{name}})",
+        "describeTarget_other": "{{count}} kohdetta"
+      },
+      "progress": {
+        "success_one": "Onnistunut kohde",
+        "success_other": "Onnistuneet kohteet",
+        "failure_one": "Epäonnistunut kohde",
+        "failure_other": "Epäonnistuneet kohteet"
+      },
+      "info": {
+        "singleTarget": "kohteeseen {{description}} ({{displayName}})",
+        "successfulTargets": "{{successful}} $t(messages.common.target, {\"count\": {{successful}}})",
+        "failedTargets": "ja epäonnistuneesti {{failed}} $t(messages.common.target, {\"count\": {{failed}}})",
+        "header": "{{imageBasename}} kirjoitettiin onnistuneesti {{targets}}"
+      },
+      "compatibility": {
+        "sizeNotRecommended": "Ei suositella",
+        "tooSmall": "Liian pieni",
+        "locked": "Lukittu",
+        "system": "Järjestelmälevy",
+        "containsImage": "Lähdelevy",
+        "largeDrive": "Suuri levy"
+      },
+      "warning": {
+        "tooSmall": "Lähde on {{bytes}} suurempi kuin levy.",
+        "exitWhileFlashing": [
+          "Kirjoitus tikulle on meneillään.",
+          "Abitikun sulkeminen voi johtaa tikun korruptoitumiseen ja/tai hajoamiseen."
+        ],
+        "looksLikeWindowsImage": [
+          "Vaikuttaa siltä, että olet kirjoittamassa Windows-levykuvaa\n\n",
+          "Toisin kuin muut levyt, Windowsin levykuvat tarvitsevat erityistä käsittelyä, jotta niistä saataisiin käynnistettäviä.",
+          "Suosittelemme seuraavia työkaluja, kehitetty tähän tektävään:",
+          "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
+          "<a href=\"https://github.com/slacka/WoeUSB\">WoeUSB</a> (Linux),",
+          "tai Boot Camp Assistant (macOS)."
+        ],
+        "missingPartitionTable": [
+          "Vaikuttaa siltä, että laite ei ole käynnistettävä\n\n",
+          "Laitteesta vaikuttaa puuttuvan osiotaulu,",
+          "ja voi olla tunnistamaton käynnistyksessä."
+        ],
+        "driveMissingPartitionTable": "Tämä levy ei vaikuta olevan käynnistettävä. Laitteesta vaikuttaa puuttuvan osiotaulu, ja voi olla tunnistamaton käynnistyksessä.",
+        "largeDriveSize": "Tämä on suuri laite! Varmista ettei levyllä ole mitään tarkeää!",
+        "systemDrive": "Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttäkelvottoman!",
+        "sourceDrive": "Sisältää levykuvan jota yrität kirjoittaa"
+      },
+      "error": {
+        "notEnoughSpaceInDrive": [
+          "Ei riittävästi tallennustilaa tikulla",
+          "Liitä isompi tikku ja yritä uudelleen"
+        ],
+        "genericFlashError": "Jokin meni pieleen. Jos kyseessä on puristettu levykuva, tarkista ettei se ole korruptoitunut.\n{{message}}",
+        "validation": [
+          "Levykuva kirjoitettiin onnistuneesti, mutta Abitikku havaitsi",
+          "korruptointiongemia tarkistaessa tikkua.",
+          "\n\nHarkitse toisen tikun käyttöä."
+        ],
+        "openSource": "Jokin meni pieleen avattaessa {{sourceName}}\n\nVirhe: {{errorMessage}}",
+        "flashFailure": "Jokin meni pieleen kirjoittaessa {{imageBasename}} kohteeseen $t(describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
+        "driveUnplugged": [
+          "Abitikku ei saa yhteyttä tikkuun.",
+          "Irroititko tikun vahingossa irti?",
+          "\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä levylle."
+        ],
+        "inputOutput": [
+          "Abitikku ei pysty kirjoittamaan tikulle.",
+          "Tämä virhe johtuu usein viallisesta lukijasta tai portista.",
+          "\n\nYritä uudelleen toisella tikulla, lukijalla ja/tai portilla."
+        ],
+        "childWriterDied": [
+          "Kirjoitusprosessi pysähtyi yllättäen.",
+          "Yritä uudelleen, ja ota yhteyttä kehitystiimiin jos ongelma jatkuu."
+        ],
+        "unsupportedProtocol": "Vain http:// ja https:// URL-osoitteet ovat tuettuja."
+      }
+    },
+    "errors": {
+      "EPERM": {
+        "title": "Sinulla ei ole oikeuksia suorittaa tätä tehtävää",
+        "description": "Varmista tarvittavat oikeudet tämän tehtävän suorittamiseen"
+      },
+      "EACCES": {
+        "title": "Sinulla ei ole pääsyä tähän resurssiin",
+        "description": "Varmista tarvittavat oikeudet resurssiin ja yritä uudelleen"
+      },
+      "ENOMEM": {
+        "title": "Järjestelästäsi on loppunut muisti",
+        "description": "Varmista, että järjestelmässä on riittävästi muistia tehtävän suorittamiseen"
+      },
+      "errorCode": "Virhekoodi: {{code}}",
+      "genericError": "Tapahtui virhe"
+    },
+    "sudo": {
+      "privilegedAccessRequired": "Abitikku tarvitsee korotetun oikeuden kirjoittaakseen tikulle.\n\nSyötä salasanasi salliaksesi tämän."
+    }
+  },
+  "gui": {
+    "store": {
+      "missingDrive": "Puuttuva levy",
+      "missingDrives": "Puuttuvia levyjä",
+      "invalidDrive": "Väärä levy: {{drive}}",
+      "invalidDrives": "Vääriä levyjä: {{drives}}",
+      "driveUnavailable": "Levy ei ole saatavilla: {{drive}}",
+      "driveWriteProtected": "Laite on kirjoitussuojattu",
+      "driveTooSmall": "Levy ei ole tarpeeksi suuri"
+    },
+    "menu": {
+      "mainLabel": "Näkymä",
+      "toggleDevTools": "Kytke kehittäjätila",
+      "reportIssue": "Ilmoita ongelmasta",
+      "about": "Tietoja Abitikusta"
+    },
+    "mainPage": {
+      "driveTitle": {
+        "noDescription": "Nimetön laite",
+        "noTargets": "Ei kohteita"
+      }
+    },
+    "flash": {
+      "success": "Tikkusi on valmis!",
+      "failure": "Hups! Tikkusi kirjoitus vaikuttaa epäonnistuneen",
+      "eta": "Arvioitu aika: {{seconds}}",
+      "errorModal": {
+        "title": "Huomio",
+        "action": "Yritä uudelleen"
+      }
+    },
+    "dialog": {
+      "imageSelect": {
+        "osImages": "Järjestelmälevykuvat",
+        "all": "Kaikki"
+      },
+      "warningTitle": "Huomio!"
+    },
+    "progress-status": {
+      "starting": "Aloitellaan...",
+      "decompressing": "Puretaan...",
+      "flashing": "Kirjoitetaan...",
+      "finishing": "Viimeistellään...",
+      "validating": "Varmistetaan...",
+      "failed": "Epäonnistui"
+    },
+    "image-writer": {
+      "processEnded": {
+        "title": "Kirjoitusprosessi pysähtyi yllättäen",
+        "description": "Yritä uudelleen, ja ota yhteyttä kehittäjiin jos ongelma toistuu"
+      }
+    },
+    "target-selector": {
+      "title": "Valitse kohde",
+      "emptyListLabel": "Liitä tikku"
+    },
+    "target-selector-button": {
+      "change": "Vaihda",
+      "selectTarget": "Valitse kohde"
+    },
+    "settings": {
+      "title": "Tietoja"
+    },
+    "progress-button": {
+      "fallbackImageName": "Ladataan...",
+      "flash": "Asenna"
+    },
+    "flash-results": {
+      "descriptionLabel": "Kohde",
+      "deviceLabel": "Sijainti",
+      "messageLabel": "Virhe",
+      "flashFail": "Kirjoitus epäonnistui!",
+      "flashSuccess": "Kirjoitus valmistui!",
+      "speedCalculationExplanation": "Nopeus lasketaan jakamalla levyn koko kirjoitusajalla. Levykuvat ext-osioilla kirjoitetaan nopeammin, sillä pystymme ohittamaan turhia osia",
+      "effectiveSpeed": "Todellinen nopeus: {{effectiveSpeed}} MB/s",
+      "failedTargets": "Epäonnistuneet kohteet",
+      "retryFailedTargets": "Yritä uudelleen epäonnistuneilla kohteilla"
+    },
+    "flash-another": {
+      "title": "Asenna toinen"
+    },
+    "drive-status-warning": {
+      "normalWarning": {
+        "subtitle": "Olet alustamassa normaalia suurempaa levyä",
+        "cta": "Oletko varma ettei levy ole tallennustilalevy?"
+      },
+      "systemWarning": {
+        "subtitle": "Olet alustamassa tietokoneesi levyjä",
+        "cta": "Haluatko jatkaa tietokoneesi levyjen alustusta?"
+      },
+      "changeTarget": "Vaihda kohde",
+      "confirmFlash": "Kyllä, olen varma",
+      "warningBig": "VAROITUS!"
+    },
+    "drive-selector": {
+      "nameLabel": "Nimi",
+      "sizeLabel": "Koko",
+      "linkLabel": "Sijainti",
+      "devicesAmount": "Laitteita: {{devices}}",
+      "selectDevices": "Valitse {{selected}}",
+      "showHidden": "Näytä {{hidden}} piilotettuja",
+      "systemDriveAlert": "Järjestelmälevyn valitseminen on vaarallista ja voi johtaa tietojen menetykseen!",
+      "continue": "Kyllä, jatka",
+      "missingDriversMessage": "Abitikku avaa linkin {{link}} selaimessa"
+    },
+    "app": {
+      "missingDrivers": "Ajureita puuttuu",
+      "installMissingCta": "Asenna",
+      "installMissingTitle": "Asenna puuttuvat ajurit",
+      "quitModal": {
+        "title": "Haluatko poistua Abitikusta?",
+        "confirm": "Kyllä, poistu",
+        "cancel": "Peruuta"
+      }
+    }
+  }
+}
