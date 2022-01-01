@@ -186,7 +186,8 @@
       "title": "Settings"
     },
     "progress-button": {
-      "fallbackImageName": "Loading..."
+      "fallbackImageName": "Loading...",
+      "flash": "Flash!"
     },
     "flash-results": {
       "descriptionLabel": "Target",
