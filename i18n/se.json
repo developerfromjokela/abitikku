@@ -32,7 +32,7 @@
       },
       "progress": {
         "success_other": "Lyckade $t(messages.common.target, {\"count\": {{count}}})",
-        "failure_other": "Misslyuckade $t(messages.common.target, {\"count\": {{count}}})"
+        "failure_other": "Misslyckade $t(messages.common.target, {\"count\": {{count}}})"
       },
       "info": {
         "singleTarget": "till {{description}} ({{displayName}})",
@@ -56,7 +56,7 @@
         ],
         "looksLikeWindowsImage": [
           "Det ser ut som att du försöker skriva en Windows-diskbild.\n\n",
-          "Till skillnad från andra diskbilder kräver Windows-diskbilder speciella åtgärder för att kunna köras.",
+          "Till skillnad från andra diskbilder kräver Windows-diskbilder speciell behandling för att kunna köras.",
           "Vi rekommenderar följande verktyg som är gjorda för denna uppgift:",
           "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
           "<a href=\"https://github.com/slacka/WoeUSB\">WoeUSB</a> (Linux)",
@@ -69,18 +69,18 @@
         ],
         "driveMissingPartitionTable": "Det ser ut som att det här inte är en körbar diskenhet. Diskenheten verkar inte innehålla en partitionstabell, och kan vara oigenkännbar vid start.",
         "largeDriveSize": "Det här är en stor diskenhet! Se till att den inte innehåller filer som du vill behålla.",
-        "systemDrive": "Att välja din systemdiskenhet är farligt och kan göra ditt system oanvändbart!",
+        "systemDrive": "Att välja din systemdiskenhet är farligt och kan göra din dator oanvändbar!",
         "sourceDrive": "Innehåller diskbilden som du valde att skriva"
       },
       "error": {
         "notEnoughSpaceInDrive": [
-          "För lite utrymme på diskenheten.",
-          "Anslut en större diskenhet och försök pånytt."
+          "För lite lagringsutrymme på diskenheten.",
+          "Anslut en större diskenhet och försök igen."
         ],
         "genericFlashError": "Någonting gick fel. Om det är en komprimerad diskbild kontrollera att den inte är korrupterad.\n{{message}}",
         "validation": [
-          "Diskbilden skrevs lyckat, men Abitikku märkte möjliga",
-          "korruptionsfel då diskenheten kontrollerades.",
+          "Diskbilden skrevs lyckat, men Abitikku märkte potentiella",
+          "korruptionsproblem då diskenheten kontrollerades.",
           "\n\nÖverväg att skriva diskbilden till en annan diskenhet."
         ],
         "openSource": "Någonting gick fel medan {{sourceName}} öppnades\n\nFel: {{errorMessage}}",
@@ -88,7 +88,7 @@
         "driveUnplugged": [
           "Abitikku får inte kontakt med diskenheten.",
           "Blev den urkopplad av misstag?",
-          "\n\nIbland kan felet orsakas av en felaktig läsare, som inte ger en stabil åtkomst till diskenheten."
+          "\n\nIbland kan felet orsakas av en felaktig läsare som inte ger stabil åtkomst till diskenheten."
         ],
         "inputOutput": [
           "Abitikku kan inte skriva till diskenheten.",
@@ -97,15 +97,15 @@
         ],
         "childWriterDied": [
           "Skrivarprocessen avslutades oväntat.",
-          "PlFörsök pånytt och kontakta utvecklingsteamet om problemet kvarstår."
+          "Försök pånytt och kontakta utvecklingsteamet om problemet kvarstår."
         ],
         "unsupportedProtocol": "Endast http:// och https:// URL-addresser stöds."
       }
     },
     "errors": {
       "EPERM": {
-        "title": "Du har inte rättighet att utföra denna uppgift",
-        "description": "Kontrollera att du har tillräkliga rättigheter för denna uppgift"
+        "title": "Du har inte tillstånd att utföra denna uppgift",
+        "description": "Kontrollera att du har de nödvändiga rättigheterna för denna uppgift"
       },
       "EACCES": {
         "title": "Du har inte åtkomst till denna resurs",
@@ -134,7 +134,7 @@
     },
     "menu": {
       "mainLabel": "Vy",
-      "toggleDevTools": "Växla utvecklarvy",
+      "toggleDevTools": "Växla utvecklarläge",
       "reportIssue": "Rapportera ett probelm",
       "about": "Om Abitikku"
     },
@@ -158,7 +158,7 @@
         "osImages": "Systembilder",
         "all": "Alla"
       },
-      "warningTitle": "Attention"
+      "warningTitle": "Obs! "
     },
     "progress-status": {
       "starting": "Startar...",
@@ -209,8 +209,8 @@
         "cta": "Är du säker på att diskenheten inte är en lagringsenhet?"
       },
       "systemWarning": {
-        "subtitle": "Du håller på att radera din dators skivor",
-        "cta": "Är du säker på att du vill skriva över din dators skivor?"
+        "subtitle": "Du håller på att radera din dators lagringsenheter",
+        "cta": "Är du säker på att du vill skriva över din dators lagringsenheter?"
       },
       "changeTarget": "Byt mål",
       "confirmFlash": "Ja, jag är säker",
@@ -228,9 +228,9 @@
       "missingDriversMessage": "Abitikku kommer att öppna {{link}} i din webbläsare"
     },
     "app": {
-      "missingDrivers": "Saknade drivrutiner",
+      "missingDrivers": "Drivrutiner saknas",
       "installMissingCta": "Installera",
-      "installMissingTitle": "Installera saknade drivrutiner",
+      "installMissingTitle": "Installera drivrutiner som saknas",
       "quitModal": {
         "title": "Är du säker på att du vill stänga Abitikku?",
         "confirm": "Ja, stäng",
