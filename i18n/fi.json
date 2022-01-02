@@ -70,7 +70,7 @@
           "ja voi olla tunnistamaton käynnistyksessä."
         ],
         "driveMissingPartitionTable": "Tämä levy ei vaikuta olevan käynnistettävä. Laitteesta vaikuttaa puuttuvan osiotaulu, ja voi olla tunnistamaton käynnistyksessä.",
-        "largeDriveSize": "Tämä on suuri laite! Varmista ettei levyllä ole mitään tarkeää!",
+        "largeDriveSize": "Tämä on suuri levy! Varmista ettei levyllä ole mitään tarkeää!",
         "systemDrive": "Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttäkelvottoman!",
         "sourceDrive": "Sisältää levykuvan jota yrität kirjoittaa"
       },
@@ -89,7 +89,7 @@
         "flashFailure": "Jokin meni pieleen kirjoittaessa {{imageBasename}} kohteeseen $t(describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
         "driveUnplugged": [
           "Abitikku ei saa yhteyttä tikkuun.",
-          "Irroititko tikun vahingossa irti?",
+          "Irroititko tikun vahingossa?",
           "\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä levylle."
         ],
         "inputOutput": [
@@ -136,7 +136,7 @@
     },
     "menu": {
       "mainLabel": "Näkymä",
-      "toggleDevTools": "Kytke kehittäjätila",
+      "toggleDevTools": "Vaihda kehittäjätilaan",
       "reportIssue": "Ilmoita ongelmasta",
       "about": "Tietoja Abitikusta"
     },
