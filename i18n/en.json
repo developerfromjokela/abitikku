@@ -75,7 +75,7 @@
       "error": {
         "notEnoughSpaceInDrive": [
           "Not enough space on the drive.",
-          "Please insert larger one and try again."
+          "Please insert a larger one and try again."
         ],
         "genericFlashError": "Something went wrong. If it is a compressed image, please check that the archive is not corrupted.\n{{message}}",
         "validation": [
