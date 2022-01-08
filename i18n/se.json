@@ -51,8 +51,8 @@
       "warning": {
         "tooSmall": "Abitti är {{bytes}} större än den här diskenheten.",
         "exitWhileFlashing": [
-          "Du håller på att skriva till en diskenhet.",
-          "Att stänga Abitikku kan leda till att din diskenhet slutar fungera."
+          "Du håller på att skriva till en minnesticka.",
+          "Att stänga Abitikku kan leda till att din minnesticka slutar fungera."
         ],
         "looksLikeWindowsImage": [
           "Det ser ut som att du försöker skriva en Windows-diskbild.\n\n",
@@ -70,28 +70,28 @@
         "driveMissingPartitionTable": "Det ser ut som att det här inte är en körbar diskenhet. Diskenheten verkar inte innehålla en partitionstabell, och kan vara oigenkännbar vid start.",
         "largeDriveSize": "Det här är en stor diskenhet! Se till att den inte innehåller filer som du vill behålla.",
         "systemDrive": "Att välja din systemdiskenhet är farligt och kan göra din dator oanvändbar!",
-        "sourceDrive": "Innehåller diskbilden som du valde att skriva"
+        "sourceDrive": "Innehåller Abitti"
       },
       "error": {
         "notEnoughSpaceInDrive": [
-          "För lite lagringsutrymme på diskenheten.",
-          "Anslut en större diskenhet och försök igen."
+          "För lite lagringsutrymme på minnestickan.",
+          "Anslut en större minnesticka och försök igen."
         ],
         "genericFlashError": "Någonting gick fel.\n{{message}}",
         "validation": [
           "Abitti skrevs lyckat, men Abitikku märkte potentiella",
-          "korruptionsproblem då diskenheten kontrollerades.",
-          "\n\nÖverväg att skriva diskbilden till en annan diskenhet."
+          "korruptionsproblem då minnestickan kontrollerades.",
+          "\n\nÖverväg att skriva diskbilden till en annan minnesticka."
         ],
         "openSource": "Någonting gick fel medan {{sourceName}} öppnades\n\nFel: {{errorMessage}}",
         "flashFailure": "Någonting gick fel medan {{imageBasename}} skrevs till $t(shared.messages.common.describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
         "driveUnplugged": [
-          "Abitikku får inte kontakt med diskenheten.",
+          "Abitikku får inte kontakt med minnestickan.",
           "Blev den urkopplad av misstag?",
-          "\n\nIbland kan felet orsakas av en felaktig läsare som inte ger stabil åtkomst till diskenheten."
+          "\n\nIbland kan felet orsakas av en felaktig läsare som inte ger stabil åtkomst till minnestickan."
         ],
         "inputOutput": [
-          "Abitikku kan inte skriva till diskenheten.",
+          "Abitikku kan inte skriva till minnestickan.",
           "Det här felet orsakas ofta av en felaktig läsare eller port.",
           "\n\nFörsök igen med en annan läsare eller port."
         ],
