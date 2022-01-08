@@ -45,7 +45,7 @@
         "tooSmall": "Too small",
         "locked": "Locked",
         "system": "System drive",
-        "containsImage": "Source drive",
+        "containsImage": "Image source drive",
         "largeDrive": "Large drive"
       },
       "warning": {
@@ -55,7 +55,7 @@
           "Closing Abitikku may leave your drive in an unusable state."
         ],
         "looksLikeWindowsImage": [
-          "It looks like you are trying to burn a Windows image.\n\n",
+          "It looks like you are trying to flash a Windows image.\n\n",
           "Unlike other images, Windows images require special processing to be made bootable.",
           "We suggest you use a tool specially designed for this purpose, such as",
           "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
@@ -69,7 +69,7 @@
         ],
         "driveMissingPartitionTable": "It looks like this is not a bootable drive. The drive does not appear to contain a partition table, and might not be recognized or bootable by your device",
         "largeDriveSize": "This is a large drive! Make sure it doesn't contain files that you want to keep.",
-        "systemDrive": "Selecting your system drive is dangerous and will erase your drive!",
+        "systemDrive": "Selecting your system drive is dangerous and will erase the contents of your system drive!",
         "sourceDrive": "Contains the image you chose to flash"
       },
       "error": {
@@ -77,9 +77,9 @@
           "Not enough space on the drive.",
           "Please insert a larger one and try again."
         ],
-        "genericFlashError": "Something went wrong. If it is a compressed image, please check that the archive is not corrupted.\n{{message}}",
+        "genericFlashError": "Something went wrong. \n{{message}}",
         "validation": [
-          "The write has been completed successfully but Abitikku detected potential",
+          "The flash has been completed successfully but Abitikku detected potential",
           "corruption issues when reading the image back from the drive.",
           "\n\nPlease consider writing the image to a different drive."
         ],
@@ -105,11 +105,11 @@
     "errors": {
       "EPERM": {
         "title": "You're not authorized to perform this operation",
-        "description": "Please ensure you have necessary permissions for this task"
+        "description": "Please ensure you have the necessary permissions for this task"
       },
       "EACCES": {
         "title": "You don't have access to this resource",
-        "description": "Please ensure you have necessary permissions to access this resource"
+        "description": "Please ensure you have the necessary permissions to access this resource"
       },
       "ENOMEM": {
         "title": "Your system ran out of memory",
@@ -223,7 +223,7 @@
       "devicesAmount": "{{devices}} found",
       "selectDevices": "Select {{selected}}",
       "showHidden": "Show {{hidden}} hidden",
-      "systemDriveAlert": "Selecting your system drive is dangerous and will erase your drive!",
+      "systemDriveAlert": "Selecting your system drive is dangerous and will erase the contents of your drive!",
       "continue": "Yes, continue",
       "missingDriversMessage": "Abitikku will open {{link}} in your browser"
     },
