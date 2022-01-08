@@ -31,13 +31,13 @@
         "describeTarget_other": "{{count}} mål"
       },
       "progress": {
-        "success_other": "Lyckade $t(messages.common.target, {\"count\": {{count}}})",
-        "failure_other": "Misslyckade $t(messages.common.target, {\"count\": {{count}}})"
+        "success_other": "Lyckade $t(shared.messages.common.target, {\"count\": {{count}}})",
+        "failure_other": "Misslyckade $t(shared.messages.common.target, {\"count\": {{count}}})"
       },
       "info": {
         "singleTarget": "till {{description}} ({{displayName}})",
-        "successfulTargets": "till {{successful}} $t(messages.common.target, {\"count\": {{successful}}})",
-        "failedTargets": "och skrevs misslyckat till {{failed}} $t(messages.common.target, {\"count\": {{failed}}})",
+        "successfulTargets": "till {{successful}} $t(shared.messages.common.target, {\"count\": {{successful}}})",
+        "failedTargets": "och skrevs misslyckat till {{failed}} $t(shared.messages.common.target, {\"count\": {{failed}}})",
         "header": "{{imageBasename}} skrevs lyckat {{targets}}"
       },
       "compatibility": {
@@ -49,14 +49,14 @@
         "largeDrive": "Stor diskenhet"
       },
       "warning": {
-        "tooSmall": "Den valda källan är {{bytes}} större än den här diskenheten.",
+        "tooSmall": "Abitti är {{bytes}} större än den här diskenheten.",
         "exitWhileFlashing": [
           "Du håller på att skriva till en diskenhet.",
           "Att stänga Abitikku kan leda till att din diskenhet slutar fungera."
         ],
         "looksLikeWindowsImage": [
           "Det ser ut som att du försöker skriva en Windows-diskbild.\n\n",
-          "Till skillnad från andra diskbilder kräver Windows-diskbilder speciell behandling för att kunna köras.",
+          "Till skillnad från andra diskbilder kräver Windows-diskbilder specialbehandling för att kunna köras.",
           "Vi rekommenderar följande verktyg som är gjorda för denna uppgift:",
           "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
           "<a href=\"https://github.com/slacka/WoeUSB\">WoeUSB</a> (Linux)",
@@ -77,14 +77,14 @@
           "För lite lagringsutrymme på diskenheten.",
           "Anslut en större diskenhet och försök igen."
         ],
-        "genericFlashError": "Någonting gick fel. Om det är en komprimerad diskbild kontrollera att den inte är korrupterad.\n{{message}}",
+        "genericFlashError": "Någonting gick fel.\n{{message}}",
         "validation": [
-          "Diskbilden skrevs lyckat, men Abitikku märkte potentiella",
+          "Abitti skrevs lyckat, men Abitikku märkte potentiella",
           "korruptionsproblem då diskenheten kontrollerades.",
           "\n\nÖverväg att skriva diskbilden till en annan diskenhet."
         ],
         "openSource": "Någonting gick fel medan {{sourceName}} öppnades\n\nFel: {{errorMessage}}",
-        "flashFailure": "Någonting gick fel medan {{imageBasename}} skrevs till $t(describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
+        "flashFailure": "Någonting gick fel medan {{imageBasename}} skrevs till $t(shared.messages.common.describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
         "driveUnplugged": [
           "Abitikku får inte kontakt med diskenheten.",
           "Blev den urkopplad av misstag?",
@@ -93,11 +93,11 @@
         "inputOutput": [
           "Abitikku kan inte skriva till diskenheten.",
           "Det här felet orsakas ofta av en felaktig läsare eller port.",
-          "\n\nFörsök pånytt med en annan läsare eller port."
+          "\n\nFörsök igen med en annan läsare eller port."
         ],
         "childWriterDied": [
           "Skrivarprocessen avslutades oväntat.",
-          "Försök pånytt och kontakta utvecklingsteamet om problemet kvarstår."
+          "Försök igen och kontakta utvecklingsteamet om problemet kvarstår."
         ],
         "unsupportedProtocol": "Endast http:// och https:// URL-addresser stöds."
       }
