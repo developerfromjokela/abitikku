@@ -15,12 +15,12 @@
         "description": "Sovellus vaatii sudo-oikeuksia levyjen kirjoittamiseen"
       },
       "processDiedError": {
-        "title": "Korotettu prosessi kuoli yllättäen",
+        "title": "Korotettu prosessi päättyi yllättäen",
         "description": "Prosessin virhekoodi on {{code}}"
       },
       "polkitError": {
         "title": "Polkit tunnistautumisagenttia ei löytynyt",
-        "description": "Asenna polit autentikaatioagentti työpöytäympäristöösi jatkaakesi asennusta"
+        "description": "Asenna polkit-tunnistautumisagentti työpöytäympäristöösi jatkaaksesi asennusta"
       }
     },
     "messages": {
@@ -51,7 +51,7 @@
         "largeDrive": "Suuri levy"
       },
       "warning": {
-        "tooSmall": "Lähde on {{bytes}} suurempi kuin levy.",
+        "tooSmall": "Abitti on {{bytes}} suurempi kuin levy.",
         "exitWhileFlashing": [
           "Kirjoitus tikulle on meneillään.",
           "Abitikun sulkeminen voi johtaa tikun korruptoitumiseen ja/tai hajoamiseen."
@@ -79,9 +79,9 @@
           "Ei riittävästi tallennustilaa tikulla",
           "Liitä isompi tikku ja yritä uudelleen"
         ],
-        "genericFlashError": "Jokin meni pieleen. Jos kyseessä on puristettu levykuva, tarkista ettei se ole korruptoitunut.\n{{message}}",
+        "genericFlashError": "Jokin meni pieleen.\n{{message}}",
         "validation": [
-          "Levykuva kirjoitettiin onnistuneesti, mutta Abitikku havaitsi",
+          "Abitti kirjoitettiin onnistuneesti, mutta Abitikku havaitsi",
           "korruptointiongemia tarkistaessa tikkua.",
           "\n\nHarkitse toisen tikun käyttöä."
         ],
@@ -114,7 +114,7 @@
         "description": "Varmista tarvittavat oikeudet resurssiin ja yritä uudelleen"
       },
       "ENOMEM": {
-        "title": "Järjestelästäsi on loppunut muisti",
+        "title": "Järjestelmästäsi on loppunut muisti",
         "description": "Varmista, että järjestelmässä on riittävästi muistia tehtävän suorittamiseen"
       },
       "errorCode": "Virhekoodi: {{code}}",
@@ -131,7 +131,7 @@
       "invalidDrive": "Väärä levy: {{drive}}",
       "invalidDrives": "Vääriä levyjä: {{drives}}",
       "driveUnavailable": "Levy ei ole saatavilla: {{drive}}",
-      "driveWriteProtected": "Laite on kirjoitussuojattu",
+      "driveWriteProtected": "Levy on kirjoitussuojattu",
       "driveTooSmall": "Levy ei ole tarpeeksi suuri"
     },
     "menu": {
