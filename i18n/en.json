@@ -49,7 +49,7 @@
         "largeDrive": "Large drive"
       },
       "warning": {
-        "tooSmall": "The selected source is {{bytes}} larger than this drive.",
+        "tooSmall": "Abitti is {{bytes}} larger than this drive.",
         "exitWhileFlashing": [
           "You are currently flashing a drive.",
           "Closing Abitikku may leave your drive in an unusable state."
@@ -70,7 +70,7 @@
         "driveMissingPartitionTable": "It looks like this is not a bootable drive. The drive does not appear to contain a partition table, and might not be recognized or bootable by your device",
         "largeDriveSize": "This is a large drive! Make sure it doesn't contain files that you want to keep.",
         "systemDrive": "Selecting your system drive is dangerous and will erase the contents of your system drive!",
-        "sourceDrive": "Contains the image you chose to flash"
+        "sourceDrive": "Contains Abitti"
       },
       "error": {
         "notEnoughSpaceInDrive": [
