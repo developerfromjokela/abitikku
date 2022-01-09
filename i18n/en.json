@@ -183,7 +183,10 @@
       "selectTarget": "Select target"
     },
     "settings": {
-      "title": "Settings"
+      "title": "Settings",
+      "betaVersions": "Show beta versions",
+      "updatesEnabled": "Auto-updates enabled",
+      "about": "Abitikku is a program that allows for easy flashing of the Abitti-system to one or more USB flash drives without any hassle."
     },
     "progress-button": {
       "fallbackImageName": "Loading...",

@@ -185,7 +185,10 @@
       "selectTarget": "Valitse kohde"
     },
     "settings": {
-      "title": "Tietoja"
+      "title": "Tietoja",
+      "betaVersions": "Näytä betaversiot",
+      "updatesEnabled": "Automaattiset päivitykset",
+      "about": "Abitikku on ohjelma, joka mahdollistaa helpon Abitti-järjestelmän asennuksen yhdelle tai useammalle tikulle ilman vaivaa ja säätöä."
     },
     "progress-button": {
       "fallbackImageName": "Ladataan...",

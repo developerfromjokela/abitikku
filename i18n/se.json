@@ -183,7 +183,10 @@
       "selectTarget": "Välj mål"
     },
     "settings": {
-      "title": "Inställningar"
+      "title": "Inställningar",
+      "betaVersions": "Visa beta-versioner",
+      "updatesEnabled": "Automatiska uppdateringar",
+      "about": "Abitikku är ett program som möjliggör en enkel installation av Abitti-systemet till en eller flera minnestickor utan krångel."
     },
     "progress-button": {
       "fallbackImageName": "Laddar...",
