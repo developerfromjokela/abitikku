@@ -1,7 +1,7 @@
 {
   "common": {
-    "targets_one": "{{count}} mål",
-    "targets_other": "{{count}} mål",
+    "targets_one": "{{count}} minnesticka",
+    "targets_other": "{{count}} minnestickor",
     "action": {
       "cancel": "Avbryt",
       "ok": "Ok",
@@ -25,8 +25,8 @@
     },
     "messages": {
       "common": {
-        "target_one": "mål",
-        "target_other": "mål",
+        "target_one": "minnesticka",
+        "target_other": "minnestickor",
         "describeTarget_one": "{{desc}} ({{name}})",
         "describeTarget_other": "{{count}} mål"
       },
@@ -46,10 +46,10 @@
         "locked": "Låst",
         "system": "Systemdiskenhet",
         "containsImage": "Källdiskenhet",
-        "largeDrive": "Stor diskenhet"
+        "largeDrive": "Stor minnesticka"
       },
       "warning": {
-        "tooSmall": "Abitti är {{bytes}} större än den här diskenheten.",
+        "tooSmall": "Abitti är {{bytes}} större än den här minnestickan.",
         "exitWhileFlashing": [
           "Du håller på att skriva till en minnesticka.",
           "Att stänga Abitikku kan leda till att din minnesticka slutar fungera."
@@ -129,8 +129,8 @@
       "invalidDrive": "Ogiltlig enhet: {{drive}}",
       "invalidDrives": "Ogiltliga enheter: {{drives}}",
       "driveUnavailable": "Enheten är inte tillgänglig: {{drive}}",
-      "driveWriteProtected": "Enheten är skrivskyddad",
-      "driveTooSmall": "Enheten är för liten"
+      "driveWriteProtected": "Minnestickan är skrivskyddad",
+      "driveTooSmall": "Minnestickan är för liten"
     },
     "menu": {
       "mainLabel": "Vy",
@@ -176,7 +176,7 @@
     },
     "target-selector": {
       "title": "Välj mål",
-      "emptyListLabel": "Anslut en diskenhet"
+      "emptyListLabel": "Anslut en minnesticka"
     },
     "target-selector-button": {
       "change": "Byt",

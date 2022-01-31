@@ -1,7 +1,7 @@
 {
   "common": {
-    "targets_one": "{{count}} kohteeseen",
-    "targets_other": "{{count}} kohteisiin",
+    "targets_one": "{{count}} tikkuun",
+    "targets_other": "{{count}} tikkuihiin",
     "action": {
       "cancel": "Peruuta",
       "ok": "Ok",
@@ -25,19 +25,19 @@
     },
     "messages": {
       "common": {
-        "target_one": "kohteeseen",
-        "target_other": "kohteisiin",
+        "target_one": "tikkuun",
+        "target_other": "tikkuihin",
         "describeTarget_one": "{{desc}} ({{name}})",
         "describeTarget_other": "{{count}} kohdetta"
       },
       "progress": {
-        "success_one": "Onnistunut kohde",
-        "success_other": "Onnistuneet kohteet",
-        "failure_one": "Epäonnistunut kohde",
-        "failure_other": "Epäonnistuneet kohteet"
+        "success_one": "Onnistunut tikku",
+        "success_other": "Onnistuneet tikut",
+        "failure_one": "Epäonnistunut tikku",
+        "failure_other": "Epäonnistuneet tikut"
       },
       "info": {
-        "singleTarget": "kohteeseen {{description}} ({{displayName}})",
+        "singleTarget": "tikkuun {{description}} ({{displayName}})",
         "successfulTargets": "{{successful}} $t(shared.messages.common.target, {\"count\": {{successful}}})",
         "failedTargets": "ja epäonnistuneesti {{failed}} $t(shared.messages.common.target, {\"count\": {{failed}}})",
         "header": "{{imageBasename}} kirjoitettiin onnistuneesti {{targets}}"
@@ -48,10 +48,10 @@
         "locked": "Lukittu",
         "system": "Järjestelmälevy",
         "containsImage": "Lähdelevy",
-        "largeDrive": "Suuri levy"
+        "largeDrive": "Suuri tikku"
       },
       "warning": {
-        "tooSmall": "Abitti on {{bytes}} suurempi kuin levy.",
+        "tooSmall": "Abitti on {{bytes}} suurempi kuin tikku.",
         "exitWhileFlashing": [
           "Kirjoitus tikulle on meneillään.",
           "Abitikun sulkeminen voi johtaa tikun korruptoitumiseen ja/tai hajoamiseen."
@@ -70,7 +70,7 @@
           "ja voi olla tunnistamaton käynnistyksessä."
         ],
         "driveMissingPartitionTable": "Tämä levy ei vaikuta olevan käynnistettävä. Laitteesta vaikuttaa puuttuvan osiotaulu, ja voi olla tunnistamaton käynnistyksessä.",
-        "largeDriveSize": "Tämä on suuri levy! Varmista ettei levyllä ole mitään tarkeää!",
+        "largeDriveSize": "Tämä on suuri tikku! Varmista ettei tikulla ole mitään tarkeää!",
         "systemDrive": "Järjestelmälevyn valitseminen on vaarallista ja voi tehdä järjestelmästä käyttäkelvottoman!",
         "sourceDrive": "Sisältää levykuvan jota yrität kirjoittaa"
       },
@@ -90,7 +90,7 @@
         "driveUnplugged": [
           "Abitikku ei saa yhteyttä tikkuun.",
           "Irroititko tikun vahingossa?",
-          "\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä levylle."
+          "\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä tikulle."
         ],
         "inputOutput": [
           "Abitikku ei pysty kirjoittamaan tikulle.",
@@ -131,8 +131,8 @@
       "invalidDrive": "Väärä levy: {{drive}}",
       "invalidDrives": "Vääriä levyjä: {{drives}}",
       "driveUnavailable": "Levy ei ole saatavilla: {{drive}}",
-      "driveWriteProtected": "Levy on kirjoitussuojattu",
-      "driveTooSmall": "Levy ei ole tarpeeksi suuri"
+      "driveWriteProtected": "Tikku on kirjoitussuojattu",
+      "driveTooSmall": "Tikku ei ole tarpeeksi suuri"
     },
     "menu": {
       "mainLabel": "Näkymä",
@@ -210,7 +210,7 @@
     },
     "drive-status-warning": {
       "normalWarning": {
-        "subtitle": "Olet alustamassa normaalia suurempaa levyä",
+        "subtitle": "Olet alustamassa tavallista suurempaa levyä",
         "cta": "Oletko varma ettei levy ole tallennustilalevy?"
       },
       "systemWarning": {
