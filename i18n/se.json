@@ -236,6 +236,16 @@
       "continue": "Ja, fortsätt",
       "missingDriversMessage": "Abitikku kommer att öppna {{link}} i din webbläsare"
     },
+    "version-selector": {
+      "columnVersion": "Version",
+      "columnLatest": "Nyaste",
+      "columnBeta": "Betaversion, rekommenderas ej att köras i skolmiljön!",
+      "columnReleaseDate": "Publicerad",
+      "selectVersion": "Välj version",
+      "betaWarning": "Varning: {{betaWarning}}",
+      "studentTab": "Examinandens skivavbild",
+      "serverTab": "Serverns skivavbild"
+    },
     "app": {
       "missingDrivers": "Drivrutiner saknas",
       "installMissingCta": "Installera",

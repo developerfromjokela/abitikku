@@ -238,6 +238,16 @@
       "continue": "Kyllä, jatka",
       "missingDriversMessage": "Abitikku avaa linkin {{link}} selaimessa"
     },
+    "version-selector": {
+      "columnVersion": "Versio",
+      "columnLatest": "Uusin",
+      "columnBeta": "Betaversion, rekommenderas ej att köras i skolmiljön!",
+      "columnReleaseDate": "Julkaistu",
+      "selectVersion": "Valitse versio",
+      "betaWarning": "Varoitus: {{betaWarning}}",
+      "studentTab": "Kokelastikku",
+      "serverTab": "Koetilan palvelin"
+    },
     "app": {
       "missingDrivers": "Ajureita puuttuu",
       "installMissingCta": "Asenna",

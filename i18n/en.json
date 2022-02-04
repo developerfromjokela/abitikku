@@ -195,7 +195,7 @@
       "fallbackImageName": "Loading...",
       "flash": "Flash!",
       "changeVersion": "Change version",
-      "betaVersion": "Betaversion, not recommended ajamaato be ran in the school environment!"
+      "betaVersion": "Beta version, not recommended to be ran in the school environment!"
     },
     "flash-results": {
       "descriptionLabel": "Target",
@@ -235,6 +235,16 @@
       "systemDriveAlert": "Selecting your system drive is dangerous and will erase the contents of your drive!",
       "continue": "Yes, continue",
       "missingDriversMessage": "Abitikku will open {{link}} in your browser"
+    },
+    "version-selector": {
+      "columnVersion": "Version",
+      "columnLatest": "Latest",
+      "columnBeta": "Beta version, not recommended to be ran in the school environment!",
+      "columnReleaseDate": "Release date",
+      "selectVersion": "Select version",
+      "betaWarning": "Warning: {{betaWarning}}",
+      "studentTab": "Student system",
+      "serverTab": "Exam server system"
     },
     "app": {
       "missingDrivers": "Missing drivers",
