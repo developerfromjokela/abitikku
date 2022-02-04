@@ -182,7 +182,8 @@
     },
     "target-selector-button": {
       "change": "Change",
-      "selectTarget": "Select target"
+      "selectTarget": "Select target",
+      "noTargetSelected": "No targets selected"
     },
     "settings": {
       "title": "Settings",
@@ -192,7 +193,9 @@
     },
     "progress-button": {
       "fallbackImageName": "Loading...",
-      "flash": "Flash!"
+      "flash": "Flash!",
+      "changeVersion": "Change version",
+      "betaVersion": "Betaversion, not recommended ajamaato be ran in the school environment!"
     },
     "flash-results": {
       "descriptionLabel": "Target",
@@ -203,7 +206,8 @@
       "speedCalculationExplanation": "The speed is calculated by dividing the image size by the flashing time. Disk images with ext partitions flash faster as we are able to skip unused parts.",
       "effectiveSpeed": "Effective speed: {{effectiveSpeed}} MB/s",
       "failedTargets": "Failed targets",
-      "retryFailedTargets": "Retry failed targets"
+      "retryFailedTargets": "Retry failed targets",
+      "details": "Details"
     },
     "flash-another": {
       "title": "Flash another"

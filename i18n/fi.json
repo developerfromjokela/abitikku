@@ -184,7 +184,8 @@
     },
     "target-selector-button": {
       "change": "Vaihda",
-      "selectTarget": "Valitse kohde"
+      "selectTarget": "Valitse kohde",
+      "noTargetSelected": "Ei kohteita valittuna"
     },
     "settings": {
       "title": "Tietoja",
@@ -194,7 +195,9 @@
     },
     "progress-button": {
       "fallbackImageName": "Ladataan...",
-      "flash": "Asenna"
+      "flash": "Asenna",
+      "changeVersion": "Vaihda versio",
+      "betaVersion": "Betaversio, ei suositella ajamaan kouluympäristössä!"
     },
     "flash-results": {
       "descriptionLabel": "Kohde",
@@ -205,7 +208,8 @@
       "speedCalculationExplanation": "Nopeus lasketaan jakamalla levyn koko kirjoitusajalla. Levykuvat ext-osioilla kirjoitetaan nopeammin, sillä pystymme ohittamaan turhia osia",
       "effectiveSpeed": "Todellinen nopeus: {{effectiveSpeed}} MB/s",
       "failedTargets": "Epäonnistuneet kohteet",
-      "retryFailedTargets": "Yritä uudelleen epäonnistuneilla kohteilla"
+      "retryFailedTargets": "Yritä uudelleen epäonnistuneilla kohteilla",
+      "details": "Lisätietoja"
     },
     "flash-another": {
       "title": "Asenna toinen"

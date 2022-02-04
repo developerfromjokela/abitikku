@@ -182,7 +182,8 @@
     },
     "target-selector-button": {
       "change": "Byt",
-      "selectTarget": "Välj mål"
+      "selectTarget": "Välj mål",
+      "noTargetSelected": "Inga mål valda"
     },
     "settings": {
       "title": "Inställningar",
@@ -192,7 +193,9 @@
     },
     "progress-button": {
       "fallbackImageName": "Laddar...",
-      "flash": "Skriv"
+      "flash": "Skriv",
+      "changeVersion": "Byt version",
+      "betaVersion": "Betaversion, rekommenderas ej att köras i skolmiljön!"
     },
     "flash-results": {
       "descriptionLabel": "Mål",
@@ -203,7 +206,8 @@
       "speedCalculationExplanation": "Hastigheten är beräknad genom att dividera diskbildens storlek med skrivningstiden. Diskbilder med ext-partitioner skrivs snabbare eftersom oanvända delar kan hoppas över.",
       "effectiveSpeed": "Verklig hastighet: {{effectiveSpeed}} MB/s",
       "failedTargets": "Misslyckade mål",
-      "retryFailedTargets": "Försök igen med misslyckade mål"
+      "retryFailedTargets": "Försök igen med misslyckade mål",
+      "details": "Detaljer"
     },
     "flash-another": {
       "title": "Skriv en till"
