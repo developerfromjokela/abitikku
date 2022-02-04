@@ -48,7 +48,7 @@ interface TargetSelectorProps {
 }
 
 function getDriveWarning(status: DriveStatus) {
-	switch (status.message) {
+	switch (status.message()) {
 		case compatibility.containsImage():
 			return warning.sourceDrive();
 		case compatibility.largeDrive():

@@ -3,16 +3,13 @@ import * as React from 'react';
 import { Flex, Txt, ModalProps } from 'rendition';
 import { Modal } from '../../styled-components';
 import { getSelectedDrives } from '../../models/selection-state';
-import i18n from '../../../../shared/i18n';
+import { useTranslation } from "react-i18next";
 
 const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
-	let warningSubtitle = 'Olet alustamassa valitsemasi tikut';
-	const warningCta = `Alustamisen jälkeen tieto ${
-		getSelectedDrives().length === 1 ? 'tikulta' : 'tikuilta'
-	} ei ole enää palautettavissa, kaikki tieto TUHOTAAN PYSYVÄSTI! Haluatko jatkaa?`;
-	if (getSelectedDrives().length === 1) {
-		warningSubtitle = 'Olet alustamassa valitsemaasi tikkua';
-	}
+	const { t } = useTranslation();
+	const warningSubtitle = t("gui.erasing-warning.subtitle", {count: getSelectedDrives().length});
+	const warningCta = t("gui.erasing-warning.cta", {count: getSelectedDrives().length});
+
 	return (
 		<Modal
 			position={'center'}
@@ -23,13 +20,13 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: i18n.t('common.action.cancel'),
+				children: t('common.action.cancel'),
 			}}
 			style={{
 				height: 'unset',
 			}}
 			width={'unset'}
-			action={'Kyllä, olen varma'}
+			action={t("gui.erasing-warning.confirm")}
 			primaryButtonProps={{
 				primary: false,
 				outline: true,
@@ -39,7 +36,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 				<Flex flexDirection="column">
 					<ExclamationTriangleSvg height="2em" fill="#e08704" />
 					<Txt fontSize="24px" color="#e08704">
-						VAROITUS!
+						{t("gui.erasing-warning.warning")}
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>

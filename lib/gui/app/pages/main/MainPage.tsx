@@ -57,6 +57,7 @@ import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
 import styled from 'styled-components';
 import i18n from '../../../../shared/i18n';
+import { LanguageSelector } from '../../components/language-selector/language-selector';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -389,6 +390,7 @@ export class MainPage extends React.Component<
 					position: 'fixed',
 				}}
 			>
+				<LanguageSelector />
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"

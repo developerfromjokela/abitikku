@@ -39,7 +39,7 @@ import * as osDialog from './os/dialog';
 import * as windowProgress from './os/window-progress';
 import MainPage from './pages/main/MainPage';
 import './css/main.css';
-import i18n from '../../shared/i18n';
+import i18n, { initPromise } from '../../shared/i18n';
 
 window.addEventListener(
 	'unhandledrejection',
@@ -348,6 +348,7 @@ window.addEventListener('beforeunload', async (event) => {
 
 export async function main() {
 	await ledsInit();
+	await initPromise;
 	ReactDOM.render(
 		React.createElement(MainPage),
 		document.getElementById('main'),

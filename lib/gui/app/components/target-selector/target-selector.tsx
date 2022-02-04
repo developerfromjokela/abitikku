@@ -126,6 +126,7 @@ export const TargetSelector = ({
 	const [showTargetSelectorModal, setShowTargetSelectorModal] = React.useState(
 		false,
 	);
+	const { t } = useTranslation();
 
 	React.useEffect(() => {
 		return observe(() => {
@@ -148,7 +149,7 @@ export const TargetSelector = ({
 						bottom: '25px',
 					}}
 				>
-					Varoitus: {warning.systemDrive()}
+					{t("gui.version-selector.betaWarning", {betaWarning: warning.systemDrive()})}
 				</Txt>
 			) : null}
 			<TargetSelectorButton

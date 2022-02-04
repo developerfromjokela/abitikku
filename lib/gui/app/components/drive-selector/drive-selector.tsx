@@ -157,6 +157,7 @@ interface DriveSelectorState {
 	missingDriversModal: { drive?: DriverlessDrive };
 	selectedList: DrivelistDrive[];
 	showSystemDrives: boolean;
+	tableColumns: Array<TableColumn<Drive>>;
 }
 
 function isSystemDrive(drive: Drive) {
@@ -168,7 +169,6 @@ class WrapDriveSelector extends React.Component<
 	DriveSelectorState
 > {
 	private unsubscribe: (() => void) | undefined;
-	tableColumns: Array<TableColumn<Drive>>;
 
 	constructor(props: DriveSelectorProps) {
 		super(props);
@@ -182,12 +182,21 @@ class WrapDriveSelector extends React.Component<
 			missingDriversModal: defaultMissingDriversModalState,
 			selectedList,
 			showSystemDrives: false,
+			tableColumns: this.genTableColumns(),
 		};
 
-		this.tableColumns = [
+		props.i18n.on("languageChanged", this.onLanguageChanged);
+	}
+
+	private onLanguageChanged() {
+		this.setState({tableColumns: this.genTableColumns()});
+	}
+
+	private genTableColumns(): Array<TableColumn<Drive>> {
+		return [
 			{
 				field: 'description',
-				label: props.t('gui.drive-selector.nameLabel'),
+				label: this.props.t('gui.drive-selector.nameLabel'),
 				render: (description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive)) {
 						const isLargeDrive = isDriveSizeLarge(drive);
@@ -211,7 +220,7 @@ class WrapDriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'size',
-				label: props.t('gui.drive-selector.sizeLabel'),
+				label: this.props.t('gui.drive-selector.sizeLabel'),
 				render: (_description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive) && drive.size !== null) {
 						return prettyBytes(drive.size);
@@ -221,7 +230,7 @@ class WrapDriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'link',
-				label: props.t('gui.drive-selector.linkLabel'),
+				label: this.props.t('gui.drive-selector.linkLabel'),
 				render: (_description: string, drive: Drive) => {
 					return (
 						<Txt>
@@ -321,19 +330,19 @@ class WrapDriveSelector extends React.Component<
 			// the column render fn expects a single Element
 			<>
 				{statuses.map((status) => {
-					const badgeShade = badgeShadeFromStatus(status.message);
-					const warningMessage = this.warningFromStatus(status.message, {
+					const badgeShade = badgeShadeFromStatus(status.message());
+					const warningMessage = this.warningFromStatus(status.message(), {
 						device: drive.device,
 						size: drive.size || 0,
 					});
 					return (
 						<Badge
-							key={status.message}
+							key={status.message()}
 							shade={badgeShade}
 							mr="8px"
 							tooltip={this.props.showWarnings ? warningMessage : ''}
 						>
-							{status.message}
+							{status.message()}
 						</Badge>
 					);
 				})}
@@ -375,6 +384,7 @@ class WrapDriveSelector extends React.Component<
 	}
 
 	componentWillUnmount() {
+		this.props.i18n.off("languageChanged", this.onLanguageChanged);
 		this.unsubscribe?.();
 	}
 
@@ -444,7 +454,7 @@ class WrapDriveSelector extends React.Component<
 							}}
 							checkedRowsNumber={selectedList.length}
 							multipleSelection={this.props.multipleSelection}
-							columns={this.tableColumns}
+							columns={this.state.tableColumns}
 							data={displayedDrives}
 							disabledRows={disabledDrives}
 							getRowClass={(row: Drive) =>

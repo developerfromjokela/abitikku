@@ -38,6 +38,7 @@ import { getVersions } from '../../../../shared/utils';
 import { showError } from '../../os/dialog';
 import { warning } from '../../../../shared/messages';
 import * as settings from '../../models/settings';
+import {  withTranslation, WithTranslation } from "react-i18next";
 
 const EditionTabs = (props: TabsProps) => (
 	<div className="tabframe">
@@ -71,8 +72,9 @@ const VersionsTable = styled((props: GenericTableProps<AbiVersion>) => (
 	}
 `;
 
+type IWithTranslation = WithTranslation & Omit<ModalProps, 'done' | 'cancel'>
 export interface VersionSelectorProps
-	extends Omit<ModalProps, 'done' | 'cancel'> {
+	extends IWithTranslation {
 	cancel: () => void;
 	done: (version?: Version) => void;
 	selectedVersion?: Version;
@@ -82,14 +84,14 @@ interface VersionSelectorState {
 	selectedVersion?: Version;
 	loading: boolean;
 	versionResult?: VersionResponse;
+	tableColumns: Array<TableColumn<Version>>;
 }
 
-export class VersionSelector extends React.Component<
+class WrapVersionSelector extends React.Component<
 	VersionSelectorProps,
 	VersionSelectorState
 > {
 	private unsubscribe: (() => void) | undefined;
-	tableColumns: Array<TableColumn<Version>>;
 
 	constructor(props: VersionSelectorProps) {
 		super(props);
@@ -99,12 +101,23 @@ export class VersionSelector extends React.Component<
 		this.state = {
 			selectedVersion,
 			loading: true,
+			tableColumns: this.genTableColumns(),
 		};
 
-		this.tableColumns = [
+		this.props.i18n.on("languageChanged", this.onLanguageChanged);
+	}
+
+	private onLanguageChanged() {
+		this.setState({
+			tableColumns: this.genTableColumns(),
+		})
+	}
+
+	private genTableColumns(): Array<TableColumn<Version>> {
+		return [
 			{
 				field: 'versionName',
-				label: 'Versio',
+				label: this.props.t("gui.version-selector.columnVersion"),
 				render: (versionName: string, row: Version) => {
 					return (
 						<Txt>
@@ -114,9 +127,9 @@ export class VersionSelector extends React.Component<
 									key={'Uusin'}
 									shade={18}
 									mr="10px"
-									tooltip={'Uusin ladattava versio'}
+									tooltip={this.props.t("gui.version-selector.columnLatestTooltip")}
 								>
-									Uusin
+									{this.props.t("gui.version-selector.columnLatest")}
 								</Badge>
 							)}
 							{row.beta && (
@@ -125,7 +138,7 @@ export class VersionSelector extends React.Component<
 									shade={5}
 									mr="10px"
 									tooltip={
-										'Betaversio, ei suositella ajamaan kouluympäristössä!'
+										this.props.t("gui.version-selector.columnBeta")
 									}
 								>
 									BETA
@@ -137,7 +150,7 @@ export class VersionSelector extends React.Component<
 			},
 			{
 				field: 'releaseDate',
-				label: 'Julkaistu',
+				label: this.props.t("gui.version-selector.columnReleaseDate"),
 				render: (value: string, row: Version) => {
 					if (row !== undefined) {
 						return <Txt>{new Date(row.releaseDate).toLocaleDateString()}</Txt>;
@@ -203,6 +216,7 @@ export class VersionSelector extends React.Component<
 	}
 
 	componentWillUnmount() {
+		this.props.i18n.off("languageChanged", this.onLanguageChanged);
 		this.unsubscribe?.();
 	}
 
@@ -214,7 +228,7 @@ export class VersionSelector extends React.Component<
 				titleElement={
 					<Flex alignItems="baseline">
 						<Txt fontSize={24} align="left">
-							Valitse versio
+							{this.props.t("gui.version-selector.selectVersion")}
 						</Txt>
 					</Flex>
 				}
@@ -232,11 +246,11 @@ export class VersionSelector extends React.Component<
 									bottom: '8px',
 								}}
 							>
-								Varoitus: {warning.betaVersion()}
+								{this.props.t("gui.version-selector.betaWarning", {betaWarning: warning.betaVersion()})}
 							</Txt>
 						) : null}
 						<EditionTabs flex={'grow'} key="versions-tab">
-							<Tab title={'Kokelastikku'}>
+							<Tab title={this.props.t("gui.version-selector.studentTab")}>
 								<VersionsTable
 									refFn={(t) => {
 										if (t !== null && selectedVersion !== undefined) {
@@ -244,7 +258,7 @@ export class VersionSelector extends React.Component<
 										}
 									}}
 									multipleSelection={false}
-									columns={this.tableColumns}
+									columns={this.state.tableColumns}
 									data={this.state.versionResult?.koe || []}
 									rowKey="versionName"
 									onCheck={(rows: AbiVersion[]) => {
@@ -270,7 +284,7 @@ export class VersionSelector extends React.Component<
 									}}
 								/>
 							</Tab>
-							<Tab title={'Koetilan palvelin'}>
+							<Tab title={this.props.t("gui.version-selector.serverTab")}>
 								<VersionsTable
 									refFn={(t) => {
 										if (t !== null && selectedVersion !== undefined) {
@@ -278,7 +292,7 @@ export class VersionSelector extends React.Component<
 										}
 									}}
 									multipleSelection={false}
-									columns={this.tableColumns}
+									columns={this.state.tableColumns}
 									data={this.state.versionResult?.ktp || []}
 									rowKey="versionName"
 									onCheck={(rows: AbiVersion[]) => {
@@ -321,3 +335,5 @@ export class VersionSelector extends React.Component<
 		);
 	}
 }
+
+export const VersionSelector = withTranslation()(WrapVersionSelector);

@@ -64,24 +64,6 @@ function formattedErrors(errors: FlashError[]) {
 		.join('\n');
 }
 
-const columns: Array<TableColumn<FlashError>> = [
-	{
-		field: 'description',
-		label: i18n.t('gui.flash-results.descriptionLabel'),
-	},
-	{
-		field: 'device',
-		label: i18n.t('gui.flash-results.deviceLabel'),
-	},
-	{
-		field: 'message',
-		label: i18n.t('gui.flash-results.messageLabel'),
-		render: (message: string, { code }: FlashError) => {
-			return message ?? code;
-		},
-	},
-];
-
 function getEffectiveSpeed(results: {
 	sourceMetadata: {
 		size: number;
@@ -124,6 +106,24 @@ export function FlashResults({
 		1,
 	);
 	const { t } = useTranslation();
+	const columns: Array<TableColumn<FlashError>> = [
+		{
+			field: 'description',
+			label: i18n.t('gui.flash-results.descriptionLabel'),
+		},
+		{
+			field: 'device',
+			label: i18n.t('gui.flash-results.deviceLabel'),
+		},
+		{
+			field: 'message',
+			label: i18n.t('gui.flash-results.messageLabel'),
+			render: (message: string, { code }: FlashError) => {
+				return message ?? code;
+			},
+		},
+	];
+
 	return (
 		<Flex flexDirection="column" {...props}>
 			<Flex alignItems="center" flexDirection="column">
