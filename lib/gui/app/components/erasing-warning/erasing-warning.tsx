@@ -23,7 +23,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: i18n.t("common.action.cancel"),
+				children: i18n.t('common.action.cancel'),
 			}}
 			style={{
 				height: 'unset',

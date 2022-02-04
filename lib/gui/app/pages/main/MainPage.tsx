@@ -56,7 +56,7 @@ import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
 import styled from 'styled-components';
-import i18n from "../../../../shared/i18n";
+import i18n from '../../../../shared/i18n';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -76,14 +76,16 @@ function getDrivesTitle() {
 	const drives = selectionState.getSelectedDrives();
 
 	if (drives.length === 1) {
-		return drives[0].description || i18n.t("gui.mainPage.driveTitle.noDescription");
+		return (
+			drives[0].description || i18n.t('gui.mainPage.driveTitle.noDescription')
+		);
 	}
 
 	if (drives.length === 0) {
-		return i18n.t("gui.mainPage.driveTitle.noTargets");
+		return i18n.t('gui.mainPage.driveTitle.noTargets');
 	}
 
-	return i18n.t("gui.mainPage.targets", { count: drives.length });
+	return i18n.t('gui.mainPage.targets', { count: drives.length });
 }
 
 function getImageBasename(image?: SourceMetadata) {

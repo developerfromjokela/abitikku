@@ -138,8 +138,7 @@ const InitProgress = styled(
 
 type IWithTranslation = WithTranslation & Omit<ModalProps, 'done' | 'cancel'>;
 
-export interface DriveSelectorProps
-	extends IWithTranslation {
+export interface DriveSelectorProps extends IWithTranslation {
 	write: boolean;
 	multipleSelection: boolean;
 	showWarnings?: boolean;
@@ -188,7 +187,7 @@ class WrapDriveSelector extends React.Component<
 		this.tableColumns = [
 			{
 				field: 'description',
-				label: props.t("gui.drive-selector.nameLabel"),
+				label: props.t('gui.drive-selector.nameLabel'),
 				render: (description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive)) {
 						const isLargeDrive = isDriveSizeLarge(drive);
@@ -212,7 +211,7 @@ class WrapDriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'size',
-				label: props.t("gui.drive-selector.sizeLabel"),
+				label: props.t('gui.drive-selector.sizeLabel'),
 				render: (_description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive) && drive.size !== null) {
 						return prettyBytes(drive.size);
@@ -222,7 +221,7 @@ class WrapDriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'link',
-				label: props.t("gui.drive-selector.linkLabel"),
+				label: props.t('gui.drive-selector.linkLabel'),
 				render: (_description: string, drive: Drive) => {
 					return (
 						<Txt>
@@ -406,7 +405,7 @@ class WrapDriveSelector extends React.Component<
 							color="#5b82a7"
 							style={{ fontWeight: 600 }}
 						>
-							{this.props.t("gui.drive-selector.devicesAmount", {
+							{this.props.t('gui.drive-selector.devicesAmount', {
 								devices: drives.length,
 							})}
 						</Txt>
@@ -415,7 +414,7 @@ class WrapDriveSelector extends React.Component<
 				titleDetails={<Txt fontSize={11}>{getDrives().length} found</Txt>}
 				cancel={cancel}
 				done={() => done(selectedList)}
-				action={this.props.t("gui.drive-selector.selectDevices", {
+				action={this.props.t('gui.drive-selector.selectDevices', {
 					selected: selectedList.length,
 				})}
 				primaryButtonProps={{
@@ -501,7 +500,7 @@ class WrapDriveSelector extends React.Component<
 								<Flex alignItems="center">
 									<ChevronDownSvg height="1em" fill="currentColor" />
 									<Txt ml={8}>
-										{this.props.t("gui.drive-selector.showHidden", {
+										{this.props.t('gui.drive-selector.showHidden', {
 											hidden: numberOfHiddenSystemDrives,
 										})}
 									</Txt>
@@ -512,7 +511,7 @@ class WrapDriveSelector extends React.Component<
 				)}
 				{this.props.showWarnings && hasSystemDrives ? (
 					<Alert className="system-drive-alert" style={{ width: '67%' }}>
-						{this.props.t("gui.drive-selector.systemDriveAlert")}
+						{this.props.t('gui.drive-selector.systemDriveAlert')}
 					</Alert>
 				) : null}
 
@@ -532,13 +531,13 @@ class WrapDriveSelector extends React.Component<
 								this.setState({ missingDriversModal: {} });
 							}
 						}}
-						action={this.props.t("gui.drive-selector.continue")}
+						action={this.props.t('gui.drive-selector.continue')}
 						cancelButtonProps={{
-							children: this.props.t("common.action.cancel"),
+							children: this.props.t('common.action.cancel'),
 						}}
 						children={
 							missingDriversModal.drive.linkMessage ||
-							this.props.t("gui.drive-selector.missingDriversMessage", {
+							this.props.t('gui.drive-selector.missingDriversMessage', {
 								link: missingDriversModal.drive.link,
 							})
 						}

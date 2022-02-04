@@ -123,7 +123,7 @@ function storeReducer(
 
 			if (!action.data) {
 				throw errors.createError({
-					title: i18n.t("gui.store.missingDrives"),
+					title: i18n.t('gui.store.missingDrives'),
 				});
 			}
 
@@ -131,7 +131,7 @@ function storeReducer(
 
 			if (!_.isArray(drives) || !_.every(drives, _.isObject)) {
 				throw errors.createError({
-					title: i18n.t("gui.store.invalidDrives", {
+					title: i18n.t('gui.store.invalidDrives', {
 						drives,
 					}),
 				});
@@ -359,13 +359,13 @@ function storeReducer(
 
 			if (!device) {
 				throw errors.createError({
-					title: i18n.t("gui.store.missingDrive"),
+					title: i18n.t('gui.store.missingDrive'),
 				});
 			}
 
 			if (!_.isString(device)) {
 				throw errors.createError({
-					title: i18n.t("gui.store.invalidDrive", {
+					title: i18n.t('gui.store.invalidDrive', {
 						drive: device,
 					}),
 				});
@@ -375,7 +375,7 @@ function storeReducer(
 
 			if (!selectedDrive) {
 				throw errors.createError({
-					title: i18n.t("gui.store.driveUnavailable", {
+					title: i18n.t('gui.store.driveUnavailable', {
 						drive: device,
 					}),
 				});
@@ -383,7 +383,7 @@ function storeReducer(
 
 			if (selectedDrive.isReadOnly) {
 				throw errors.createError({
-					title: i18n.t("gui.store.driveWriteProtected"),
+					title: i18n.t('gui.store.driveWriteProtected'),
 				});
 			}
 
@@ -393,7 +393,7 @@ function storeReducer(
 				!constraints.isDriveLargeEnough(selectedDrive, image.toJS())
 			) {
 				throw errors.createError({
-					title: i18n.t("gui.store.driveTooSmall"),
+					title: i18n.t('gui.store.driveTooSmall'),
 				});
 			}
 

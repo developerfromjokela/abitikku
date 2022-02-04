@@ -240,9 +240,8 @@ async function performWrite(
 			) {
 				reject(
 					errors.createUserError({
-						title: i18n.t("gui.image-writer.processEnded.title"),
-						description:
-							i18n.t("gui.image-writer.processEnded.description"),
+						title: i18n.t('gui.image-writer.processEnded.title'),
+						description: i18n.t('gui.image-writer.processEnded.description'),
 					}),
 				);
 				return;

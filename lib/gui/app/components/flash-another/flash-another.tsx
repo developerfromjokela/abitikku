@@ -27,7 +27,7 @@ export const FlashAnother = (props: FlashAnotherProps) => {
 	const { t } = useTranslation();
 	return (
 		<StepButton primary onClick={props.onClick}>
-			{t("gui.flash-another.title")}
+			{t('gui.flash-another.title')}
 		</StepButton>
 	);
 };

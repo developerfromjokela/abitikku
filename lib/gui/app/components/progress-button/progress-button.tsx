@@ -76,7 +76,10 @@ const colors = {
 } as const;
 
 const CancelButton = styled(({ type, onClick, ...props }) => {
-	const status = type === 'verifying' ? i18n.t("common.action.skip") : i18n.t("common.action.cancel");
+	const status =
+		type === 'verifying'
+			? i18n.t('common.action.skip')
+			: i18n.t('common.action.cancel');
 	return (
 		<Button plain onClick={() => onClick(status)} {...props}>
 			{status}
@@ -140,7 +143,8 @@ class WrapProgressButton extends React.PureComponent<ProgressButtonProps> {
 
 		image.name = image.description || image.name;
 		const imageLogo = image.logo || '';
-		const imageName = image.name || this.props.t("gui.progress-button.fallbackImageName");
+		const imageName =
+			image.name || this.props.t('gui.progress-button.fallbackImageName');
 		const imageSize = image.size;
 
 		return (
@@ -169,9 +173,7 @@ class WrapProgressButton extends React.PureComponent<ProgressButtonProps> {
 										key={'BETA'}
 										shade={5}
 										ml="5px"
-										tooltip={
-											t("gui.progress-button.betaVersion")
-										}
+										tooltip={t('gui.progress-button.betaVersion')}
 									>
 										BETA
 									</Badge>
@@ -205,7 +207,7 @@ class WrapProgressButton extends React.PureComponent<ProgressButtonProps> {
 						width: '100%',
 					}}
 				>
-					{this.props.t("gui.progress-button.flash")}
+					{this.props.t('gui.progress-button.flash')}
 				</StepButton>
 				{/*<Flex flexDirection={"row"} justifyContent={"center"} alignItems={"center"} m={2}>
 					<ExclamationTriangleSvg

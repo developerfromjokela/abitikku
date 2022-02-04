@@ -19,12 +19,12 @@ const DriveStatusWarningModal = ({
 	drivesWithWarnings: DriveWithWarnings[];
 }) => {
 	const { t } = useTranslation();
-	let warningSubtitle = t("gui.drive-status-warning.normalWarning.subtitle");
-	let warningCta = t("gui.drive-status-warning.normalWarning.cta");
+	let warningSubtitle = t('gui.drive-status-warning.normalWarning.subtitle');
+	let warningCta = t('gui.drive-status-warning.normalWarning.cta');
 
 	if (isSystem) {
-		warningSubtitle = t("gui.drive-status-warning.systemWarning.subtitle");
-		warningCta = t("gui.drive-status-warning.systemWarning.cta");
+		warningSubtitle = t('gui.drive-status-warning.systemWarning.subtitle');
+		warningCta = t('gui.drive-status-warning.systemWarning.cta');
 	}
 	return (
 		<Modal
@@ -35,9 +35,9 @@ const DriveStatusWarningModal = ({
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: t("gui.drive-status-warning.changeTarget"),
+				children: t('gui.drive-status-warning.changeTarget'),
 			}}
-			action={t("gui.drive-status-warning.confirmFlash")}
+			action={t('gui.drive-status-warning.confirmFlash')}
 			primaryButtonProps={{
 				primary: false,
 				outline: true,
@@ -52,7 +52,7 @@ const DriveStatusWarningModal = ({
 				<Flex flexDirection="column">
 					<ExclamationTriangleSvg height="2em" fill="#e08704" />
 					<Txt fontSize="24px" color="#e08704">
-						{t("gui.drive-status-warning.warningBig")}
+						{t('gui.drive-status-warning.warningBig')}
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>

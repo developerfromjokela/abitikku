@@ -215,7 +215,7 @@ function prepareDrive(drive: Drive) {
 			device: `${usbIdToString(
 				drive.deviceDescriptor.idVendor,
 			)}:${usbIdToString(drive.deviceDescriptor.idProduct)}`,
-			displayName: i18n.t("gui.app.missingDrivers"),
+			displayName: i18n.t('gui.app.missingDrivers'),
 			description,
 			mountpoints: [],
 			isReadOnly: false,
@@ -225,8 +225,8 @@ function prepareDrive(drive: Drive) {
 			size: null,
 			link:
 				'https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md',
-			linkCTA: i18n.t("gui.app.installMissingCta"),
-			linkTitle: i18n.t("gui.app.installMissingTitle"),
+			linkCTA: i18n.t('gui.app.installMissingCta'),
+			linkTitle: i18n.t('gui.app.installMissingTitle'),
 			linkMessage: outdent`
 				Would you like to download the necessary drivers from the Raspberry Pi Foundation?
 				This will open your browser.
@@ -321,9 +321,9 @@ window.addEventListener('beforeunload', async (event) => {
 
 	try {
 		const confirmed = await osDialog.showWarning({
-			confirmationLabel: i18n.t("gui.app.quitModal.confirm"),
-			rejectionLabel: i18n.t("gui.app.quitModal.cancel"),
-			title: i18n.t("gui.app.quitModal.title"),
+			confirmationLabel: i18n.t('gui.app.quitModal.confirm'),
+			rejectionLabel: i18n.t('gui.app.quitModal.cancel'),
+			title: i18n.t('gui.app.quitModal.title'),
 			description: messages.warning.exitWhileFlashing(),
 		});
 		if (confirmed) {

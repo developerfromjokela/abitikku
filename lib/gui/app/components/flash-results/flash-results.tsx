@@ -67,15 +67,15 @@ function formattedErrors(errors: FlashError[]) {
 const columns: Array<TableColumn<FlashError>> = [
 	{
 		field: 'description',
-		label: i18n.t("gui.flash-results.descriptionLabel"),
+		label: i18n.t('gui.flash-results.descriptionLabel'),
 	},
 	{
 		field: 'device',
-		label: i18n.t("gui.flash-results.deviceLabel"),
+		label: i18n.t('gui.flash-results.deviceLabel'),
 	},
 	{
 		field: 'message',
-		label: i18n.t("gui.flash-results.messageLabel"),
+		label: i18n.t('gui.flash-results.messageLabel'),
 		render: (message: string, { code }: FlashError) => {
 			return message ?? code;
 		},
@@ -143,7 +143,9 @@ export function FlashResults({
 					<Txt>{middleEllipsis(image, 24)}</Txt>
 				</Flex>
 				<Txt fontSize={24} mb="17px">
-					{allFailed ? t("gui.flash-results.flashFail") : t("gui.flash-results.flashSuccess")}
+					{allFailed
+						? t('gui.flash-results.flashFail')
+						: t('gui.flash-results.flashSuccess')}
 				</Txt>
 				{skip ? <Txt color="#7e8085">Varmistus ohitettiin</Txt> : null}
 			</Flex>
@@ -169,7 +171,7 @@ export function FlashResults({
 							{progress.failed(errors.length)}
 						</Txt>
 						<Link ml="10px" onClick={() => setShowErrorsInfo(true)}>
-							{t("gui.flash-results.details")}
+							{t('gui.flash-results.details')}
 						</Link>
 					</Flex>
 				) : null}
@@ -180,9 +182,9 @@ export function FlashResults({
 							fontWeight: 500,
 							textAlign: 'center',
 						}}
-						tooltip={t("gui.flash-results.speedCalculationExplanation")}
+						tooltip={t('gui.flash-results.speedCalculationExplanation')}
 					>
-						{t("gui.flash-results.effectiveSpeed", {effectiveSpeed})}
+						{t('gui.flash-results.effectiveSpeed', { effectiveSpeed })}
 					</Txt>
 				)}
 			</Flex>
@@ -192,11 +194,11 @@ export function FlashResults({
 					titleElement={
 						<Flex alignItems="baseline" mb={18}>
 							<Txt fontSize={24} align="left">
-								{t("gui.flash-results.failedTargets")}
+								{t('gui.flash-results.failedTargets')}
 							</Txt>
 						</Flex>
 					}
-					action={t("gui.flash-results.retryFailedTargets")}
+					action={t('gui.flash-results.retryFailedTargets')}
 					cancel={() => setShowErrorsInfo(false)}
 					done={() => {
 						setShowErrorsInfo(false);

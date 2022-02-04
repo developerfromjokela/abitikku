@@ -153,7 +153,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 							width: '100%',
 						}}
 					>
-						{t("gui.target-selector-button.selectTarget")}
+						{t('gui.target-selector-button.selectTarget')}
 					</SecondaryStepButton>
 				)}
 			</>
@@ -187,12 +187,12 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 		return (
 			<>
 				<StepNameButton plain tooltip={props.tooltip}>
-					{t("common.targets", { count: targets.length })}
+					{t('common.targets', { count: targets.length })}
 				</StepNameButton>
 				{targetsTemplate}
 				{!props.flashing && (
 					<ChangeButton plain onClick={props.reselectDrive} mt={14}>
-						{t("gui.target-selector-button.selectTarget")}
+						{t('gui.target-selector-button.selectTarget')}
 					</ChangeButton>
 				)}
 			</>
@@ -219,7 +219,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 
 				<Flex flexDirection="column" marginLeft={10}>
 					<DetailsText className={props.disabled ? 'disabled' : ''}>
-						{t("gui.target-selector-button.noTargetSelected")}
+						{t('gui.target-selector-button.noTargetSelected')}
 					</DetailsText>
 				</Flex>
 			</Flex>
@@ -232,7 +232,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 					width: '100%',
 				}}
 			>
-				{t("gui.target-selector-button.selectTarget")}
+				{t('gui.target-selector-button.selectTarget')}
 			</SecondaryStepButton>
 		</>
 	);

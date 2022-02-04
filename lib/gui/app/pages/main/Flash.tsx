@@ -39,7 +39,7 @@ import DriveStatusWarningModal from '../../components/drive-status-warning-modal
 import { VersionSelector } from '../../components/version-selector/version-selector';
 import { Version } from '../../models/version';
 import ErasingWarningModal from '../../components/erasing-warning/erasing-warning';
-import { WithTranslation, withTranslation } from "react-i18next";
+import { WithTranslation, withTranslation } from 'react-i18next';
 import i18n from '../../../../shared/i18n';
 
 const COMPLETED_PERCENTAGE = 100;
@@ -70,7 +70,7 @@ function notifySuccess(
 	devices: { successful: number; failed: number },
 ) {
 	notification.send(
-		i18n.t("gui.flash.success"),
+		i18n.t('gui.flash.success'),
 		messages.info.flashComplete(basename, drives, devices),
 		iconPath,
 	);
@@ -78,7 +78,7 @@ function notifySuccess(
 
 function notifyFailure(iconPath: string, basename: string, drives: any) {
 	notification.send(
-		i18n.t("gui.flash.failure"),
+		i18n.t('gui.flash.failure'),
 		messages.error.flashFailure(basename, drives),
 		iconPath,
 	);
@@ -317,7 +317,9 @@ class WrapFlashStep extends React.PureComponent<
 						disabled={this.props.shouldFlashStepBeDisabled}
 						versionCallback={() => this.selectVersion()}
 						cancel={imageWriter.cancel}
-						warning={WrapFlashStep.hasListWarnings(selection.getSelectedDrives())}
+						warning={WrapFlashStep.hasListWarnings(
+							selection.getSelectedDrives(),
+						)}
 						callback={() => this.showErasingWarning()}
 					/>
 
@@ -331,7 +333,11 @@ class WrapFlashStep extends React.PureComponent<
 							>
 								<Txt>{this.props.speed.toFixed(SPEED_PRECISION)} MB/s</Txt>
 								{!_.isNil(this.props.eta) && (
-									<Txt>{this.props.t("gui.flash.eta", {seconds: formatSeconds(this.props.eta)})}</Txt>
+									<Txt>
+										{this.props.t('gui.flash.eta', {
+											seconds: formatSeconds(this.props.eta),
+										})}
+									</Txt>
 								)}
 							</Flex>
 						)}
@@ -371,10 +377,10 @@ class WrapFlashStep extends React.PureComponent<
 				{this.state.errorMessage && (
 					<SmallModal
 						width={400}
-						titleElement={this.props.t("gui.flash.errorModal.title")}
+						titleElement={this.props.t('gui.flash.errorModal.title')}
 						cancel={() => this.handleFlashErrorResponse(false)}
 						done={() => this.handleFlashErrorResponse(true)}
-						action={this.props.t("gui.flash.errorModal.action")}
+						action={this.props.t('gui.flash.errorModal.action')}
 					>
 						<Txt>
 							{this.state.errorMessage.split('\n').map((message, key) => (
@@ -398,4 +404,4 @@ class WrapFlashStep extends React.PureComponent<
 	}
 }
 
-export const FlashStep = withTranslation()(WrapFlashStep)
+export const FlashStep = withTranslation()(WrapFlashStep);

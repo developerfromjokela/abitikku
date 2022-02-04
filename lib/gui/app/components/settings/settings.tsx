@@ -38,13 +38,13 @@ async function getSettingsList(): Promise<Setting[]> {
 	const list: Setting[] = [
 		{
 			name: 'betaVersions',
-			label: i18n.t("gui.settings.betaVersions"),
+			label: i18n.t('gui.settings.betaVersions'),
 		},
 	];
 	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
 		list.push({
 			name: 'updatesEnabled',
-			label: i18n.t("gui.settings.updatesEnabled"),
+			label: i18n.t('gui.settings.updatesEnabled'),
 		});
 	}
 	return list;
@@ -92,13 +92,13 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 		<Modal
 			titleElement={
 				<Txt fontSize={24} mb={24}>
-					{t("gui.settings.title")}
+					{t('gui.settings.title')}
 				</Txt>
 			}
 			done={() => toggleModal(false)}
 		>
 			<Flex flexDirection="column">
-				{t("gui.settings.about")}
+				{t('gui.settings.about')}
 				{settingsList.map((setting: Setting, i: number) => {
 					return (
 						<Flex key={setting.name} mb={14} margin={18}>

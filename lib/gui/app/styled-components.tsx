@@ -171,7 +171,7 @@ export const Modal = styled(({ style, children, ...props }) => {
 					marginRight: '20px',
 					border: 'solid 1px #2a506f',
 				},
-				children: i18n.t("common.action.cancel"),
+				children: i18n.t('common.action.cancel'),
 			}}
 			style={{
 				height: style?.height || '97vh',

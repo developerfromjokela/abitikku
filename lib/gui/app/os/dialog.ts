@@ -54,11 +54,11 @@ export async function selectImage(): Promise<string | undefined> {
 		properties: ['openFile', 'treatPackageAsDirectory'],
 		filters: [
 			{
-				name: i18n.t("gui.dialog.imageSelect.osImages"),
+				name: i18n.t('gui.dialog.imageSelect.osImages'),
 				extensions: SUPPORTED_EXTENSIONS,
 			},
 			{
-				name: i18n.t("gui.dialog.imageSelect.all"),
+				name: i18n.t('gui.dialog.imageSelect.all'),
 				extensions: ['*'],
 			},
 		],
@@ -80,8 +80,8 @@ export async function showWarning(options: {
 	description: string;
 }): Promise<boolean> {
 	_.defaults(options, {
-		confirmationLabel: i18n.t("common.action.ok"),
-		rejectionLabel: i18n.t("common.action.cancel"),
+		confirmationLabel: i18n.t('common.action.ok'),
+		rejectionLabel: i18n.t('common.action.cancel'),
 	});
 
 	const BUTTONS = [options.confirmationLabel, options.rejectionLabel];
@@ -99,7 +99,7 @@ export async function showWarning(options: {
 			buttons: BUTTONS,
 			defaultId: BUTTON_REJECTION_INDEX,
 			cancelId: BUTTON_REJECTION_INDEX,
-			title: i18n.t("gui.dialog.warningTitle"),
+			title: i18n.t('gui.dialog.warningTitle'),
 			message: options.title,
 			detail: options.description,
 		},

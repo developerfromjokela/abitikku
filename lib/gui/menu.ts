@@ -45,10 +45,10 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			role: 'editMenu',
 		},
 		{
-			label: i18n.t("gui.menu.mainLabel"),
+			label: i18n.t('gui.menu.mainLabel'),
 			submenu: [
 				{
-					label: i18n.t("gui.menu.toggleDevTools"),
+					label: i18n.t('gui.menu.toggleDevTools'),
 					accelerator:
 						process.platform === 'darwin' ? 'Command+Alt+I' : 'Control+Shift+I',
 					click: toggleDevTools,
@@ -68,7 +68,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					},
 				},
 				{
-					label: i18n.t("gui.menu.reportIssue"),
+					label: i18n.t('gui.menu.reportIssue'),
 					click() {
 						electron.shell.openExternal(
 							'https://github.com/Testausserveri/etcher/issues',
@@ -85,7 +85,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			submenu: [
 				{
 					role: 'about' as const,
-					label: i18n.t("gui.menu.about"),
+					label: i18n.t('gui.menu.about'),
 				},
 				{
 					type: 'separator' as const,

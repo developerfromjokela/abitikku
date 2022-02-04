@@ -35,36 +35,45 @@ export function fromFlashState({
 	position?: string;
 } {
 	if (type === undefined) {
-		return { status: i18n.t("gui.progress-status.starting") };
+		return { status: i18n.t('gui.progress-status.starting') };
 	} else if (type === 'decompressing') {
 		if (percentage == null) {
-			return { status: i18n.t("gui.progress-status.decompressing") };
+			return { status: i18n.t('gui.progress-status.decompressing') };
 		} else {
-			return { position: `${percentage}%`, status: i18n.t("gui.progress-status.decompressing") };
+			return {
+				position: `${percentage}%`,
+				status: i18n.t('gui.progress-status.decompressing'),
+			};
 		}
 	} else if (type === 'flashing') {
 		if (percentage != null) {
 			if (percentage < 100) {
-				return { position: `${percentage}%`, status: i18n.t("gui.progress-status.flashing") };
+				return {
+					position: `${percentage}%`,
+					status: i18n.t('gui.progress-status.flashing'),
+				};
 			} else {
-				return { status: i18n.t("gui.progress-status.finishing") };
+				return { status: i18n.t('gui.progress-status.finishing') };
 			}
 		} else {
 			return {
-				status: i18n.t("gui.progress-status.flashing"),
+				status: i18n.t('gui.progress-status.flashing'),
 				position: `${position ? prettyBytes(position) : ''}`,
 			};
 		}
 	} else if (type === 'verifying') {
 		if (percentage == null) {
-			return { status: i18n.t("gui.progress-status.validating") };
+			return { status: i18n.t('gui.progress-status.validating') };
 		} else if (percentage < 100) {
-			return { position: `${percentage}%`, status: i18n.t("gui.progress-status.validating") };
+			return {
+				position: `${percentage}%`,
+				status: i18n.t('gui.progress-status.validating'),
+			};
 		} else {
-			return { status: i18n.t("gui.progress-status.finishing") };
+			return { status: i18n.t('gui.progress-status.finishing') };
 		}
 	}
-	return { status: i18n.t("gui.progress-status.failed") };
+	return { status: i18n.t('gui.progress-status.failed') };
 }
 
 export function titleFromFlashState(
