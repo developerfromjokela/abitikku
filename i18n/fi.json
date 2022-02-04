@@ -145,8 +145,8 @@
         "noDescription": "Nimetön laite",
         "noTargets": "Ei kohteita"
       },
-      "targets_one": "{count} kohde",
-      "targets_other": "{count} kohdetta"
+      "targets_one": "{{count}} kohde",
+      "targets_other": "{{count}} kohdetta"
     },
     "flash": {
       "success": "Tikkusi on valmis!",

@@ -143,8 +143,8 @@
         "noDescription": "Namnlös enhet",
         "noTargets": "Inga mål hittades"
       },
-      "targets_one": "{count} mål",
-      "targets_other": "{count} mål"
+      "targets_one": "{{count}} mål",
+      "targets_other": "{{count}} mål"
     },
     "flash": {
       "success": "Skrivining klar!",
@@ -238,7 +238,7 @@
     },
     "version-selector": {
       "columnVersion": "Version",
-      "columnLatest": "Nyaste",
+      "columnLatest": "Nyast",
       "columnLatestTooltip": "Den nyaste tillgängliga versionen",
       "columnBeta": "Betaversion, rekommenderas ej att köras i skolmiljön!",
       "columnReleaseDate": "Publicerad",
