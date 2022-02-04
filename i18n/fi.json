@@ -1,7 +1,7 @@
 {
   "common": {
-    "targets_one": "{{count}} tikkuun",
-    "targets_other": "{{count}} tikkuihiin",
+    "targets_one": "{{count}} tikku",
+    "targets_other": "{{count}} tikkua",
     "action": {
       "cancel": "Peruuta",
       "ok": "Ok",
