@@ -23,6 +23,7 @@ import * as path from 'path';
 
 import * as packageJSON from '../../../../package.json';
 import * as errors from '../../../shared/errors';
+import i18n from '../../../shared/i18n';
 import * as permissions from '../../../shared/permissions';
 import { getAppPath } from '../../../shared/utils';
 import { SourceMetadata } from '../components/source-selector/source-selector';
@@ -239,9 +240,9 @@ async function performWrite(
 			) {
 				reject(
 					errors.createUserError({
-						title: 'Kirjoitusprosessi pysähtyi yllättäen',
+						title: i18n.t("gui.image-writer.processEnded.title"),
 						description:
-							'Yritä uudelleen, ja ota yhteyttä kehittäjiin jos ongelma toistuu',
+							i18n.t("gui.image-writer.processEnded.description"),
 					}),
 				);
 				return;

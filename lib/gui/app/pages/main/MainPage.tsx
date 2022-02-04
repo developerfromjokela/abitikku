@@ -56,6 +56,7 @@ import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
 import styled from 'styled-components';
+import i18n from "../../../../shared/i18n";
 
 export type Source =
 	| typeof sourceDestination.File
@@ -75,14 +76,14 @@ function getDrivesTitle() {
 	const drives = selectionState.getSelectedDrives();
 
 	if (drives.length === 1) {
-		return drives[0].description || 'Nimetön laite';
+		return drives[0].description || i18n.t("gui.mainPage.driveTitle.noDescription");
 	}
 
 	if (drives.length === 0) {
-		return 'Ei kohteita';
+		return i18n.t("gui.mainPage.driveTitle.noTargets");
 	}
 
-	return `${drives.length} kohde` + (drives.length === 1 ? '' : 'tta');
+	return i18n.t("gui.mainPage.targets", { count: drives.length });
 }
 
 function getImageBasename(image?: SourceMetadata) {

@@ -22,6 +22,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 import * as constraints from '../../../shared/drive-constraints';
 import * as errors from '../../../shared/errors';
+import i18n from '../../../shared/i18n';
 import * as utils from '../../../shared/utils';
 import * as settings from './settings';
 
@@ -122,7 +123,7 @@ function storeReducer(
 
 			if (!action.data) {
 				throw errors.createError({
-					title: 'Puuttuvia levyjä',
+					title: i18n.t("gui.store.missingDrives"),
 				});
 			}
 
@@ -130,7 +131,9 @@ function storeReducer(
 
 			if (!_.isArray(drives) || !_.every(drives, _.isObject)) {
 				throw errors.createError({
-					title: `Vääriä levyjä: ${drives}`,
+					title: i18n.t("gui.store.invalidDrives", {
+						drives,
+					}),
 				});
 			}
 
@@ -356,13 +359,15 @@ function storeReducer(
 
 			if (!device) {
 				throw errors.createError({
-					title: 'Puuttuva levy',
+					title: i18n.t("gui.store.missingDrive"),
 				});
 			}
 
 			if (!_.isString(device)) {
 				throw errors.createError({
-					title: `Väärä levy: ${device}`,
+					title: i18n.t("gui.store.invalidDrive", {
+						drive: device,
+					}),
 				});
 			}
 
@@ -370,13 +375,15 @@ function storeReducer(
 
 			if (!selectedDrive) {
 				throw errors.createError({
-					title: `Levy ei ole saatavilla: ${device}`,
+					title: i18n.t("gui.store.driveUnavailable", {
+						drive: device,
+					}),
 				});
 			}
 
 			if (selectedDrive.isReadOnly) {
 				throw errors.createError({
-					title: 'Laite on kirjoitussuojattu',
+					title: i18n.t("gui.store.driveWriteProtected"),
 				});
 			}
 
@@ -386,7 +393,7 @@ function storeReducer(
 				!constraints.isDriveLargeEnough(selectedDrive, image.toJS())
 			) {
 				throw errors.createError({
-					title: 'Levy ei ole tarpeeksi suuri',
+					title: i18n.t("gui.store.driveTooSmall"),
 				});
 			}
 

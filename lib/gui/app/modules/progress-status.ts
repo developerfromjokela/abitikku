@@ -15,6 +15,7 @@
  */
 
 import * as prettyBytes from 'pretty-bytes';
+import i18n from '../../../shared/i18n';
 
 export interface FlashState {
 	active: number;
@@ -34,36 +35,36 @@ export function fromFlashState({
 	position?: string;
 } {
 	if (type === undefined) {
-		return { status: 'Aloitellaan...' };
+		return { status: i18n.t("gui.progress-status.starting") };
 	} else if (type === 'decompressing') {
 		if (percentage == null) {
-			return { status: 'Puretaan...' };
+			return { status: i18n.t("gui.progress-status.decompressing") };
 		} else {
-			return { position: `${percentage}%`, status: 'Puretaan...' };
+			return { position: `${percentage}%`, status: i18n.t("gui.progress-status.decompressing") };
 		}
 	} else if (type === 'flashing') {
 		if (percentage != null) {
 			if (percentage < 100) {
-				return { position: `${percentage}%`, status: 'Kirjoitetaan...' };
+				return { position: `${percentage}%`, status: i18n.t("gui.progress-status.flashing") };
 			} else {
-				return { status: 'Viimeistellään...' };
+				return { status: i18n.t("gui.progress-status.finishing") };
 			}
 		} else {
 			return {
-				status: 'Kirjoitetaan...',
+				status: i18n.t("gui.progress-status.flashing"),
 				position: `${position ? prettyBytes(position) : ''}`,
 			};
 		}
 	} else if (type === 'verifying') {
 		if (percentage == null) {
-			return { status: 'Varmistetaan...' };
+			return { status: i18n.t("gui.progress-status.validating") };
 		} else if (percentage < 100) {
-			return { position: `${percentage}%`, status: 'Varmistetaan...' };
+			return { position: `${percentage}%`, status: i18n.t("gui.progress-status.validating") };
 		} else {
-			return { status: 'Viimeistellään...' };
+			return { status: i18n.t("gui.progress-status.finishing") };
 		}
 	}
-	return { status: 'Epäonnistui' };
+	return { status: i18n.t("gui.progress-status.failed") };
 }
 
 export function titleFromFlashState(

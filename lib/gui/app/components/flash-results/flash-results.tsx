@@ -15,7 +15,6 @@
  */
 
 import CircleSvg from '@fortawesome/fontawesome-free/svgs/solid/circle.svg';
-import outdent from 'outdent';
 import * as React from 'react';
 import { Flex, FlexProps, Link, TableColumn, Txt } from 'rendition';
 import styled from 'styled-components';
@@ -30,6 +29,8 @@ import * as selection from '../../models/selection-state';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
 import { Modal, Table } from '../../styled-components';
 import { SVGIcon } from '../svg-icon/svg-icon';
+import i18n from '../../../../shared/i18n';
+import { useTranslation } from 'react-i18next';
 
 const ErrorsTable = styled((props) => <Table<FlashError> {...props} />)`
 	&&& [data-display='table-head'],
@@ -66,15 +67,15 @@ function formattedErrors(errors: FlashError[]) {
 const columns: Array<TableColumn<FlashError>> = [
 	{
 		field: 'description',
-		label: 'Kohde',
+		label: i18n.t("gui.flash-results.descriptionLabel"),
 	},
 	{
 		field: 'device',
-		label: 'Sijainti',
+		label: i18n.t("gui.flash-results.deviceLabel"),
 	},
 	{
 		field: 'message',
-		label: 'Virhe',
+		label: i18n.t("gui.flash-results.messageLabel"),
 		render: (message: string, { code }: FlashError) => {
 			return message ?? code;
 		},
@@ -122,6 +123,7 @@ export function FlashResults({
 	const effectiveSpeed = bytesToMegabytes(getEffectiveSpeed(results)).toFixed(
 		1,
 	);
+	const { t } = useTranslation();
 	return (
 		<Flex flexDirection="column" {...props}>
 			<Flex alignItems="center" flexDirection="column">
@@ -141,7 +143,7 @@ export function FlashResults({
 					<Txt>{middleEllipsis(image, 24)}</Txt>
 				</Flex>
 				<Txt fontSize={24} mb="17px">
-					Asennus {allFailed ? 'epäonnistui' : 'valmistui'}!
+					{allFailed ? t("gui.flash-results.flashFail") : t("gui.flash-results.flashSuccess")}
 				</Txt>
 				{skip ? <Txt color="#7e8085">Varmistus ohitettiin</Txt> : null}
 			</Flex>
@@ -167,7 +169,7 @@ export function FlashResults({
 							{progress.failed(errors.length)}
 						</Txt>
 						<Link ml="10px" onClick={() => setShowErrorsInfo(true)}>
-							lisätietoja
+							{t("gui.flash-results.details")}
 						</Link>
 					</Flex>
 				) : null}
@@ -178,12 +180,9 @@ export function FlashResults({
 							fontWeight: 500,
 							textAlign: 'center',
 						}}
-						tooltip={outdent({ newline: ' ' })`
-							Nopeus lasketaan jakamalla levyn koko kirjoitusajalla.
-							Levykuvat ext-osioilla kirjoitetaan nopeammin, sillä pystymme ohittamaan turhia osia.
-						`}
+						tooltip={t("gui.flash-results.speedCalculationExplanation")}
 					>
-						Todellinen nopeus: {effectiveSpeed} MB/s
+						{t("gui.flash-results.effectiveSpeed", {effectiveSpeed})}
 					</Txt>
 				)}
 			</Flex>
@@ -193,11 +192,11 @@ export function FlashResults({
 					titleElement={
 						<Flex alignItems="baseline" mb={18}>
 							<Txt fontSize={24} align="left">
-								Epäonnistuneet kohteet
+								{t("gui.flash-results.failedTargets")}
 							</Txt>
 						</Flex>
 					}
-					action="Yritä uudelleen epäonnistuneilla kohteilla"
+					action={t("gui.flash-results.retryFailedTargets")}
 					cancel={() => setShowErrorsInfo(false)}
 					done={() => {
 						setShowErrorsInfo(false);

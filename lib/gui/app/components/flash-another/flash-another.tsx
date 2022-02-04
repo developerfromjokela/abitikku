@@ -15,6 +15,7 @@
  */
 
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { StepButton } from '../../styled-components';
 
@@ -23,9 +24,10 @@ export interface FlashAnotherProps {
 }
 
 export const FlashAnother = (props: FlashAnotherProps) => {
+	const { t } = useTranslation();
 	return (
 		<StepButton primary onClick={props.onClick}>
-			Asenna toinen
+			{t("gui.flash-another.title")}
 		</StepButton>
 	);
 };

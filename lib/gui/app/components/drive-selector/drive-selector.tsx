@@ -43,6 +43,7 @@ import {
 } from '../../styled-components';
 
 import { SourceMetadata } from '../source-selector/source-selector';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 interface UsbbootDrive extends sourceDestination.UsbbootDrive {
 	progress: number;
@@ -135,8 +136,10 @@ const InitProgress = styled(
 	}
 `;
 
+type IWithTranslation = WithTranslation & Omit<ModalProps, 'done' | 'cancel'>;
+
 export interface DriveSelectorProps
-	extends Omit<ModalProps, 'done' | 'cancel'> {
+	extends IWithTranslation {
 	write: boolean;
 	multipleSelection: boolean;
 	showWarnings?: boolean;
@@ -161,7 +164,7 @@ function isSystemDrive(drive: Drive) {
 	return isDrivelistDrive(drive) && drive.isSystem;
 }
 
-export class DriveSelector extends React.Component<
+class WrapDriveSelector extends React.Component<
 	DriveSelectorProps,
 	DriveSelectorState
 > {
@@ -185,7 +188,7 @@ export class DriveSelector extends React.Component<
 		this.tableColumns = [
 			{
 				field: 'description',
-				label: 'Nimi',
+				label: props.t("gui.drive-selector.nameLabel"),
 				render: (description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive)) {
 						const isLargeDrive = isDriveSizeLarge(drive);
@@ -209,7 +212,7 @@ export class DriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'size',
-				label: 'Koko',
+				label: props.t("gui.drive-selector.sizeLabel"),
 				render: (_description: string, drive: Drive) => {
 					if (isDrivelistDrive(drive) && drive.size !== null) {
 						return prettyBytes(drive.size);
@@ -219,7 +222,7 @@ export class DriveSelector extends React.Component<
 			{
 				field: 'description',
 				key: 'link',
-				label: 'Sijainti',
+				label: props.t("gui.drive-selector.linkLabel"),
 				render: (_description: string, drive: Drive) => {
 					return (
 						<Txt>
@@ -403,14 +406,18 @@ export class DriveSelector extends React.Component<
 							color="#5b82a7"
 							style={{ fontWeight: 600 }}
 						>
-							Laitteita: {drives.length}
+							{this.props.t("gui.drive-selector.devicesAmount", {
+								devices: drives.length,
+							})}
 						</Txt>
 					</Flex>
 				}
 				titleDetails={<Txt fontSize={11}>{getDrives().length} found</Txt>}
 				cancel={cancel}
 				done={() => done(selectedList)}
-				action={`Valitse (${selectedList.length})`}
+				action={this.props.t("gui.drive-selector.selectDevices", {
+					selected: selectedList.length,
+				})}
 				primaryButtonProps={{
 					primary: !showWarnings,
 					warning: showWarnings,
@@ -494,7 +501,9 @@ export class DriveSelector extends React.Component<
 								<Flex alignItems="center">
 									<ChevronDownSvg height="1em" fill="currentColor" />
 									<Txt ml={8}>
-										Näytä {numberOfHiddenSystemDrives} piilotettuja
+										{this.props.t("gui.drive-selector.showHidden", {
+											hidden: numberOfHiddenSystemDrives,
+										})}
 									</Txt>
 								</Flex>
 							</Link>
@@ -503,7 +512,7 @@ export class DriveSelector extends React.Component<
 				)}
 				{this.props.showWarnings && hasSystemDrives ? (
 					<Alert className="system-drive-alert" style={{ width: '67%' }}>
-						Järjestelmälevyn valitseminen voi johtaa tiedostojen menetykseen!
+						{this.props.t("gui.drive-selector.systemDriveAlert")}
 					</Alert>
 				) : null}
 
@@ -523,13 +532,15 @@ export class DriveSelector extends React.Component<
 								this.setState({ missingDriversModal: {} });
 							}
 						}}
-						action="Kyllä, jatka"
+						action={this.props.t("gui.drive-selector.continue")}
 						cancelButtonProps={{
-							children: 'Peruuta',
+							children: this.props.t("common.action.cancel"),
 						}}
 						children={
 							missingDriversModal.drive.linkMessage ||
-							`Abitikku avaa linkin ${missingDriversModal.drive.link} selaimeesi`
+							this.props.t("gui.drive-selector.missingDriversMessage", {
+								link: missingDriversModal.drive.link,
+							})
 						}
 					/>
 				)}
@@ -537,3 +548,5 @@ export class DriveSelector extends React.Component<
 		);
 	}
 }
+
+export const DriveSelector = withTranslation()(WrapDriveSelector);

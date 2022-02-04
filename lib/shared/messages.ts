@@ -15,20 +15,16 @@
  */
 
 import { Dictionary } from 'lodash';
-import { outdent } from 'outdent';
 import * as prettyBytes from 'pretty-bytes';
+import i18n from './i18n';
 
 export const progress: Dictionary<(quantity: number) => string> = {
 	successful: (quantity: number) => {
-		const plural = quantity === 1 ? 'de' : 'eet';
-		const plural2 = quantity === 1 ? 'u' : 'ee';
-		return `Onnistun${plural2}t koh${plural}`;
+		return i18n.t("shared.messages.progress.success", {count: quantity});
 	},
 
 	failed: (quantity: number) => {
-		const plural = quantity === 1 ? 'de' : 'eet';
-		const plural2 = quantity === 1 ? 'u' : 'ee';
-		return `Epäonnistun${plural2}t koh${plural}`;
+		return i18n.t("shared.messages.progress.failure", {count: quantity})
 	},
 };
 
@@ -40,170 +36,141 @@ export const info = {
 	) => {
 		const targets = [];
 		if (failed + successful === 1) {
-			targets.push(`kohteeseen ${drive.description} (${drive.displayName})`);
+			targets.push(i18n.t("shared.messages.info.singleTarget", {
+				description: drive.description,
+				displayName: drive.displayName
+			}));
 		} else {
 			if (successful) {
-				const plural = successful === 1 ? 'teeseen' : 'eisiin';
-				targets.push(`${successful} koh${plural}`);
+				targets.push(i18n.t("shared.messages.info.successfulTargets", {
+					count: successful
+				}));
 			}
 			if (failed) {
-				const plural = failed === 1 ? 'teeseen' : 'teisiin';
-				targets.push(`ja ${failed} koh${plural} kirjoittaminen epäonnistui`);
+				targets.push(i18n.t("shared.messages.info.failedTargets", {
+					count: successful
+				}));
 			}
 		}
-		return `${imageBasename} onnistuneesti kirjoitettiin ${targets.join(' ')}`;
+		return i18n.t("shared.messages.info.header", {
+			imageBasename,
+			targets: targets.join(" "),
+		});
 	},
 };
 
 export const compatibility = {
 	sizeNotRecommended: () => {
-		return 'Ei suositella';
+		return i18n.t("shared.messages.compatibility.sizeNotRecommended");
 	},
 
 	tooSmall: () => {
-		return 'Liian pieni';
+		return i18n.t("shared.messages.compatibility.tooSmall");
 	},
 
 	locked: () => {
-		return 'Lukittu';
+		return i18n.t("shared.messages.compatibility.locked");
 	},
 
 	system: () => {
-		return 'Järjestelmälevy';
+		return i18n.t("shared.messages.compatibility.system");
 	},
 
 	containsImage: () => {
-		return 'Lähdelevy';
+		return i18n.t("shared.messages.compatibility.containsImage");
 	},
 
 	// The drive is large and therefore likely not a medium you want to write to.
 	largeDrive: () => {
-		return 'Suuri levy';
+		return i18n.t("shared.messages.compatibility.largeDrive");
 	},
 } as const;
 
 export const warning = {
 	tooSmall: (source: { size: number }, target: { size: number }) => {
-		return outdent({ newline: ' ' })`
-			Lähde on ${prettyBytes(source.size - target.size)}
-			suurempi kuin levy
-		`;
+		return i18n.t("shared.messages.warning.tooSmall", {
+			bytes: prettyBytes(source.size - target.size),
+		});
 	},
 
 	exitWhileFlashing: () => {
-		return [
-			'Kirjoitus tikulle on meneillään.',
-			'Abitikun sulkeminen voi johtaa tikun korruptoitumiseen tai/ja hajoamiseen.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.warning.exitWhileFlashing").join(' ');
 	},
 
 	looksLikeWindowsImage: () => {
-		return [
-			'Vaikuttaa siltä, että olet kirjoittamassa Windows-levykuvaa\n\n',
-			'Toisin kuin muut levyt, Windowsin levykuvat tarvitsevat erityistä käsittelyä, jotta niistä saataisiin käynnistettäviä.',
-			'Suosittelemme seuraavia työkaluja, kehitetty tähän tektävään:',
-			'<a href="https://rufus.akeo.ie">Rufus</a> (Windows),',
-			'<a href="https://github.com/slacka/WoeUSB">WoeUSB</a> (Linux),',
-			'tai Boot Camp Assistant (macOS).',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.warning.looksLikeWindowsImage").join(' ');
 	},
 
 	missingPartitionTable: () => {
-		return [
-			'Vaikuttaa siltä, että laite ei ole käynnistettävä\n\n',
-			'Laitteesta vaikuttaa puuttuvan osiotaulu,',
-			'ja voi olla tunnistamaton käynnistyksessä.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.warning.missingPartitionTable").join(' ');
 	},
 
 	driveMissingPartitionTable: () => {
-		return outdent({ newline: ' ' })`
-			Tämä levy ei vaikuta olevan käynnistettävä.
-			Laitteesta vaikuttaa puuttuvan osiotaulu,
-			ja voi olla tunnistamaton käynnistyksessä.
-		`;
+		return i18n.t("shared.messages.warning.driveMissingPartitionTable");
 	},
 
 	largeDriveSize: () => {
-		return 'Tämä on suuri laite! Varmista ettei levyllä ole mitään tarkeää!';
+		return i18n.t("shared.messages.warning.largeDriveSize");
 	},
 
 	systemDrive: () => {
-		return 'Järjestelmälevyn valitseminen voi johtaa tiedostojen menetykseen!';
+		return i18n.t("shared.messages.warning.systemDrive");
 	},
 
 	betaVersion: () => {
-		return 'Betaversiota ei suositella käyttöön kouluympäristössä!';
+		return i18n.t("shared.messages.warning.betaVersion");
 	},
 
 	sourceDrive: () => {
-		return 'Sisältää levykuvan jota yrität kirjoittaa';
+		return i18n.t("shared.messages.warning.sourceDrive");
 	},
 };
 
 export const error = {
 	notEnoughSpaceInDrive: () => {
-		return [
-			'Ei riittävästi tallennustilaa tikulla',
-			'Liitä isompi tikku ja yritä uudelleen',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.error.notEnoughSpaceInDrive").join(' ');
 	},
 
 	genericFlashError: (err: Error) => {
-		return `Jokin meni pieleen. Jos kyseessä on puristettu levykuva, tarkista ettei se ole korruptoitunut.\n${err.message}`;
+		return i18n.t("shared.messages.error.genericFlashError", {
+			message: err.message
+		});
 	},
 
 	validation: () => {
-		return [
-			'Levykuva kirjoitettiin onnistuneesti, mutta Abitikku havaitsi',
-			'korruptointiongemia tarkistaessa tikkua.',
-			'\n\nHarkitse toisen tikun käyttöä.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.error.validation").join(' ');
 	},
 
 	openSource: (sourceName: string, errorMessage: string) => {
-		return outdent`
-			Jokin meni pieleen avattaessa ${sourceName}
-
-			Virhe: ${errorMessage}
-		`;
+		return i18n.t("shared.messages.error.openSource", {
+			sourceName,
+			errorMessage,
+		});
 	},
 
 	flashFailure: (
 		imageBasename: string,
 		drives: Array<{ description: string; displayName: string }>,
 	) => {
-		const target =
-			drives.length === 1
-				? `${drives[0].description} (${drives[0].displayName})`
-				: `${drives.length} kohdetta`;
-		return `Jokin meni pieleen kirjoittaessa ${imageBasename} kohteeseen ${target}.`;
+		return i18n.t("shared.messages.error.flashFailure", {
+			imageBasename,
+			targets: drives,
+		});
 	},
 
 	driveUnplugged: () => {
-		return [
-			'Abitikku ei saa yhteyttä tikkuun.',
-			'Irroititko tikun vahingossa irti?',
-			'\n\nJoskus virhe johtuu huonosta lukijasta, joka ei tarjoa vakaata pääsyä levylle.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.error.driveUnplugged").join(' ');
 	},
 
 	inputOutput: () => {
-		return [
-			'Abitikku ei pysty kirjoittamaan tikulle.',
-			'Tämä virhe johtuu usein viallisesta lukijasta tai portista.',
-			'\n\nYritä uudelleen toisella tikulla, lukijalla ja/tai portilla.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.error.inputOutput").join(' ');
 	},
 
 	childWriterDied: () => {
-		return [
-			'Kirjoitusprosessi pysähtyi yllättäen.',
-			'Yritä uudelleen, ja ota yhteyttä kehitystiimiin jos ongelma jatkuu.',
-		].join(' ');
+		return i18n.t<string[]>("shared.messages.error.childWriterDied").join(' ');
 	},
 
 	unsupportedProtocol: () => {
-		return 'Vain http:// ja https:// URL-osoitteet ovat tuettuja.';
+		return i18n.t("shared.messages.error.unsupportedProtocol");
 	},
 };

@@ -16,6 +16,7 @@
 
 import * as electron from 'electron';
 import { displayName } from '../../package.json';
+import i18n from '../shared/i18n';
 
 /**
  * @summary Builds a native application menu for a given window
@@ -44,10 +45,10 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			role: 'editMenu',
 		},
 		{
-			label: 'Näkymä',
+			label: i18n.t("gui.menu.mainLabel"),
 			submenu: [
 				{
-					label: 'Kytke kehittäjätila',
+					label: i18n.t("gui.menu.toggleDevTools"),
 					accelerator:
 						process.platform === 'darwin' ? 'Command+Alt+I' : 'Control+Shift+I',
 					click: toggleDevTools,
@@ -67,7 +68,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					},
 				},
 				{
-					label: 'Ilmoita ongelmasta',
+					label: i18n.t("gui.menu.reportIssue"),
 					click() {
 						electron.shell.openExternal(
 							'https://github.com/Testausserveri/etcher/issues',
@@ -84,7 +85,7 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			submenu: [
 				{
 					role: 'about' as const,
-					label: 'Tietoja Abitikusta',
+					label: i18n.t("gui.menu.about"),
 				},
 				{
 					type: 'separator' as const,

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Flex, Txt, ModalProps } from 'rendition';
 import { Modal } from '../../styled-components';
 import { getSelectedDrives } from '../../models/selection-state';
+import i18n from '../../../../shared/i18n';
 
 const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 	let warningSubtitle = 'Olet alustamassa valitsemasi tikut';
@@ -22,7 +23,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: 'Peruuta',
+				children: i18n.t("common.action.cancel"),
 			}}
 			style={{
 				height: 'unset',

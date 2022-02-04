@@ -35,6 +35,7 @@ import { TargetSelectorButton } from './target-selector-button';
 
 import TgtSvg from '../../../assets/tgt.svg';
 import { warning } from '../../../../shared/messages';
+import { useTranslation } from 'react-i18next';
 
 export const getDriveListLabel = () => {
 	return getSelectedDrives()
@@ -53,20 +54,22 @@ const getDriveSelectionStateSlice = () => ({
 export const TargetSelectorModal = (
 	props: Omit<
 		DriveSelectorProps,
-		'titleLabel' | 'emptyListLabel' | 'multipleSelection' | 'emptyListIcon'
+		'titleLabel' | 'emptyListLabel' | 'multipleSelection' | 'emptyListIcon' | 't' | 'i18n' | 'tReady'
 	>,
-) => (
-	<DriveSelector
+) => {
+	const { t } = useTranslation();
+
+	return <DriveSelector
 		multipleSelection={true}
-		titleLabel="Valitse kohde"
-		emptyListLabel="Liitä tikku"
+		titleLabel={t("gui.target-selector.title")}
+		emptyListLabel={t("gui.target-selector.emptyListLabel")}
 		emptyListIcon={<TgtSvg width="40px" />}
 		showWarnings={true}
 		selectedList={getSelectedDrives()}
 		updateSelectedList={getSelectedDrives}
 		{...props}
-	/>
-);
+/>
+};
 
 export const selectAllTargets = (
 	modalTargets: scanner.adapters.DrivelistDrive[],

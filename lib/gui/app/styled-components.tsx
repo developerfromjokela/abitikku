@@ -29,6 +29,7 @@ import {
 	Txt,
 } from 'rendition';
 import styled, { css } from 'styled-components';
+import i18n from '../../shared/i18n';
 
 import { colors, theme } from './theme';
 
@@ -170,7 +171,7 @@ export const Modal = styled(({ style, children, ...props }) => {
 					marginRight: '20px',
 					border: 'solid 1px #2a506f',
 				},
-				children: 'Peruuta',
+				children: i18n.t("common.action.cancel"),
 			}}
 			style={{
 				height: style?.height || '97vh',

@@ -20,6 +20,7 @@ import * as _ from 'lodash';
 import * as errors from '../../../shared/errors';
 import * as settings from '../../../gui/app/models/settings';
 import { SUPPORTED_EXTENSIONS } from '../../../shared/supported-formats';
+import i18n from '../../../shared/i18n';
 
 async function mountSourceDrive() {
 	// sourceDrivePath is the name of the link in /dev/disk/by-path
@@ -53,11 +54,11 @@ export async function selectImage(): Promise<string | undefined> {
 		properties: ['openFile', 'treatPackageAsDirectory'],
 		filters: [
 			{
-				name: 'Järjestelmälevykuvat',
+				name: i18n.t("gui.dialog.imageSelect.osImages"),
 				extensions: SUPPORTED_EXTENSIONS,
 			},
 			{
-				name: 'Kaikki',
+				name: i18n.t("gui.dialog.imageSelect.all"),
 				extensions: ['*'],
 			},
 		],
@@ -79,8 +80,8 @@ export async function showWarning(options: {
 	description: string;
 }): Promise<boolean> {
 	_.defaults(options, {
-		confirmationLabel: 'OK',
-		rejectionLabel: 'Peruuta',
+		confirmationLabel: i18n.t("common.action.ok"),
+		rejectionLabel: i18n.t("common.action.cancel"),
 	});
 
 	const BUTTONS = [options.confirmationLabel, options.rejectionLabel];
@@ -98,7 +99,7 @@ export async function showWarning(options: {
 			buttons: BUTTONS,
 			defaultId: BUTTON_REJECTION_INDEX,
 			cancelId: BUTTON_REJECTION_INDEX,
-			title: 'Huomio!',
+			title: i18n.t("gui.dialog.warningTitle"),
 			message: options.title,
 			detail: options.description,
 		},

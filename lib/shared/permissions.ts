@@ -25,6 +25,7 @@ import { promisify } from 'util';
 
 import { sudo as catalinaSudo } from './catalina-sudo/sudo';
 import * as errors from './errors';
+import i18n from './i18n';
 
 const execAsync = promisify(childProcess.exec);
 const execFileAsync = promisify(childProcess.execFile);
@@ -198,22 +199,22 @@ export async function elevateCommand(
 				console.log('error', error);
 				if (_.includes(error.message, 'is not in the sudoers file')) {
 					throw errors.createUserError({
-						title: 'Käyttäjällä ei ole tarvittavia oikeuksia',
+						title: i18n.t("shared.permissions.sudoError.title"),
 						description:
-							'Sovellus vaatii sudo-oikeuksia levyjen kirjoittamiseen',
+							i18n.t("shared.permissions.sudoError.description"),
 					});
 				} else if (_.startsWith(error.message, 'Command failed:')) {
 					throw errors.createUserError({
-						title: 'Korotettu prosessi kuoli yllättäen',
-						description: `Prosessin virhekoodi on ${error.code}`,
+						title: i18n.t("shared.permissions.processDiedError.title"),
+						description: i18n.t("shared.permissions.processDiedError.description", {code: error.code}),
 					});
 				} else if (error.message === 'User did not grant permission.') {
 					return { cancelled: true };
 				} else if (error.message === 'No polkit authentication agent found.') {
 					throw errors.createUserError({
-						title: 'Polkit tunnistautumisagenttia ei löytynyt',
+						title: i18n.t("shared.permissions.polkitError.title"),
 						description:
-							'Asenna polit autentikaatioagentti työpöytäympäristöösi jatkaakesi asennusta',
+							i18n.t("shared.permissions.polkitError.description"),
 					});
 				}
 				throw error;
