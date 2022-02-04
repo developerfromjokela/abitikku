@@ -239,6 +239,7 @@
     "version-selector": {
       "columnVersion": "Version",
       "columnLatest": "Latest",
+      "columnLatestTooltip": "The latest available release",
       "columnBeta": "Beta version, not recommended to be ran in the school environment!",
       "columnReleaseDate": "Release date",
       "selectVersion": "Select version",

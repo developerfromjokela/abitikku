@@ -241,7 +241,8 @@
     "version-selector": {
       "columnVersion": "Versio",
       "columnLatest": "Uusin",
-      "columnBeta": "Betaversion, rekommenderas ej att köras i skolmiljön!",
+      "columnLatestTooltip": "Uusin ladattava versio",
+      "columnBeta": "Betaversio, ei suositella ajamaan kouluympäristössä!",
       "columnReleaseDate": "Julkaistu",
       "selectVersion": "Valitse versio",
       "betaWarning": "Varoitus: {{betaWarning}}",
