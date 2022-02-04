@@ -142,7 +142,9 @@
       "driveTitle": {
         "noDescription": "Namnlös enhet",
         "noTargets": "Inga mål hittades"
-      }
+      },
+      "targets_one": "{count} mål",
+      "targets_other": "{count} mål"
     },
     "flash": {
       "success": "Skrivining klar!",
