@@ -143,7 +143,7 @@
         "noDescription": "Untitled Device",
         "noTargets": "No targets found"
       },
-      "targets_one": "{{count} target",
+      "targets_one": "{{count}} target",
       "targets_other": "{{count}} targets"
     },
     "flash": {
