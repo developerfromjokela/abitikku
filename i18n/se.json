@@ -262,7 +262,7 @@
       "subtitle_other": "Du håller på att formatera minnestickorna du valt",
       "stick_one": "minnestickan",
       "stick_other": "minnestickorna",
-      "cta": "Efter formateringen är datan på $t(gui.erasing-warning.stick, {\"count\": {{count}} }) inte återställbar, all data FÖRSTÖRS PERMANENT! Vill du fortsätta?",
+      "cta": "Efter formateringen kan datan på $t(gui.erasing-warning.stick, {\"count\": {{count}} }) inte återställas, all data FÖRSTÖRS PERMANENT! Vill du fortsätta?",
       "confirm": "Ja, jag är säker",
       "warning": "VARNING!"
     }
