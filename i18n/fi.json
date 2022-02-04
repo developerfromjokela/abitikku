@@ -265,7 +265,8 @@
       "stick_one": "tikulta",
       "stick_other": "tikuilta",
       "cta": "Alustamisen jälkeen tieto $t(gui.erasing-warning.stick, {\"count\": {{count}} }) ei ole enää palautettavissa, kaikki tieto TUHOTAAN PYSYVÄSTI! Haluatko jatkaa?",
-      "confirm": "Kyllä, olen varma"
+      "confirm": "Kyllä, olen varma",
+      "warning": "VAROITUS!"
     }
   }
 }

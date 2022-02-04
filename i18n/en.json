@@ -263,7 +263,8 @@
       "stick_one": "drive",
       "stick_other": "drives",
       "cta": "After formatting the data on the $t(gui.erasing-warning.stick, {\"count\": {{count}} }) will not be recoverable, all data will be PERMANENTLY DESTROYED! Do you want to continue?",
-      "confirm": "Yes, I am sure"
+      "confirm": "Yes, I am sure",
+      "warning": "WARNING!"
     }
   }
 }

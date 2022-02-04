@@ -263,7 +263,8 @@
       "stick_one": "minnestickan",
       "stick_other": "minnestickorna",
       "cta": "Efter formateringen är datan på $t(gui.erasing-warning.stick, {\"count\": {{count}} }) inte återställbar, all data FÖRSTÖRS PERMANENT! Vill du fortsätta?",
-      "confirm": "Ja, jag är säker"
+      "confirm": "Ja, jag är säker",
+      "warning": "VARNING!"
     }
   }
 }
