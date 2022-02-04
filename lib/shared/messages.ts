@@ -20,11 +20,11 @@ import i18n from './i18n';
 
 export const progress: Dictionary<(quantity: number) => string> = {
 	successful: (quantity: number) => {
-		return i18n.t("shared.messages.progress.success", {count: quantity});
+		return i18n.t('shared.messages.progress.success', { count: quantity });
 	},
 
 	failed: (quantity: number) => {
-		return i18n.t("shared.messages.progress.failure", {count: quantity})
+		return i18n.t('shared.messages.progress.failure', { count: quantity });
 	},
 };
 
@@ -36,113 +36,127 @@ export const info = {
 	) => {
 		const targets = [];
 		if (failed + successful === 1) {
-			targets.push(i18n.t("shared.messages.info.singleTarget", {
-				description: drive.description,
-				displayName: drive.displayName
-			}));
+			targets.push(
+				i18n.t('shared.messages.info.singleTarget', {
+					description: drive.description,
+					displayName: drive.displayName,
+				}),
+			);
 		} else {
 			if (successful) {
-				targets.push(i18n.t("shared.messages.info.successfulTargets", {
-					count: successful
-				}));
+				targets.push(
+					i18n.t('shared.messages.info.successfulTargets', {
+						count: successful,
+					}),
+				);
 			}
 			if (failed) {
-				targets.push(i18n.t("shared.messages.info.failedTargets", {
-					count: successful
-				}));
+				targets.push(
+					i18n.t('shared.messages.info.failedTargets', {
+						count: successful,
+					}),
+				);
 			}
 		}
-		return i18n.t("shared.messages.info.header", {
+		return i18n.t('shared.messages.info.header', {
 			imageBasename,
-			targets: targets.join(" "),
+			targets: targets.join(' '),
 		});
 	},
 };
 
 export const compatibility = {
 	sizeNotRecommended: () => {
-		return i18n.t("shared.messages.compatibility.sizeNotRecommended");
+		return i18n.t('shared.messages.compatibility.sizeNotRecommended');
 	},
 
 	tooSmall: () => {
-		return i18n.t("shared.messages.compatibility.tooSmall");
+		return i18n.t('shared.messages.compatibility.tooSmall');
 	},
 
 	locked: () => {
-		return i18n.t("shared.messages.compatibility.locked");
+		return i18n.t('shared.messages.compatibility.locked');
 	},
 
 	system: () => {
-		return i18n.t("shared.messages.compatibility.system");
+		return i18n.t('shared.messages.compatibility.system');
 	},
 
 	containsImage: () => {
-		return i18n.t("shared.messages.compatibility.containsImage");
+		return i18n.t('shared.messages.compatibility.containsImage');
 	},
 
 	// The drive is large and therefore likely not a medium you want to write to.
 	largeDrive: () => {
-		return i18n.t("shared.messages.compatibility.largeDrive");
+		return i18n.t('shared.messages.compatibility.largeDrive');
 	},
 } as const;
 
 export const warning = {
 	tooSmall: (source: { size: number }, target: { size: number }) => {
-		return i18n.t("shared.messages.warning.tooSmall", {
+		return i18n.t('shared.messages.warning.tooSmall', {
 			bytes: prettyBytes(source.size - target.size),
 		});
 	},
 
 	exitWhileFlashing: () => {
-		return i18n.t<string[]>("shared.messages.warning.exitWhileFlashing").join(' ');
+		return i18n
+			.t<string[]>('shared.messages.warning.exitWhileFlashing')
+			.join(' ');
 	},
 
 	looksLikeWindowsImage: () => {
-		return i18n.t<string[]>("shared.messages.warning.looksLikeWindowsImage").join(' ');
+		return i18n
+			.t<string[]>('shared.messages.warning.looksLikeWindowsImage')
+			.join(' ');
 	},
 
 	missingPartitionTable: () => {
-		return i18n.t<string[]>("shared.messages.warning.missingPartitionTable").join(' ');
+		return i18n
+			.t<string[]>('shared.messages.warning.missingPartitionTable')
+			.join(' ');
 	},
 
 	driveMissingPartitionTable: () => {
-		return i18n.t("shared.messages.warning.driveMissingPartitionTable");
+		return i18n.t('shared.messages.warning.driveMissingPartitionTable');
 	},
 
 	largeDriveSize: () => {
-		return i18n.t("shared.messages.warning.largeDriveSize");
+		return i18n.t('shared.messages.warning.largeDriveSize');
 	},
 
 	systemDrive: () => {
-		return i18n.t("shared.messages.warning.systemDrive");
+		return i18n.t('shared.messages.warning.systemDrive');
 	},
 
 	betaVersion: () => {
-		return i18n.t("shared.messages.warning.betaVersion");
+		return i18n.t('shared.messages.warning.betaVersion');
 	},
 
 	sourceDrive: () => {
-		return i18n.t("shared.messages.warning.sourceDrive");
+		return i18n.t('shared.messages.warning.sourceDrive');
 	},
 };
 
 export const error = {
 	notEnoughSpaceInDrive: () => {
-		return i18n.t<string[]>("shared.messages.error.notEnoughSpaceInDrive").join(' ');
+		return i18n
+			.t<string[]>('shared.messages.error.notEnoughSpaceInDrive')
+			.join(' ');
 	},
 
 	genericFlashError: (err: Error) => {
-		return i18n.t("shared.messages.error.genericFlashError", {
-			message: err.message
+		return i18n.t('shared.messages.error.genericFlashError', {
+			message: err.message,
 		});
 	},
 
 	validation: () => {
-		return i18n.t<string[]>("shared.messages.error.validation").join(' ');
+		return i18n.t<string[]>('shared.messages.error.validation').join(' ');
 	},
 
 	openSource: (sourceName: string, errorMessage: string) => {
-		return i18n.t("shared.messages.error.openSource", {
+		return i18n.t('shared.messages.error.openSource', {
 			sourceName,
 			errorMessage,
 		});
@@ -152,25 +166,25 @@ export const error = {
 		imageBasename: string,
 		drives: Array<{ description: string; displayName: string }>,
 	) => {
-		return i18n.t("shared.messages.error.flashFailure", {
+		return i18n.t('shared.messages.error.flashFailure', {
 			imageBasename,
 			targets: drives,
 		});
 	},
 
 	driveUnplugged: () => {
-		return i18n.t<string[]>("shared.messages.error.driveUnplugged").join(' ');
+		return i18n.t<string[]>('shared.messages.error.driveUnplugged').join(' ');
 	},
 
 	inputOutput: () => {
-		return i18n.t<string[]>("shared.messages.error.inputOutput").join(' ');
+		return i18n.t<string[]>('shared.messages.error.inputOutput').join(' ');
 	},
 
 	childWriterDied: () => {
-		return i18n.t<string[]>("shared.messages.error.childWriterDied").join(' ');
+		return i18n.t<string[]>('shared.messages.error.childWriterDied').join(' ');
 	},
 
 	unsupportedProtocol: () => {
-		return i18n.t("shared.messages.error.unsupportedProtocol");
+		return i18n.t('shared.messages.error.unsupportedProtocol');
 	},
 };

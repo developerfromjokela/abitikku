@@ -38,7 +38,7 @@ import { getVersions } from '../../../../shared/utils';
 import { showError } from '../../os/dialog';
 import { warning } from '../../../../shared/messages';
 import * as settings from '../../models/settings';
-import {  withTranslation, WithTranslation } from "react-i18next";
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 const EditionTabs = (props: TabsProps) => (
 	<div className="tabframe">
@@ -72,9 +72,8 @@ const VersionsTable = styled((props: GenericTableProps<AbiVersion>) => (
 	}
 `;
 
-type IWithTranslation = WithTranslation & Omit<ModalProps, 'done' | 'cancel'>
-export interface VersionSelectorProps
-	extends IWithTranslation {
+type IWithTranslation = WithTranslation & Omit<ModalProps, 'done' | 'cancel'>;
+export interface VersionSelectorProps extends IWithTranslation {
 	cancel: () => void;
 	done: (version?: Version) => void;
 	selectedVersion?: Version;
@@ -104,20 +103,20 @@ class WrapVersionSelector extends React.Component<
 			tableColumns: this.genTableColumns(),
 		};
 
-		this.props.i18n.on("languageChanged", this.onLanguageChanged);
+		this.props.i18n.on('languageChanged', this.onLanguageChanged);
 	}
 
 	private onLanguageChanged() {
 		this.setState({
 			tableColumns: this.genTableColumns(),
-		})
+		});
 	}
 
 	private genTableColumns(): Array<TableColumn<Version>> {
 		return [
 			{
 				field: 'versionName',
-				label: this.props.t("gui.version-selector.columnVersion"),
+				label: this.props.t('gui.version-selector.columnVersion'),
 				render: (versionName: string, row: Version) => {
 					return (
 						<Txt>
@@ -127,9 +126,11 @@ class WrapVersionSelector extends React.Component<
 									key={'Uusin'}
 									shade={18}
 									mr="10px"
-									tooltip={this.props.t("gui.version-selector.columnLatestTooltip")}
+									tooltip={this.props.t(
+										'gui.version-selector.columnLatestTooltip',
+									)}
 								>
-									{this.props.t("gui.version-selector.columnLatest")}
+									{this.props.t('gui.version-selector.columnLatest')}
 								</Badge>
 							)}
 							{row.beta && (
@@ -137,9 +138,7 @@ class WrapVersionSelector extends React.Component<
 									key={'BETA'}
 									shade={5}
 									mr="10px"
-									tooltip={
-										this.props.t("gui.version-selector.columnBeta")
-									}
+									tooltip={this.props.t('gui.version-selector.columnBeta')}
 								>
 									BETA
 								</Badge>
@@ -150,7 +149,7 @@ class WrapVersionSelector extends React.Component<
 			},
 			{
 				field: 'releaseDate',
-				label: this.props.t("gui.version-selector.columnReleaseDate"),
+				label: this.props.t('gui.version-selector.columnReleaseDate'),
 				render: (value: string, row: Version) => {
 					if (row !== undefined) {
 						return <Txt>{new Date(row.releaseDate).toLocaleDateString()}</Txt>;
@@ -216,7 +215,7 @@ class WrapVersionSelector extends React.Component<
 	}
 
 	componentWillUnmount() {
-		this.props.i18n.off("languageChanged", this.onLanguageChanged);
+		this.props.i18n.off('languageChanged', this.onLanguageChanged);
 		this.unsubscribe?.();
 	}
 
@@ -228,7 +227,7 @@ class WrapVersionSelector extends React.Component<
 				titleElement={
 					<Flex alignItems="baseline">
 						<Txt fontSize={24} align="left">
-							{this.props.t("gui.version-selector.selectVersion")}
+							{this.props.t('gui.version-selector.selectVersion')}
 						</Txt>
 					</Flex>
 				}
@@ -246,11 +245,13 @@ class WrapVersionSelector extends React.Component<
 									bottom: '8px',
 								}}
 							>
-								{this.props.t("gui.version-selector.betaWarning", {betaWarning: warning.betaVersion()})}
+								{this.props.t('gui.version-selector.betaWarning', {
+									betaWarning: warning.betaVersion(),
+								})}
 							</Txt>
 						) : null}
 						<EditionTabs flex={'grow'} key="versions-tab">
-							<Tab title={this.props.t("gui.version-selector.studentTab")}>
+							<Tab title={this.props.t('gui.version-selector.studentTab')}>
 								<VersionsTable
 									refFn={(t) => {
 										if (t !== null && selectedVersion !== undefined) {
@@ -284,7 +285,7 @@ class WrapVersionSelector extends React.Component<
 									}}
 								/>
 							</Tab>
-							<Tab title={this.props.t("gui.version-selector.serverTab")}>
+							<Tab title={this.props.t('gui.version-selector.serverTab')}>
 								<VersionsTable
 									refFn={(t) => {
 										if (t !== null && selectedVersion !== undefined) {

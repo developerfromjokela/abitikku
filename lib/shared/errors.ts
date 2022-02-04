@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import i18n from "./i18n";
+import i18n from './i18n';
 
 export type ErrorWithPath = Error & {
 	path?: string;
@@ -32,19 +32,16 @@ export const HUMAN_FRIENDLY = {
 		description: () => "The file you're trying to access doesn't exist",
 	},
 	EPERM: {
-		title: () => i18n.t("shared.messages.errors.EPERM.title"),
-		description: () =>
-			i18n.t("shared.messages.errors.EPERM.description"),
+		title: () => i18n.t('shared.messages.errors.EPERM.title'),
+		description: () => i18n.t('shared.messages.errors.EPERM.description'),
 	},
 	EACCES: {
-		title: () => i18n.t("shared.messages.errors.EACCES.title"),
-		description: () =>
-			i18n.t("shared.messages.errors.EACCES.description"),
+		title: () => i18n.t('shared.messages.errors.EACCES.title'),
+		description: () => i18n.t('shared.messages.errors.EACCES.description'),
 	},
 	ENOMEM: {
-		title: () => i18n.t("shared.messages.errors.ENOMEM.title"),
-		description: () =>
-			i18n.t("shared.messages.errors.ENOMEM.description"),
+		title: () => i18n.t('shared.messages.errors.ENOMEM.title'),
+		description: () => i18n.t('shared.messages.errors.ENOMEM.description'),
 	},
 } as const;
 
@@ -98,12 +95,12 @@ export function getTitle(error: ErrorWithPath): string {
 
 	const code = error.code;
 	if (!isBlank(code)) {
-		return i18n.t("shared.messages.errors.errorCode", {
+		return i18n.t('shared.messages.errors.errorCode', {
 			code,
 		});
 	}
 
-	return i18n.t("shared.messages.errors.genericError");
+	return i18n.t('shared.messages.errors.genericError');
 }
 
 /**

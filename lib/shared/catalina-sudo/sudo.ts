@@ -43,9 +43,9 @@ export async function sudo(
 						__dirname,
 						'sudo-askpass.osascript.js',
 					),
-					OK: i18n.t("common.action.ok"),
-					CANCEL: i18n.t("common.action.cancel"),
-					DIALOG: i18n.t("shared.messages.sudo.privilegedAccessRequred"),
+					OK: i18n.t('common.action.ok'),
+					CANCEL: i18n.t('common.action.cancel'),
+					DIALOG: i18n.t('shared.messages.sudo.privilegedAccessRequred'),
 				},
 			},
 		);

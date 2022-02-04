@@ -149,7 +149,9 @@ export const TargetSelector = ({
 						bottom: '25px',
 					}}
 				>
-					{t("gui.version-selector.betaWarning", {betaWarning: warning.systemDrive()})}
+					{t('gui.version-selector.betaWarning', {
+						betaWarning: warning.systemDrive(),
+					})}
 				</Txt>
 			) : null}
 			<TargetSelectorButton

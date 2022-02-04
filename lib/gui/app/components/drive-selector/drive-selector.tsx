@@ -185,11 +185,11 @@ class WrapDriveSelector extends React.Component<
 			tableColumns: this.genTableColumns(),
 		};
 
-		props.i18n.on("languageChanged", this.onLanguageChanged);
+		props.i18n.on('languageChanged', this.onLanguageChanged);
 	}
 
 	private onLanguageChanged() {
-		this.setState({tableColumns: this.genTableColumns()});
+		this.setState({ tableColumns: this.genTableColumns() });
 	}
 
 	private genTableColumns(): Array<TableColumn<Drive>> {
@@ -384,7 +384,7 @@ class WrapDriveSelector extends React.Component<
 	}
 
 	componentWillUnmount() {
-		this.props.i18n.off("languageChanged", this.onLanguageChanged);
+		this.props.i18n.off('languageChanged', this.onLanguageChanged);
 		this.unsubscribe?.();
 	}
 

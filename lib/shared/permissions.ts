@@ -199,22 +199,23 @@ export async function elevateCommand(
 				console.log('error', error);
 				if (_.includes(error.message, 'is not in the sudoers file')) {
 					throw errors.createUserError({
-						title: i18n.t("shared.permissions.sudoError.title"),
-						description:
-							i18n.t("shared.permissions.sudoError.description"),
+						title: i18n.t('shared.permissions.sudoError.title'),
+						description: i18n.t('shared.permissions.sudoError.description'),
 					});
 				} else if (_.startsWith(error.message, 'Command failed:')) {
 					throw errors.createUserError({
-						title: i18n.t("shared.permissions.processDiedError.title"),
-						description: i18n.t("shared.permissions.processDiedError.description", {code: error.code}),
+						title: i18n.t('shared.permissions.processDiedError.title'),
+						description: i18n.t(
+							'shared.permissions.processDiedError.description',
+							{ code: error.code },
+						),
 					});
 				} else if (error.message === 'User did not grant permission.') {
 					return { cancelled: true };
 				} else if (error.message === 'No polkit authentication agent found.') {
 					throw errors.createUserError({
-						title: i18n.t("shared.permissions.polkitError.title"),
-						description:
-							i18n.t("shared.permissions.polkitError.description"),
+						title: i18n.t('shared.permissions.polkitError.title'),
+						description: i18n.t('shared.permissions.polkitError.description'),
 					});
 				}
 				throw error;

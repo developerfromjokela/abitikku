@@ -3,12 +3,16 @@ import * as React from 'react';
 import { Flex, Txt, ModalProps } from 'rendition';
 import { Modal } from '../../styled-components';
 import { getSelectedDrives } from '../../models/selection-state';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 	const { t } = useTranslation();
-	const warningSubtitle = t("gui.erasing-warning.subtitle", {count: getSelectedDrives().length});
-	const warningCta = t("gui.erasing-warning.cta", {count: getSelectedDrives().length});
+	const warningSubtitle = t('gui.erasing-warning.subtitle', {
+		count: getSelectedDrives().length,
+	});
+	const warningCta = t('gui.erasing-warning.cta', {
+		count: getSelectedDrives().length,
+	});
 
 	return (
 		<Modal
@@ -26,7 +30,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 				height: 'unset',
 			}}
 			width={'unset'}
-			action={t("gui.erasing-warning.confirm")}
+			action={t('gui.erasing-warning.confirm')}
 			primaryButtonProps={{
 				primary: false,
 				outline: true,
@@ -36,7 +40,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 				<Flex flexDirection="column">
 					<ExclamationTriangleSvg height="2em" fill="#e08704" />
 					<Txt fontSize="24px" color="#e08704">
-						{t("gui.erasing-warning.warning")}
+						{t('gui.erasing-warning.warning')}
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>
