@@ -103,7 +103,7 @@ function getImageBasename(image?: SourceMetadata) {
 
 const Icon = styled(BaseIcon)`
 	margin-right: 20px;
-	margin-top: 20px;
+	margin-left: 7px;
 `;
 
 /*
@@ -390,7 +390,6 @@ export class MainPage extends React.Component<
 					position: 'fixed',
 				}}
 			>
-				<LanguageSelector />
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
@@ -429,8 +428,11 @@ export class MainPage extends React.Component<
 								position: 'absolute',
 								right: 0,
 								top: 0,
+								marginTop: '20px',
+								display: 'flex',
 							}}
 						>
+							<LanguageSelector />
 							<Icon
 								icon={<ConfigIcon height="1em" fill="#222" />}
 								plain
