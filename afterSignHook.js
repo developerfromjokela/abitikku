@@ -10,7 +10,7 @@ async function main(context) {
   }
 
   const appName = context.packager.appInfo.productFilename
-  const appleId = 'accounts+apple@balena.io'
+  const appleId = 'ruben@wilmaplus.fi'
 
   await notarize({
     appBundleId: 'fi.testausserveri.abitikku',

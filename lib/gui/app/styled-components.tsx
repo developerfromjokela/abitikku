@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import * as _ from 'lodash';
 import * as React from 'react';
 import {
 	Alert as AlertBase,
@@ -32,6 +31,7 @@ import styled, { css } from 'styled-components';
 import i18n from '../../shared/i18n';
 
 import { colors, theme } from './theme';
+import { platform } from 'os';
 
 export const ThemedProvider = (props: any) => (
 	<Provider theme={theme} {...props}></Provider>
@@ -174,7 +174,8 @@ export const Modal = styled(({ style, children, ...props }) => {
 				children: i18n.t('common.action.cancel'),
 			}}
 			style={{
-				height: style?.height || '97vh',
+				// Because macOS window toolbar is inside content window, lower modal height
+				height: platform() !== 'darwin' ? style?.height || '97vh' : '90vh',
 				...style,
 			}}
 			{...props}

@@ -123,9 +123,8 @@ export const TargetSelector = ({
 	const [{ driveListLabel, targets }, setStateSlice] = React.useState(
 		getDriveSelectionStateSlice(),
 	);
-	const [showTargetSelectorModal, setShowTargetSelectorModal] = React.useState(
-		false,
-	);
+	const [showTargetSelectorModal, setShowTargetSelectorModal] =
+		React.useState(false);
 	const { t } = useTranslation();
 
 	React.useEffect(() => {

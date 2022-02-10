@@ -18,7 +18,7 @@ import ExclamationTriangleSvg from '@fortawesome/fontawesome-free/svgs/solid/exc
 import ChevronDownSvg from '@fortawesome/fontawesome-free/svgs/solid/chevron-down.svg';
 import * as sourceDestination from 'etcher-sdk/build/source-destination/';
 import * as React from 'react';
-import { Flex, ModalProps, Txt, Badge, Link, TableColumn } from 'rendition';
+import { Flex, ModalProps, Txt, Badge, Link } from 'rendition';
 import styled from 'styled-components';
 
 import {
@@ -41,6 +41,8 @@ import {
 	Modal,
 	Table,
 } from '../../styled-components';
+
+const DRIVE_NAME_MAX_CHAR = 60;
 
 import { SourceMetadata } from '../source-selector/source-selector';
 import { withTranslation, WithTranslation } from 'react-i18next';
@@ -198,6 +200,9 @@ class WrapDriveSelector extends React.Component<
 				field: 'description',
 				label: this.props.t('gui.drive-selector.nameLabel'),
 				render: (description: string, drive: Drive) => {
+					if (description && description.length > DRIVE_NAME_MAX_CHAR) {
+						description = description.slice(0, DRIVE_NAME_MAX_CHAR) + '...';
+					}
 					if (isDrivelistDrive(drive)) {
 						const isLargeDrive = isDriveSizeLarge(drive);
 						const hasWarnings =
@@ -395,8 +400,8 @@ class WrapDriveSelector extends React.Component<
 		const displayedDrives = this.getDisplayedDrives(drives);
 		const disabledDrives = this.getDisabledDrives(drives, image);
 		const numberOfSystemDrives = drives.filter(isSystemDrive).length;
-		const numberOfDisplayedSystemDrives = displayedDrives.filter(isSystemDrive)
-			.length;
+		const numberOfDisplayedSystemDrives =
+			displayedDrives.filter(isSystemDrive).length;
 		const numberOfHiddenSystemDrives =
 			numberOfSystemDrives - numberOfDisplayedSystemDrives;
 		const hasSystemDrives = selectedList.filter(isSystemDrive).length;
