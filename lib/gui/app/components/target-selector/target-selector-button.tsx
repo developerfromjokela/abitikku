@@ -151,6 +151,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 						style={{
 							marginTop: 30,
 							width: '100%',
+							minWidth: '210px',
 						}}
 					>
 						{t('gui.target-selector-button.selectTarget')}
@@ -191,7 +192,12 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 				</StepNameButton>
 				{targetsTemplate}
 				{!props.flashing && (
-					<ChangeButton plain onClick={props.reselectDrive} mt={14}>
+					<ChangeButton
+						plain
+						onClick={props.reselectDrive}
+						mt={14}
+						style={{ minWidth: '210px' }}
+					>
 						{t('gui.target-selector-button.selectTarget')}
 					</ChangeButton>
 				)}
@@ -230,6 +236,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 				style={{
 					marginTop: 30,
 					width: '100%',
+					minWidth: '210px',
 				}}
 			>
 				{t('gui.target-selector-button.selectTarget')}
