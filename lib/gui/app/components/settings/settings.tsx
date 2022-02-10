@@ -20,7 +20,7 @@ import InstagramSvg from '@fortawesome/fontawesome-free/svgs/brands/instagram.sv
 import YoutubeSvg from '@fortawesome/fontawesome-free/svgs/brands/youtube.svg';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Checkbox, Flex, Txt } from 'rendition';
+import { Box, Checkbox, Flex, TextWithCopy, Txt } from 'rendition';
 
 import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
@@ -54,6 +54,14 @@ interface SettingsModalProps {
 	toggleModal: (value: boolean) => void;
 }
 
+const UUID = process.env.BALENA_DEVICE_UUID;
+
+const InfoBox = (props: any) => (
+	<Box fontSize={14}>
+		<Txt>{props.label}</Txt>
+		<TextWithCopy code text={props.value} copy={props.value} />
+	</Box>
+);
 export function SettingsModal({ toggleModal }: SettingsModalProps) {
 	const { t } = useTranslation();
 
@@ -112,6 +120,12 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 						</Flex>
 					);
 				})}
+				{UUID !== undefined && (
+					<Flex flexDirection="column">
+						<Txt fontSize={24}>System Information</Txt>
+						<InfoBox label="UUID" value={UUID.substr(0, 7)} />
+					</Flex>
+				)}
 				<Flex style={{ flexDirection: 'row' }} mt={18}>
 					<Flex
 						mr={18}

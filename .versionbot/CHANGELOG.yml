@@ -1,4 +1,381 @@
 - commits:
+    - subject: 'patch: fix mesage of null'
+      hash: 9c1b55bebc1f7777ee830886c1999a72f082c17f
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+      author: Peter Makra
+      nested: []
+  version: 1.7.3
+  date: 2021-12-29T14:31:13.283Z
+- commits:
+    - subject: 'patch: fixed open from browser on windows'
+      hash: ef90d048ca2fc9e3eb7731b4b5eff63c3f0ee00a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Peter Makra <peter@balena.io>
+        signed-off-by: Peter Makra <peter@balena.io>
+      author: Peter Makra
+      nested: []
+  version: 1.7.2
+  date: 2021-12-21T16:51:12.194Z
+- commits:
+    - subject: 'patch: Revert back to electron-rebuild'
+      hash: ea9875ddf06b932b22b5b26d64fed6fe4f02384e
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Disallow TS in JS'
+      hash: 65dacd2ff282864b82283b7f8251ef9fa548ed3f
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Remove esInterop TS flag'
+      hash: a190818827e2354f9ff13d04017541c1fae6cd47
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Use @balena/sudo-prompt'
+      hash: 98e33b619be70348429038b5d04e49a840c8f218
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Update rpiboot guide link'
+      hash: 685ed715ac85495343a82e5d7886ad826fe2cdfe
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Improve webpack build time'
+      hash: 3cf3c4b398fb65cb4ca59cbf8c3798492197f622
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+  version: 1.7.1
+  date: 2021-11-22T11:27:50.714Z
+- commits:
+    - subject: 'patch: Add missing @types/react@16.8.5'
+      hash: 0a28af5c35a5c73cd78a729bfd8f4bb7978d7c1a
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Use npm ci in Makefile'
+      hash: 0c1e5b88ef01465ee84712560971af31c3f630ca
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Add draft info boxes for system information'
+      hash: 790201be90e63a3e93c64060bacd977e52dfb4ff
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Remove electron-rebuild package'
+      hash: d8d379f05e8adc4fb3df6b5f926d3ff548bed0bc
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Make electron a dev. dependency'
+      hash: b5e9701048eebd4f8a56157cad8bdc966e354a32
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Remove electron-rebuild package'
+      hash: 292f86d6f5b0e8dd34cb3dd6e008517f9a066cd0
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Use exact modules versions'
+      hash: 76ca9934c808ec013dcad2b427b21f253c588d8d
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Update etcher-sdk from v6.2.5 to v6.3.0'
+      hash: 37b826ee4ee47bda5285083c2184b7e6bf2a6a3b
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Fix write step for Http file process
+      hash: 1e1bd3c508197f0e129715d5e37d1bc06744089b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Andrea Rosci <andrear@balena.io>
+        signed-off-by: Andrea Rosci <andrear@balena.io>
+      author: JSReds
+      nested: []
+    - subject: 'patch: Fix linting errors'
+      hash: 00e8f11913eb9eaadb09909cc530693aac825e9f
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'minor: Refactor dependencies installation to avoid custom scripts'
+      hash: a3c24a26a05d1c3a767bf7f515cc7f193c9d8e2b
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Fix LEDs init error'
+      hash: 4232928ad894fed548290054b09e25e60fa9eda3
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+  version: 1.7.0
+  date: 2021-11-09T13:13:32.580Z
+- commits:
+    - subject: Add support for basic auth when downloading images from URL.
+      hash: b2d0c1c9ddbbfe87d5a905d420d615821610e825
+      body: >
+        When selecting "Flash from URL" the user can optionally provide a
+        username and password for basic authentication. The authentication input
+        fields are collapsed by default. When the authentication input fields
+        are collapsed after entering values the values are cleared to ensure
+        that the user sees all parameter passed to the server.
+      footer:
+        Change-Type: minor
+        change-type: minor
+        Changelog-Entry: Add support for basic auth when downloading images from URL.
+        changelog-entry: Add support for basic auth when downloading images from URL.
+      author: Marco Füllemann
+      nested: []
+    - subject: 'patch: Update etcher-sdk from v6.2.1 to v6.2.5'
+      hash: 14d91400a425617ee87e0d64f55980bd378fbfc2
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Update Makefile to Apple M1 info
+      hash: d0114aece7df213e27a84cb0081ba6cedd541bcb
+      body: |
+        Expanding host architecture detection.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: David Gaspar
+      nested: []
+    - subject: Add LED settings for potentially different hardware
+      hash: dff2df4aab73a26fb90401869bfd58035dc652a9
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+  version: 1.6.0
+  date: 2021-09-20T10:42:04.677Z
+- commits:
+    - subject: Restore image file selection LED-drive pathing
+      hash: f46963b6b3176395acc07863c9936a7c7f31d31a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Update scripts submodule
+      hash: b97f4e0031d7c4d0f33be9fdb8c999631f9eef1d
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Change LEDs colours
+      hash: e2d233d74b6335fd53a9271a9c00c3f93828c5b5
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Windows images now show the proper warning again
+      hash: a7ca2e527bc0cc040711ee4d60f93eda35f17558
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Windows images now show the proper warning again
+        changelog-entry: Windows images now show the proper warning again
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Fix Update and install with DNF instructions
+      hash: 396a053c0a0ec8def4b3672509cbb4ecc0b0c784
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Mohamed Salah
+      nested: []
+    - subject: Add possibile authorization as a query param
+      hash: d1a3f1cb88ff38f804caa9289d3205b09666c1e6
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Andrea Rosci <andrear@balena.io>
+        signed-off-by: Andrea Rosci <andrear@balena.io>
+      author: JSReds
+      nested: []
+    - subject: update the windows part
+      hash: 9f96558cdd11ce83dcc08289c31da425063eab24
+      body: |
+        I choose to add this part because, after the clean the usb stick
+        could stay in a raw state without creating the new partions,
+        activating and formatting.
+        Thanks
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Xtraim
+      nested: []
+    - subject: Update SUPPORT.md
+      hash: b3bc589d70cc4498a13f86f7d9aa36d9908275e3
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: thambu1710
+      nested: []
+    - subject: replace make webpack with npm run webpack
+      hash: 18d2c28110c8b4b4c327a58f6f6a712c33dfd4cc
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Seth Falco
+      nested: []
+    - subject: Add loader on image select
+      hash: b272ef296dec9b4242028202e1d759f1e2d1aa2b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Andrea Rosci <andrear@balena.io>
+        signed-off-by: Andrea Rosci <andrear@balena.io>
+      author: JSReds
+      nested: []
+    - subject: add pnp-webpack-plugin
+      hash: 32ca28a3a95d2ffd3eb2b32cfc54113515ae3097
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Zane Hitchcox
+      nested: []
+    - subject: Remove redundant codespell dependency/tests
+      hash: 4d5e5a3b0b81cbdd3341abbcca0c816bc905a8ed
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+  version: 1.5.122
+  date: 2021-09-02T12:20:22.871Z
+- commits:
+    - subject: 'patch: Delete Codeowners'
+      hash: a81b552b95f93a8989a6fff4774a14e21abe9a0e
+      body: ''
+      footer: {}
+      author: Vipul Gupta
+      nested: []
+    - subject: Add source maps for devtools
+      hash: 53f53c0f75779e814834e2fd0375b705664190c5
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: Clone submodules when initializing modules
+      hash: fdaf5c69d6bd20b64b1c1749b62dec9c22f12fb4
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+    - subject: 'patch: Select drive on list interaction rather than modal closing'
+      hash: 061afca5d3ce7dbf67d66706e6c2c65ecd61cf7b
+      body: ''
+      footer:
+        Signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+      author: Lorenzo Alberto Maria Ambrosi
+      nested: []
+  version: 1.5.121
+  date: 2021-07-05T18:20:04.735Z
+- commits:
     - subject: Update README to reference Cloudsmith
       hash: 7e333caaf9d94ff90583fe897ccabb6fdf860f74
       body: ''

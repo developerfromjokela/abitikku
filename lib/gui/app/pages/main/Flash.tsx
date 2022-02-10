@@ -121,7 +121,7 @@ async function flashImageToDrive(
 			}
 			goToSuccess();
 		}
-	} catch (error) {
+	} catch (error: any) {
 		notifyFailure(iconPath, basename, drives);
 		let errorMessage = getErrorMessageFromCode(error.code);
 		if (!errorMessage) {

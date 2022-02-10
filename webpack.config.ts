@@ -24,6 +24,9 @@ import { env } from 'process';
 import * as SimpleProgressWebpackPlugin from 'simple-progress-webpack-plugin';
 import * as TerserPlugin from 'terser-webpack-plugin';
 import { BannerPlugin, NormalModuleReplacementPlugin } from 'webpack';
+import * as PnpWebpackPlugin from 'pnp-webpack-plugin';
+
+import * as tsconfigRaw from './tsconfig.webpack.json';
 
 /**
  * Don't webpack package.json as mixpanel & sentry tokens
@@ -140,13 +143,13 @@ const commonConfig = {
 		minimize: true,
 		minimizer: [
 			new TerserPlugin({
+				parallel: true,
 				terserOptions: {
 					compress: false,
 					mangle: false,
-					output: {
-						beautify: true,
+					format: {
 						comments: false,
-						ecma: 2018,
+						ecma: 2020,
 					},
 				},
 				extractComments: false,
@@ -176,9 +179,11 @@ const commonConfig = {
 				test: /\.tsx?$/,
 				use: [
 					{
-						loader: 'ts-loader',
+						loader: 'esbuild-loader',
 						options: {
-							configFile: 'tsconfig.webpack.json',
+							loader: 'tsx',
+							target: 'es2021',
+							tsconfigRaw,
 						},
 					},
 				],
@@ -297,6 +302,7 @@ const commonConfig = {
 		extensions: ['.node', '.js', '.json', '.ts', '.tsx'],
 	},
 	plugins: [
+		PnpWebpackPlugin,
 		new SimpleProgressWebpackPlugin({
 			format: process.env.WEBPACK_PROGRESS || 'verbose',
 		}),
@@ -307,6 +313,9 @@ const commonConfig = {
 			'./http.js',
 		),
 	],
+	resolveLoader: {
+		plugins: [PnpWebpackPlugin.moduleLoader(module)],
+	},
 	output: {
 		path: path.join(__dirname, 'generated'),
 		filename: '[name].js',
@@ -358,6 +367,7 @@ const guiConfig = {
 	entry: {
 		gui: path.join(__dirname, 'lib', 'gui', 'app', 'renderer.ts'),
 	},
+	// entry: path.join(__dirname, 'lib', 'gui', 'app', 'renderer.ts'),
 	plugins: [
 		...commonConfig.plugins,
 		new CopyPlugin({

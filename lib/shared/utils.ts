@@ -69,3 +69,12 @@ export function getAppPath(): string {
 			)
 	);
 }
+
+export function isJson(jsonString: string) {
+	try {
+		JSON.parse(jsonString);
+	} catch (e) {
+		return false;
+	}
+	return true;
+}

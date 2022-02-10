@@ -4,7 +4,6 @@ productName: Abitikku
 npmRebuild: true
 nodeGypRebuild: false
 publish: null
-beforeBuild: "./beforeBuild.js"
 afterPack: "./afterPack.js"
 asar: false
 files:

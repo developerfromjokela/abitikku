@@ -18,21 +18,16 @@ import * as _ from 'lodash';
 import { Animator, AnimationFunction, Color, RGBLed } from 'sys-class-rgb-led';
 
 import {
-	isSourceDrive,
 	DrivelistDrive,
+	isSourceDrive,
 } from '../../../shared/drive-constraints';
+import { getDrives } from './available-drives';
+import { getSelectedDrives } from './selection-state';
 import * as settings from './settings';
-import { DEFAULT_STATE, observe } from './store';
+import { observe, store } from './store';
 
 const leds: Map<string, RGBLed> = new Map();
 const animator = new Animator([], 10);
-
-const red: Color = [0.59, 0, 0];
-const green: Color = [0, 0.59, 0];
-const blue: Color = [0, 0, 0.59];
-const white: Color = [0.04, 0.04, 0.04];
-const black: Color = [0, 0, 0];
-const purple: Color = [0.117, 0, 0.196];
 
 function createAnimationFunction(
 	intensityFunction: (t: number) => number,
@@ -40,7 +35,7 @@ function createAnimationFunction(
 ): AnimationFunction {
 	return (t: number): Color => {
 		const intensity = intensityFunction(t);
-		return color.map((v) => v * intensity) as Color;
+		return color.map((v: number) => v * intensity) as Color;
 	};
 }
 
@@ -52,13 +47,27 @@ function one(_t: number) {
 	return 1;
 }
 
-const blinkGreen = createAnimationFunction(blink, green);
-const blinkPurple = createAnimationFunction(blink, purple);
-const staticRed = createAnimationFunction(one, red);
-const staticGreen = createAnimationFunction(one, green);
-const staticBlue = createAnimationFunction(one, blue);
-const staticWhite = createAnimationFunction(one, white);
-const staticBlack = createAnimationFunction(one, black);
+type LEDColors = {
+	green: Color;
+	purple: Color;
+	red: Color;
+	blue: Color;
+	white: Color;
+	black: Color;
+};
+
+type LEDAnimationFunctions = {
+	blinkGreen: AnimationFunction;
+	blinkPurple: AnimationFunction;
+	staticRed: AnimationFunction;
+	staticGreen: AnimationFunction;
+	staticBlue: AnimationFunction;
+	staticWhite: AnimationFunction;
+	staticBlack: AnimationFunction;
+};
+
+let ledColors: LEDColors;
+let ledAnimationFunctions: LEDAnimationFunctions;
 
 interface LedsState {
 	step: 'main' | 'flashing' | 'verifying' | 'finish';
@@ -130,65 +139,77 @@ export function updateLeds({
 	if (sourceDrive !== undefined) {
 		if (plugged.has(sourceDrive)) {
 			plugged.delete(sourceDrive);
-			mapping.push(setLeds(staticBlue, new Set([sourceDrive])));
+			mapping.push(
+				setLeds(ledAnimationFunctions.staticBlue, new Set([sourceDrive])),
+			);
 		}
 	}
 	if (step === 'main') {
 		mapping.push(
-			setLeds(staticBlack, new Set([...unplugged, ...plugged])),
-			setLeds(staticWhite, new Set([...selectedOk, ...selectedFailed])),
+			setLeds(
+				ledAnimationFunctions.staticBlack,
+				new Set([...unplugged, ...plugged]),
+			),
+			setLeds(
+				ledAnimationFunctions.staticWhite,
+				new Set([...selectedOk, ...selectedFailed]),
+			),
 		);
 	} else if (step === 'flashing') {
 		mapping.push(
-			setLeds(staticBlack, new Set([...unplugged, ...plugged])),
-			setLeds(blinkPurple, selectedOk),
-			setLeds(staticRed, selectedFailed),
+			setLeds(
+				ledAnimationFunctions.staticBlack,
+				new Set([...unplugged, ...plugged]),
+			),
+			setLeds(ledAnimationFunctions.blinkPurple, selectedOk),
+			setLeds(ledAnimationFunctions.staticRed, selectedFailed),
 		);
 	} else if (step === 'verifying') {
 		mapping.push(
-			setLeds(staticBlack, new Set([...unplugged, ...plugged])),
-			setLeds(blinkGreen, selectedOk),
-			setLeds(staticRed, selectedFailed),
+			setLeds(
+				ledAnimationFunctions.staticBlack,
+				new Set([...unplugged, ...plugged]),
+			),
+			setLeds(ledAnimationFunctions.blinkGreen, selectedOk),
+			setLeds(ledAnimationFunctions.staticRed, selectedFailed),
 		);
 	} else if (step === 'finish') {
 		mapping.push(
-			setLeds(staticBlack, new Set([...unplugged, ...plugged])),
-			setLeds(staticGreen, selectedOk),
-			setLeds(staticRed, selectedFailed),
+			setLeds(
+				ledAnimationFunctions.staticBlack,
+				new Set([...unplugged, ...plugged]),
+			),
+			setLeds(ledAnimationFunctions.staticGreen, selectedOk),
+			setLeds(ledAnimationFunctions.staticRed, selectedFailed),
 		);
 	}
 	animator.mapping = mapping;
 }
 
-interface DeviceFromState {
-	devicePath?: string;
-	device: string;
-}
-
 let ledsState: LedsState | undefined;
 
-function stateObserver(state: typeof DEFAULT_STATE) {
-	const s = state.toJS();
+function stateObserver() {
+	const s = store.getState().toJS();
 	let step: 'main' | 'flashing' | 'verifying' | 'finish';
 	if (s.isFlashing) {
 		step = s.flashState.type;
 	} else {
 		step = s.lastAverageFlashingSpeed == null ? 'main' : 'finish';
 	}
-	const availableDrives = s.availableDrives.filter(
-		(d: DeviceFromState) => d.devicePath,
+	const availableDrives = getDrives().filter(
+		(d: DrivelistDrive) => d.devicePath,
 	);
 	const sourceDrivePath = availableDrives.filter((d: DrivelistDrive) =>
 		isSourceDrive(d, s.selection.image),
 	)[0]?.devicePath;
 	const availableDrivesPaths = availableDrives.map(
-		(d: DeviceFromState) => d.devicePath,
+		(d: DrivelistDrive) => d.devicePath,
 	);
 	let selectedDrivesPaths: string[];
 	if (step === 'main') {
-		selectedDrivesPaths = availableDrives
-			.filter((d: DrivelistDrive) => s.selection.devices.includes(d.device))
-			.map((d: DrivelistDrive) => d.devicePath);
+		selectedDrivesPaths = getSelectedDrives()
+			.filter((drive) => drive.devicePath !== null)
+			.map((drive) => drive.devicePath) as string[];
 	} else {
 		selectedDrivesPaths = s.devicePaths;
 	}
@@ -201,7 +222,7 @@ function stateObserver(state: typeof DEFAULT_STATE) {
 		availableDrives: availableDrivesPaths,
 		selectedDrives: selectedDrivesPaths,
 		failedDrives: failedDevicePaths,
-	};
+	} as LedsState;
 	if (!_.isEqual(newLedsState, ledsState)) {
 		updateLeds(newLedsState);
 		ledsState = newLedsState;
@@ -224,6 +245,16 @@ export async function init(): Promise<void> {
 		for (const [drivePath, ledsNames] of Object.entries(ledsMapping)) {
 			leds.set('/dev/disk/by-path/' + drivePath, new RGBLed(ledsNames));
 		}
+		ledColors = (await settings.get('ledColors')) || {};
+		ledAnimationFunctions = {
+			blinkGreen: createAnimationFunction(blink, ledColors['green']),
+			blinkPurple: createAnimationFunction(blink, ledColors['purple']),
+			staticRed: createAnimationFunction(one, ledColors['red']),
+			staticGreen: createAnimationFunction(one, ledColors['green']),
+			staticBlue: createAnimationFunction(one, ledColors['blue']),
+			staticWhite: createAnimationFunction(one, ledColors['white']),
+			staticBlack: createAnimationFunction(one, ledColors['black']),
+		};
 		observe(_.debounce(stateObserver, 1000, { maxWait: 1000 }));
 	}
 }

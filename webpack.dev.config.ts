@@ -2,14 +2,13 @@ import configs from './webpack.config';
 import { WebpackOptionsNormalized } from 'webpack';
 import * as fs from 'fs';
 
-const [
-	guiConfig,
-	etcherConfig,
-	childWriterConfig,
-] = (configs as unknown) as WebpackOptionsNormalized[];
+const [guiConfig, etcherConfig, childWriterConfig] =
+	configs as unknown as WebpackOptionsNormalized[];
 
 configs.forEach((config) => {
 	config.mode = 'development';
+	// @ts-ignore
+	config.devtool = 'source-map';
 });
 
 guiConfig.devServer = {
