@@ -56,6 +56,8 @@ import { Version } from '../../models/version';
 import ConfigIcon from '@fortawesome/fontawesome-free/svgs/solid/cog.svg';
 import { IconButton as BaseIcon } from '../../styled-components';
 import styled from 'styled-components';
+import i18n from '../../../../shared/i18n';
+import { LanguageSelector } from '../../components/language-selector/language-selector';
 
 export type Source =
 	| typeof sourceDestination.File
@@ -75,14 +77,16 @@ function getDrivesTitle() {
 	const drives = selectionState.getSelectedDrives();
 
 	if (drives.length === 1) {
-		return drives[0].description || 'Nimetön laite';
+		return (
+			drives[0].description || i18n.t('gui.mainPage.driveTitle.noDescription')
+		);
 	}
 
 	if (drives.length === 0) {
-		return 'Ei kohteita';
+		return i18n.t('gui.mainPage.driveTitle.noTargets');
 	}
 
-	return `${drives.length} kohde` + (drives.length === 1 ? '' : 'tta');
+	return i18n.t('gui.mainPage.targets', { count: drives.length });
 }
 
 function getImageBasename(image?: SourceMetadata) {
@@ -99,7 +103,7 @@ function getImageBasename(image?: SourceMetadata) {
 
 const Icon = styled(BaseIcon)`
 	margin-right: 20px;
-	margin-top: 20px;
+	margin-left: 7px;
 `;
 
 /*
@@ -424,8 +428,11 @@ export class MainPage extends React.Component<
 								position: 'absolute',
 								right: 0,
 								top: 0,
+								marginTop: '20px',
+								display: 'flex',
 							}}
 						>
+							<LanguageSelector />
 							<Icon
 								icon={<ConfigIcon height="1em" fill="#222" />}
 								plain

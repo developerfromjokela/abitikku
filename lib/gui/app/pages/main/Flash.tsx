@@ -39,6 +39,8 @@ import DriveStatusWarningModal from '../../components/drive-status-warning-modal
 import { VersionSelector } from '../../components/version-selector/version-selector';
 import { Version } from '../../models/version';
 import ErasingWarningModal from '../../components/erasing-warning/erasing-warning';
+import { WithTranslation, withTranslation } from 'react-i18next';
+import i18n from '../../../../shared/i18n';
 
 const COMPLETED_PERCENTAGE = 100;
 const SPEED_PRECISION = 2;
@@ -68,7 +70,7 @@ function notifySuccess(
 	devices: { successful: number; failed: number },
 ) {
 	notification.send(
-		'Tikkusi on valmis!',
+		i18n.t('gui.flash.success'),
 		messages.info.flashComplete(basename, drives, devices),
 		iconPath,
 	);
@@ -76,7 +78,7 @@ function notifySuccess(
 
 function notifyFailure(iconPath: string, basename: string, drives: any) {
 	notification.send(
-		'Hups! Tikkusi kirjoitus vaikuttaa epäonnistuneen',
+		i18n.t('gui.flash.failure'),
 		messages.error.flashFailure(basename, drives),
 		iconPath,
 	);
@@ -146,7 +148,7 @@ const formatSeconds = (totalSeconds: number) => {
 	return `${minutes}m${seconds}s`;
 };
 
-interface FlashStepProps {
+interface FlashStepProps extends WithTranslation {
 	shouldFlashStepBeDisabled: boolean;
 	goToSuccess: () => void;
 	versionChange: (version: Version) => void;
@@ -176,7 +178,7 @@ interface FlashStepState {
 	erasingMessage: boolean;
 }
 
-export class FlashStep extends React.PureComponent<
+class WrapFlashStep extends React.PureComponent<
 	FlashStepProps,
 	FlashStepState
 > {
@@ -315,7 +317,9 @@ export class FlashStep extends React.PureComponent<
 						disabled={this.props.shouldFlashStepBeDisabled}
 						versionCallback={() => this.selectVersion()}
 						cancel={imageWriter.cancel}
-						warning={FlashStep.hasListWarnings(selection.getSelectedDrives())}
+						warning={WrapFlashStep.hasListWarnings(
+							selection.getSelectedDrives(),
+						)}
 						callback={() => this.showErasingWarning()}
 					/>
 
@@ -329,7 +333,11 @@ export class FlashStep extends React.PureComponent<
 							>
 								<Txt>{this.props.speed.toFixed(SPEED_PRECISION)} MB/s</Txt>
 								{!_.isNil(this.props.eta) && (
-									<Txt>Arvioitu aika: {formatSeconds(this.props.eta)}</Txt>
+									<Txt>
+										{this.props.t('gui.flash.eta', {
+											seconds: formatSeconds(this.props.eta),
+										})}
+									</Txt>
 								)}
 							</Flex>
 						)}
@@ -369,10 +377,10 @@ export class FlashStep extends React.PureComponent<
 				{this.state.errorMessage && (
 					<SmallModal
 						width={400}
-						titleElement={'Huomio'}
+						titleElement={this.props.t('gui.flash.errorModal.title')}
 						cancel={() => this.handleFlashErrorResponse(false)}
 						done={() => this.handleFlashErrorResponse(true)}
-						action={'Yritä uudelleen'}
+						action={this.props.t('gui.flash.errorModal.action')}
 					>
 						<Txt>
 							{this.state.errorMessage.split('\n').map((message, key) => (
@@ -395,3 +403,5 @@ export class FlashStep extends React.PureComponent<
 		);
 	}
 }
+
+export const FlashStep = withTranslation()(WrapFlashStep);

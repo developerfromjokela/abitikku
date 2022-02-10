@@ -35,6 +35,7 @@ import {
 	StepNameButton,
 } from '../../styled-components';
 import { middleEllipsis } from '../../utils/middle-ellipsis';
+import { useTranslation } from 'react-i18next';
 
 interface TargetSelectorProps {
 	targets: any[];
@@ -47,7 +48,7 @@ interface TargetSelectorProps {
 }
 
 function getDriveWarning(status: DriveStatus) {
-	switch (status.message) {
+	switch (status.message()) {
 		case compatibility.containsImage():
 			return warning.sourceDrive();
 		case compatibility.largeDrive():
@@ -79,6 +80,7 @@ const DriveCompatibilityWarning = ({
 };
 
 export function TargetSelectorButton(props: TargetSelectorProps) {
+	const { t } = useTranslation();
 	const targets = getSelectedDrives();
 
 	if (targets.length === 1) {
@@ -149,9 +151,10 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 						style={{
 							marginTop: 30,
 							width: '100%',
+							minWidth: '210px',
 						}}
 					>
-						Valitse kohde
+						{t('gui.target-selector-button.selectTarget')}
 					</SecondaryStepButton>
 				)}
 			</>
@@ -185,12 +188,17 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 		return (
 			<>
 				<StepNameButton plain tooltip={props.tooltip}>
-					{targets.length} {targets.length === 1 ? 'kohde' : 'kohdetta'}
+					{t('common.targets', { count: targets.length })}
 				</StepNameButton>
 				{targetsTemplate}
 				{!props.flashing && (
-					<ChangeButton plain onClick={props.reselectDrive} mt={14}>
-						Valitse kohde
+					<ChangeButton
+						plain
+						onClick={props.reselectDrive}
+						mt={14}
+						style={{ minWidth: '210px' }}
+					>
+						{t('gui.target-selector-button.selectTarget')}
 					</ChangeButton>
 				)}
 			</>
@@ -217,7 +225,7 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 
 				<Flex flexDirection="column" marginLeft={10}>
 					<DetailsText className={props.disabled ? 'disabled' : ''}>
-						Ei kohteita valittuna
+						{t('gui.target-selector-button.noTargetSelected')}
 					</DetailsText>
 				</Flex>
 			</Flex>
@@ -228,9 +236,10 @@ export function TargetSelectorButton(props: TargetSelectorProps) {
 				style={{
 					marginTop: 30,
 					width: '100%',
+					minWidth: '210px',
 				}}
 			>
-				Valitse kohde
+				{t('gui.target-selector-button.selectTarget')}
 			</SecondaryStepButton>
 		</>
 	);

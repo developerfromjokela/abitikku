@@ -31,6 +31,9 @@ import { SVGIcon } from '../svg-icon/svg-icon';
 import ImageSvg from '../../../assets/image.svg';
 import * as prettyBytes from 'pretty-bytes';
 import * as _ from 'lodash';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { t } from 'i18next';
+import i18n from '../../../../shared/i18n';
 
 const FlashProgressBar = styled(ProgressBar)`
 	> div {
@@ -54,7 +57,7 @@ const FlashProgressBar = styled(ProgressBar)`
 	background: #2f3033;
 `;
 
-interface ProgressButtonProps {
+interface ProgressButtonProps extends WithTranslation {
 	type: 'decompressing' | 'flashing' | 'verifying';
 	active: boolean;
 	percentage: number;
@@ -73,11 +76,13 @@ const colors = {
 } as const;
 
 const CancelButton = styled(({ type, onClick, ...props }) => {
-	const status = type === 'verifying' ? 'Skip' : 'Cancel';
-	const translatedStatus = type === 'verifying' ? 'Ohita' : 'Peruuta';
+	const status =
+		type === 'verifying'
+			? i18n.t('common.action.skip')
+			: i18n.t('common.action.cancel');
 	return (
 		<Button plain onClick={() => onClick(status)} {...props}>
-			{translatedStatus}
+			{status}
 		</Button>
 	);
 })`
@@ -89,7 +94,7 @@ const CancelButton = styled(({ type, onClick, ...props }) => {
 	}
 `;
 
-export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
+class WrapProgressButton extends React.PureComponent<ProgressButtonProps> {
 	public render() {
 		const percentage = this.props.percentage;
 		const warning = this.props.warning;
@@ -138,7 +143,8 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 
 		image.name = image.description || image.name;
 		const imageLogo = image.logo || '';
-		const imageName = image.name || 'Ladataan...';
+		const imageName =
+			image.name || this.props.t('gui.progress-button.fallbackImageName');
 		const imageSize = image.size;
 
 		return (
@@ -167,9 +173,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 										key={'BETA'}
 										shade={5}
 										ml="5px"
-										tooltip={
-											'Betaversio, ei suositella ajamaan kouluympäristössä!'
-										}
+										tooltip={t('gui.progress-button.betaVersion')}
 									>
 										BETA
 									</Badge>
@@ -189,7 +193,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 							disabled={this.props.disabled}
 							onClick={this.props.versionCallback}
 						>
-							Vaihda versio
+							{this.props.t('gui.progress-button.changeVersion')}
 						</ChangeButton>
 					</div>
 				</Flex>
@@ -203,7 +207,7 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 						width: '100%',
 					}}
 				>
-					Asenna
+					{this.props.t('gui.progress-button.flash')}
 				</StepButton>
 				{/*<Flex flexDirection={"row"} justifyContent={"center"} alignItems={"center"} m={2}>
 					<ExclamationTriangleSvg
@@ -217,3 +221,5 @@ export class ProgressButton extends React.PureComponent<ProgressButtonProps> {
 		);
 	}
 }
+
+export const ProgressButton = withTranslation()(WrapProgressButton);

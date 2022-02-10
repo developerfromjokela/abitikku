@@ -39,6 +39,7 @@ import * as osDialog from './os/dialog';
 import * as windowProgress from './os/window-progress';
 import MainPage from './pages/main/MainPage';
 import './css/main.css';
+import i18n, { initPromise } from '../../shared/i18n';
 
 window.addEventListener(
 	'unhandledrejection',
@@ -214,7 +215,7 @@ function prepareDrive(drive: Drive) {
 			device: `${usbIdToString(
 				drive.deviceDescriptor.idVendor,
 			)}:${usbIdToString(drive.deviceDescriptor.idProduct)}`,
-			displayName: 'Ajureita puuttuu',
+			displayName: i18n.t('gui.app.missingDrivers'),
 			description,
 			mountpoints: [],
 			isReadOnly: false,
@@ -224,8 +225,8 @@ function prepareDrive(drive: Drive) {
 			size: null,
 			link:
 				'https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md',
-			linkCTA: 'Asenna',
-			linkTitle: 'Asenna puuttuvia ajureita',
+			linkCTA: i18n.t('gui.app.installMissingCta'),
+			linkTitle: i18n.t('gui.app.installMissingTitle'),
 			linkMessage: outdent`
 				Would you like to download the necessary drivers from the Raspberry Pi Foundation?
 				This will open your browser.
@@ -320,9 +321,9 @@ window.addEventListener('beforeunload', async (event) => {
 
 	try {
 		const confirmed = await osDialog.showWarning({
-			confirmationLabel: 'Kyllä, postu',
-			rejectionLabel: 'Peruuta',
-			title: 'Haluatko poistua Abitikusta?',
+			confirmationLabel: i18n.t('gui.app.quitModal.confirm'),
+			rejectionLabel: i18n.t('gui.app.quitModal.cancel'),
+			title: i18n.t('gui.app.quitModal.title'),
 			description: messages.warning.exitWhileFlashing(),
 		});
 		if (confirmed) {
@@ -347,6 +348,7 @@ window.addEventListener('beforeunload', async (event) => {
 
 export async function main() {
 	await ledsInit();
+	await initPromise;
 	ReactDOM.render(
 		React.createElement(MainPage),
 		document.getElementById('main'),

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import i18n from './i18n';
+
 export type ErrorWithPath = Error & {
 	path?: string;
 	code?: keyof typeof HUMAN_FRIENDLY;
@@ -30,19 +32,16 @@ export const HUMAN_FRIENDLY = {
 		description: () => "The file you're trying to access doesn't exist",
 	},
 	EPERM: {
-		title: () => 'Sinulla ei ole oikeuksia suorittaa tätä tehtävää',
-		description: () =>
-			'Varmista tarvittavat oikeudet tämän tehtävän suorittamiseen',
+		title: () => i18n.t('shared.messages.errors.EPERM.title'),
+		description: () => i18n.t('shared.messages.errors.EPERM.description'),
 	},
 	EACCES: {
-		title: () => 'Sinulla ei ole pääsyä tähän resurssiin',
-		description: () =>
-			'Varmista tarvittavat oikeudet resurssiin ja yritä uudelleen',
+		title: () => i18n.t('shared.messages.errors.EACCES.title'),
+		description: () => i18n.t('shared.messages.errors.EACCES.description'),
 	},
 	ENOMEM: {
-		title: () => 'Järjestelästäsi on loppunut muisti',
-		description: () =>
-			'Varmista, että järjestelmässä on riittävästi muistia tehtävän suorittamiseen',
+		title: () => i18n.t('shared.messages.errors.ENOMEM.title'),
+		description: () => i18n.t('shared.messages.errors.ENOMEM.description'),
 	},
 } as const;
 
@@ -96,10 +95,12 @@ export function getTitle(error: ErrorWithPath): string {
 
 	const code = error.code;
 	if (!isBlank(code)) {
-		return `Virhekoodi: ${code}`;
+		return i18n.t('shared.messages.errors.errorCode', {
+			code,
+		});
 	}
 
-	return 'Tapahtui virhe';
+	return i18n.t('shared.messages.errors.genericError');
 }
 
 /**

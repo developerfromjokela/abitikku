@@ -166,27 +166,27 @@ export const COMPATIBILITY_STATUS_TYPES = {
 export const statuses = {
 	locked: {
 		type: COMPATIBILITY_STATUS_TYPES.ERROR,
-		message: messages.compatibility.locked(),
+		message: messages.compatibility.locked,
 	},
 	system: {
 		type: COMPATIBILITY_STATUS_TYPES.WARNING,
-		message: messages.compatibility.system(),
+		message: messages.compatibility.system,
 	},
 	containsImage: {
 		type: COMPATIBILITY_STATUS_TYPES.ERROR,
-		message: messages.compatibility.containsImage(),
+		message: messages.compatibility.containsImage,
 	},
 	large: {
 		type: COMPATIBILITY_STATUS_TYPES.WARNING,
-		message: messages.compatibility.largeDrive(),
+		message: messages.compatibility.largeDrive,
 	},
 	small: {
 		type: COMPATIBILITY_STATUS_TYPES.ERROR,
-		message: messages.compatibility.tooSmall(),
+		message: messages.compatibility.tooSmall,
 	},
 	sizeNotRecommended: {
 		type: COMPATIBILITY_STATUS_TYPES.WARNING,
-		message: messages.compatibility.sizeNotRecommended(),
+		message: messages.compatibility.sizeNotRecommended,
 	},
 };
 
@@ -211,7 +211,7 @@ export function getDriveImageCompatibilityStatuses(
 	if (drive.isReadOnly && write) {
 		statusList.push({
 			type: COMPATIBILITY_STATUS_TYPES.ERROR,
-			message: messages.compatibility.locked(),
+			message: () => messages.compatibility.locked(),
 		});
 	}
 	if (
@@ -278,6 +278,6 @@ export function hasDriveImageCompatibilityStatus(
 }
 
 export interface DriveStatus {
-	message: string;
+	message: () => string;
 	type: number;
 }

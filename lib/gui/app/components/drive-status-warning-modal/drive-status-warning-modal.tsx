@@ -7,6 +7,7 @@ import { middleEllipsis } from '../../utils/middle-ellipsis';
 
 import * as prettyBytes from 'pretty-bytes';
 import { DriveWithWarnings } from '../../pages/main/Flash';
+import { useTranslation } from 'react-i18next';
 
 const DriveStatusWarningModal = ({
 	done,
@@ -17,12 +18,13 @@ const DriveStatusWarningModal = ({
 	isSystem: boolean;
 	drivesWithWarnings: DriveWithWarnings[];
 }) => {
-	let warningSubtitle = 'Olet alustamassa normaalia suurempaa levyä';
-	let warningCta = 'Oletko varma ettei levy ole tallennustilalevy?';
+	const { t } = useTranslation();
+	let warningSubtitle = t('gui.drive-status-warning.normalWarning.subtitle');
+	let warningCta = t('gui.drive-status-warning.normalWarning.cta');
 
 	if (isSystem) {
-		warningSubtitle = 'Olet alustamassa tietokoneesi levyjä';
-		warningCta = 'Haluatko jatkaa tietokoneesi levyjen alustusta?';
+		warningSubtitle = t('gui.drive-status-warning.systemWarning.subtitle');
+		warningCta = t('gui.drive-status-warning.systemWarning.cta');
 	}
 	return (
 		<Modal
@@ -33,9 +35,9 @@ const DriveStatusWarningModal = ({
 			cancelButtonProps={{
 				primary: false,
 				warning: true,
-				children: 'Vaihda kohde',
+				children: t('gui.drive-status-warning.changeTarget'),
 			}}
-			action={'Kyllä, olen varma'}
+			action={t('gui.drive-status-warning.confirmFlash')}
 			primaryButtonProps={{
 				primary: false,
 				outline: true,
@@ -50,7 +52,7 @@ const DriveStatusWarningModal = ({
 				<Flex flexDirection="column">
 					<ExclamationTriangleSvg height="2em" fill="#e08704" />
 					<Txt fontSize="24px" color="#e08704">
-						VAROITUS!
+						{t('gui.drive-status-warning.warningBig')}
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>
@@ -67,7 +69,7 @@ const DriveStatusWarningModal = ({
 							<Flex justifyContent="space-between" alignItems="baseline">
 								<strong>{middleEllipsis(drive.description, 28)}</strong>{' '}
 								{drive.size && prettyBytes(drive.size) + ' '}
-								<Badge shade={5}>{drive.statuses[0].message}</Badge>
+								<Badge shade={5}>{drive.statuses[0].message()}</Badge>
 							</Flex>
 							{i !== array.length - 1 ? <hr style={{ width: '100%' }} /> : null}
 						</>

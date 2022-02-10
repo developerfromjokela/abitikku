@@ -26,7 +26,7 @@
     "postshrinkwrap": "ts-node ./scripts/clean-shrinkwrap.ts",
     "webpack": "webpack",
     "build": "npm run webpack && npm run start",
-    "watch": "webpack serve --no-optimization-minimize --config ./webpack.dev.config.ts",
+    "watch": "webpack watch --no-optimization-minimize --config ./webpack.dev.config.ts",
     "concourse-build-electron": "npm run webpack",
     "concourse-test": "npx npm@6.14.8 test",
     "concourse-test-electron": "npx npm@6.14.8 test"
@@ -47,15 +47,15 @@
   "author": "Testausserveri <masterminds@testausserveri.fi>",
   "license": "Apache-2.0",
   "platformSpecificDependencies": {
-    "xmlbuilder":  "^15.1.1",
-    "xmldom":  "^0.6.0",
-    "@types/plist":  "^3.0.2",
-    "@types/verror":  "^1.10.5",
-    "crc":  "^3.8.0",
-    "iconv-corefoundation":  "^1.1.6",
-    "plist":  "^3.0.3",
-    "dmg-license":  "^1.0.9",
-    "fsevents":  "^2.3.2",
+    "xmlbuilder": "^15.1.1",
+    "xmldom": "^0.6.0",
+    "@types/plist": "^3.0.2",
+    "@types/verror": "^1.10.5",
+    "crc": "^3.8.0",
+    "iconv-corefoundation": "^1.1.6",
+    "plist": "^3.0.3",
+    "dmg-license": "^1.0.9",
+    "fsevents": "^2.3.2",
     "winusb-driver-generator": "^1.2.7"
   },
   "devDependencies": {
@@ -124,5 +124,9 @@
     "webpack": "^5.11.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "i18next": "^21.6.10",
+    "react-i18next": "^11.15.3"
   }
 }

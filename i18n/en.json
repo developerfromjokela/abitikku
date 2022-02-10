@@ -1,0 +1,270 @@
+{
+  "common": {
+    "targets_one": "{{count}} target",
+    "targets_other": "{{count}} targets",
+    "action": {
+      "cancel": "Cancel",
+      "ok": "Ok",
+      "skip": "Skip"
+    }
+  },
+  "shared": {
+    "permissions": {
+      "sudoError": {
+        "title": "Your user doesn't have enough privileges to proceed",
+        "description": "This application requires sudo privileges to be able to write to drives"
+      },
+      "processDiedError": {
+        "title": "The elevated process died unexpectedly",
+        "description": "The process error code was {{code}}"
+      },
+      "polkitError": {
+        "title": "No polkit authentication agent found",
+        "description": "Please install a polkit authentication agent for your desktop environment of choice to continue"
+      }
+    },
+    "messages": {
+      "common": {
+        "target_one": "target",
+        "target_other": "targets",
+        "describeTarget_one": "{{desc}} ({{name}})",
+        "describeTarget_other": "{{count}} targets"
+      },
+      "progress": {
+        "success_other": "Successful $t(shared.messages.common.target, {\"count\": {{count}}})",
+        "failure_other": "Failed $t(shared.messages.common.target, {\"count\": {{count}}})"
+      },
+      "info": {
+        "singleTarget": "to {{description}} ({{displayName}})",
+        "successfulTargets": "to {{successful}} $t(shared.messages.common.target, {\"count\": {{successful}}})",
+        "failedTargets": "and failed to be flashed to {{failed}} $t(shared.messages.common.target, {\"count\": {{failed}}})",
+        "header": "{{imageBasename}} was successfully flashed {{targets}}"
+      },
+      "compatibility": {
+        "sizeNotRecommended": "Not recommended",
+        "tooSmall": "Too small",
+        "locked": "Locked",
+        "system": "System drive",
+        "containsImage": "Image source drive",
+        "largeDrive": "Large drive"
+      },
+      "warning": {
+        "tooSmall": "Abitti is {{bytes}} larger than this drive.",
+        "exitWhileFlashing": [
+          "You are currently flashing a drive.",
+          "Closing Abitikku may leave your drive in an unusable state."
+        ],
+        "looksLikeWindowsImage": [
+          "It looks like you are trying to flash a Windows image.\n\n",
+          "Unlike other images, Windows images require special processing to be made bootable.",
+          "We suggest you use a tool specially designed for this purpose, such as",
+          "<a href=\"https://rufus.akeo.ie\">Rufus</a> (Windows),",
+          "<a href=\"https://github.com/slacka/WoeUSB\">WoeUSB</a> (Linux),",
+          "or Boot Camp Assistant (macOS)."
+        ],
+        "missingPartitionTable": [
+          "It looks like this is not a bootable image.\n\n",
+          "The image does not appear to contain a partition table,",
+          "and might not be recognized or bootable by your device."
+        ],
+        "driveMissingPartitionTable": "It looks like this is not a bootable drive. The drive does not appear to contain a partition table, and might not be recognized or bootable by your device",
+        "largeDriveSize": "This is a large drive! Make sure it doesn't contain files that you want to keep.",
+        "systemDrive": "Selecting your system drive is dangerous and will erase the contents of your system drive!",
+        "sourceDrive": "Contains Abitti"
+      },
+      "error": {
+        "notEnoughSpaceInDrive": [
+          "Not enough space on the drive.",
+          "Please insert a larger one and try again."
+        ],
+        "genericFlashError": "Something went wrong. \n{{message}}",
+        "validation": [
+          "The flash has been completed successfully but Abitikku detected potential",
+          "corruption issues when reading the image back from the drive.",
+          "\n\nPlease consider writing the image to a different drive."
+        ],
+        "openSource": "Something went wrong while opening {{sourceName}}\n\nError: {{errorMessage}}",
+        "flashFailure": "Something went wrong while writing {{imageBasename}} to $t(shared.messages.common.describeTarget, {\"count\": {{targets.length}}, \"desc\": \"{{targets.0.description}}\", \"name\": \"{{targets.0.displayName}}\"}).",
+        "driveUnplugged": [
+          "Looks like Abitikku lost access to the drive.",
+          "Did it get unplugged accidentally?",
+          "\n\nSometimes this error is caused by faulty readers that don't provide stable access to the drive."
+        ],
+        "inputOutput": [
+          "Looks like Abitikku is not able to write to this location of the drive.",
+          "This error is usually caused by a faulty drive, reader, or port.",
+          "\n\nPlease try again with another drive, reader, or port."
+        ],
+        "childWriterDied": [
+          "The writer process ended unexpectedly.",
+          "Please try again, and contact the development team if the problem persists."
+        ],
+        "unsupportedProtocol": "Only http:// and https:// URLs are supported."
+      }
+    },
+    "errors": {
+      "EPERM": {
+        "title": "You're not authorized to perform this operation",
+        "description": "Please ensure you have the necessary permissions for this task"
+      },
+      "EACCES": {
+        "title": "You don't have access to this resource",
+        "description": "Please ensure you have the necessary permissions to access this resource"
+      },
+      "ENOMEM": {
+        "title": "Your system ran out of memory",
+        "description": "Please make sure your system has enough available memory for this task"
+      },
+      "errorCode": "Error code: {{code}}",
+      "genericError": "An error occurred"
+    },
+    "sudo": {
+      "privilegedAccessRequired": "Abitikku needs privileged access in order to flash disks.\n\nType your password to allow this."
+    }
+  },
+  "gui": {
+    "store": {
+      "missingDrive": "Missing drive",
+      "missingDrives": "Missing drives",
+      "invalidDrive": "Invalid drive: {{drive}}",
+      "invalidDrives": "Invalid drives: {{drives}}",
+      "driveUnavailable": "The drive is not available: {{drive}}",
+      "driveWriteProtected": "The drive is write-protected",
+      "driveTooSmall": "The drive is not large enough"
+    },
+    "menu": {
+      "mainLabel": "View",
+      "toggleDevTools": "Toggle Developer Tools",
+      "reportIssue": "Report an issue",
+      "about": "About Abitikku"
+    },
+    "mainPage": {
+      "driveTitle": {
+        "noDescription": "Untitled Device",
+        "noTargets": "No targets found"
+      },
+      "targets_one": "{{count}} target",
+      "targets_other": "{{count}} targets"
+    },
+    "flash": {
+      "success": "Flash complete!",
+      "failure": "Oops! Looks like the flash failed.",
+      "eta": "ETA: {{seconds}}",
+      "errorModal": {
+        "title": "Attention",
+        "action": "Retry"
+      }
+    },
+    "dialog": {
+      "imageSelect": {
+        "osImages": "OS Images",
+        "all": "All"
+      },
+      "warningTitle": "Attention"
+    },
+    "progress-status": {
+      "starting": "Starting...",
+      "decompressing": "Decompressing...",
+      "flashing": "Flashing...",
+      "finishing": "Finishing...",
+      "validating": "Validating...",
+      "failed": "Failed"
+    },
+    "image-writer": {
+      "processEnded": {
+        "title": "The writer process ended unexpectedly",
+        "description": "Please try again, and contact the development team if the problem persists"
+      }
+    },
+    "target-selector": {
+      "title": "Select target",
+      "emptyListLabel": "Plug in a target drive"
+    },
+    "target-selector-button": {
+      "change": "Change",
+      "selectTarget": "Select target",
+      "noTargetSelected": "No targets selected"
+    },
+    "settings": {
+      "title": "Settings",
+      "betaVersions": "Show beta versions",
+      "updatesEnabled": "Auto-updates enabled",
+      "about": "Abitikku is a program that allows for easy flashing of the Abitti-system to one or more USB flash drives without any hassle."
+    },
+    "progress-button": {
+      "fallbackImageName": "Loading...",
+      "flash": "Flash!",
+      "changeVersion": "Change version",
+      "betaVersion": "Beta version, not recommended to be ran in the school environment!"
+    },
+    "flash-results": {
+      "descriptionLabel": "Target",
+      "deviceLabel": "Location",
+      "messageLabel": "Error",
+      "flashFail": "Flash failed!",
+      "flashSuccess": "Flash complete!",
+      "speedCalculationExplanation": "The speed is calculated by dividing the image size by the flashing time. Disk images with ext partitions flash faster as we are able to skip unused parts.",
+      "effectiveSpeed": "Effective speed: {{effectiveSpeed}} MB/s",
+      "failedTargets": "Failed targets",
+      "retryFailedTargets": "Retry failed targets",
+      "details": "Details"
+    },
+    "flash-another": {
+      "title": "Flash another"
+    },
+    "drive-status-warning": {
+      "normalWarning": {
+        "subtitle": "You are about to erase an unusually large drive",
+        "cta": "Are you sure the selected drive is not a storage drive?"
+      },
+      "systemWarning": {
+        "subtitle": "You are about to erase your computer's drives",
+        "cta": "Are you sure you want to flash your system drive?"
+      },
+      "changeTarget": "Change target",
+      "confirmFlash": "Yes, I'm sure",
+      "warningBig": "WARNING!"
+    },
+    "drive-selector": {
+      "nameLabel": "Name",
+      "sizeLabel": "Size",
+      "linkLabel": "Location",
+      "devicesAmount": "{{devices}} found",
+      "selectDevices": "Select {{selected}}",
+      "showHidden": "Show {{hidden}} hidden",
+      "systemDriveAlert": "Selecting your system drive is dangerous and will erase the contents of your drive!",
+      "continue": "Yes, continue",
+      "missingDriversMessage": "Abitikku will open {{link}} in your browser"
+    },
+    "version-selector": {
+      "columnVersion": "Version",
+      "columnLatest": "Latest",
+      "columnLatestTooltip": "The latest available release",
+      "columnBeta": "Beta version, not recommended to be ran in the school environment!",
+      "columnReleaseDate": "Release date",
+      "selectVersion": "Select version",
+      "betaWarning": "Warning: {{betaWarning}}",
+      "studentTab": "Student system",
+      "serverTab": "Exam server system"
+    },
+    "app": {
+      "missingDrivers": "Missing drivers",
+      "installMissingCta": "Install",
+      "installMissingTitle": "Install missing drivers",
+      "quitModal": {
+        "title": "Are you sure you want to close Abitikku?",
+        "confirm": "Yes, quit",
+        "cancel": "Cancel"
+      }
+    },
+    "erasing-warning": {
+      "subtitle_one": "You are about to format the drive you selected",
+      "subtitle_other": "You are about to format the drives you selected",
+      "stick_one": "drive",
+      "stick_other": "drives",
+      "cta": "After formatting the data on the $t(gui.erasing-warning.stick, {\"count\": {{count}} }) will not be recoverable, all data will be PERMANENTLY DESTROYED! Do you want to continue?",
+      "confirm": "Yes, I am sure",
+      "warning": "WARNING!"
+    }
+  }
+}

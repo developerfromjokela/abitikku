@@ -26,6 +26,8 @@ import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import { Modal } from '../../styled-components';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../../../shared/i18n';
 
 interface Setting {
 	name: string;
@@ -36,13 +38,13 @@ async function getSettingsList(): Promise<Setting[]> {
 	const list: Setting[] = [
 		{
 			name: 'betaVersions',
-			label: 'Näytä betaversiot',
+			label: i18n.t('gui.settings.betaVersions'),
 		},
 	];
 	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
 		list.push({
 			name: 'updatesEnabled',
-			label: 'Automaattiset päivitykset',
+			label: i18n.t('gui.settings.updatesEnabled'),
 		});
 	}
 	return list;
@@ -53,6 +55,8 @@ interface SettingsModalProps {
 }
 
 export function SettingsModal({ toggleModal }: SettingsModalProps) {
+	const { t } = useTranslation();
+
 	// @ts-ignore
 	const [settingsList, setCurrentSettingsList] = React.useState<Setting[]>([]);
 	React.useEffect(() => {
@@ -88,14 +92,13 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 		<Modal
 			titleElement={
 				<Txt fontSize={24} mb={24}>
-					Tietoja ja asetukset
+					{t('gui.settings.title')}
 				</Txt>
 			}
 			done={() => toggleModal(false)}
 		>
 			<Flex flexDirection="column">
-				Abitikku on ohjelma, joka mahdollistaa helpon Abitti-järjestelmän
-				asennuksen yhdelle tai useammalle tikulle ilman vaivaa ja säätöä.
+				{t('gui.settings.about')}
 				{settingsList.map((setting: Setting, i: number) => {
 					return (
 						<Flex key={setting.name} mb={14} margin={18}>
