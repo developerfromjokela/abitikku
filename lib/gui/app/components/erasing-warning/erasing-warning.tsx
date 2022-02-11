@@ -18,23 +18,14 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 		<Modal
 			position={'center'}
 			footerShadow={false}
-			reverseFooterButtons={true}
-			done={done}
+			reverseFooterButtons={false}
+			done={done} // we switch these around, because we can't configure this components coloring any further
 			cancel={cancel}
-			cancelButtonProps={{
-				primary: false,
-				warning: true,
-				children: t('common.action.cancel'),
-			}}
 			style={{
 				height: 'unset',
 			}}
 			width={'unset'}
 			action={t('gui.erasing-warning.confirm')}
-			primaryButtonProps={{
-				primary: false,
-				outline: true,
-			}}
 		>
 			<Flex flexDirection="column" alignItems="center" justifyContent="center">
 				<Flex flexDirection="column">
@@ -44,7 +35,7 @@ const ErasingWarningModal = ({ done, cancel }: ModalProps) => {
 					</Txt>
 				</Flex>
 				<Txt fontSize="24px">{warningSubtitle}</Txt>
-				<Txt style={{ fontWeight: 600 }}>{warningCta}</Txt>
+				<Txt>{warningCta}</Txt>
 			</Flex>
 		</Modal>
 	);

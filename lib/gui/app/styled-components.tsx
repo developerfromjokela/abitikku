@@ -188,6 +188,11 @@ export const Modal = styled(({ style, children, ...props }) => {
 		</ModalBase>
 	);
 })`
+	button:first-child:hover {
+		color: white;
+		background-color: #2a506f;
+	}
+
 	> div {
 		padding: 0;
 		height: 99%;
