@@ -38,7 +38,7 @@ const LanguageButton = styled(Button)`
 	}
 
 	&:focus:enabled {
-		color: #00aeef !important;
+		color: rgb(0, 110, 210) !important;
 	}
 `;
 
@@ -51,7 +51,9 @@ export const LanguageSelector = () => {
 			<LanguageButton
 				plain
 				color={
-					active === 'fi' ? theme.colors.primary : theme.colors.dark.background
+					active === 'fi'
+						? theme.colors.primary.background
+						: theme.colors.dark.background
 				}
 				onClick={() => setLanguage('fi')}
 			>
@@ -62,7 +64,7 @@ export const LanguageSelector = () => {
 				plain
 				color={
 					active === 'dummy'
-						? theme.colors.primary
+						? theme.colors.primary.background
 						: theme.colors.dark.background
 				}
 				onClick={() => setLanguage('dummy')}
@@ -73,7 +75,9 @@ export const LanguageSelector = () => {
 			<LanguageButton
 				plain
 				color={
-					active === 'en' ? theme.colors.primary : theme.colors.dark.background
+					active === 'en'
+						? theme.colors.primary.background
+						: theme.colors.dark.background
 				}
 				onClick={() => setLanguage('en')}
 			>

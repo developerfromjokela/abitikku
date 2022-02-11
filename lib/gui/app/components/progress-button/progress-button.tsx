@@ -190,7 +190,6 @@ class WrapProgressButton extends React.PureComponent<ProgressButtonProps> {
 						<ChangeButton
 							plain
 							style={{ width: 'unset', padding: '7px' }}
-							disabled={this.props.disabled}
 							onClick={this.props.versionCallback}
 						>
 							{this.props.t('gui.progress-button.changeVersion')}

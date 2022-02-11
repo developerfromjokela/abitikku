@@ -62,12 +62,19 @@ export const StepButton = styled((props: ButtonProps) => (
 	&& {
 		color: #ffffff;
 		font-size: 1.1rem;
-		background-color: #006ed2;
+		background-color: ${colors.primary.background};
 		border-radius: 5px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 500;
+		font-weight: 800;
+		&:focus {
+			background-color: ${colors.primary.background};
+			color: #fff;
+		}
 		&:hover {
 			background-color: #0063bd;
+		}
+		&:disabled {
+			background-color: #555;
+			color: #888;
 		}
 	}
 `;
@@ -80,8 +87,12 @@ export const SecondaryStepButton = styled((props: ButtonProps) => (
 		font-size: 1.1rem;
 		background-color: #fff;
 		border-radius: 5px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 500;
+		font-weight: 800;
+
+		&:focus {
+			background-color: #fff;
+			color: #006ed2;
+		}
 		&:hover {
 			color: #006ed2;
 			background-color: #e5f0fa;
@@ -90,30 +101,21 @@ export const SecondaryStepButton = styled((props: ButtonProps) => (
 `;
 
 export const ChangeButton = styled(Button)`
-	&& {
-		border-radius: 24px;
-		color: ${colors.primary.foreground};
-		padding: 0;
-		height: 18px;
-		font-size: 14px;
-		background-color: ${colors.primary.background};
+	width: auto !important;
+	cursor: pointer !important;
+	position: relative;
+	color: ${colors.primary.background};
 
-		&:enabled {
-			&:hover,
-			&:focus,
-			&:active {
-				background-color: ${colors.light.foreground};
-				color: ${colors.light.background};
-			}
-		}
-		&:disabled {
-			background-color: #8f9297;
-			&:hover,
-			&:focus,
-			&:active {
-				color: ${colors.primary.foreground};
-			}
-		}
+	&:hover:enabled {
+		color: #2a506f;
+		cursor: pointer;
+	}
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.04) !important;
+		border-radius: 4rem;
+	}
+	&:focus:enabled {
+		color: ${colors.primary.background} !important;
 	}
 `;
 
